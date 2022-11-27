@@ -1,37 +1,34 @@
-import { Flex } from "@chakra-ui/react";
+import { Button, Flex, Text } from "@chakra-ui/react";
 import type { NextPage } from "next";
+import { useEffect, useState } from "react";
+import { useTheme } from "@emotion/react";
+import { getSession, signIn, useSession, signOut } from "next-auth/react";
+import HomeSignIn from "../views/HomeSignIn";
 
-// "position:relative; width:1px; min-width:100%;padding-bottom:56.25%;"
-const Home: NextPage = () => {
+const Home: NextPage = (props) => {
+    const [width, setWidth] = useState(0);
+    const { data: session, status } = useSession();
+
+    useEffect(() => {
+        setWidth(window.innerWidth);
+    }, []);
+
+    const theme = useTheme();
+
+    console.log(session, status);
+    if (session) {
+        return (
+            <>
+                <HomeSignIn />
+            </>
+        );
+    }
     return (
         <>
-            <Flex w="100vw" h="100vw">
-                <div
-                    style={{
-                        position: "relative",
-                        width: "1px",
-                        minWidth: "100%",
-                        paddingBottom: "56,25%",
-                    }}
-                >
-                    <iframe
-                        allow="autoplay"
-                        className="spotlightr"
-                        src="https://videos.cdn.spotlightr.com/watch/MTMyMjc1NQ==?fallback=true"
-                        scrolling="no"
-                        name="videoPlayer"
-                        style={{
-                            width: "720px",
-                            height: "480px",
-                        }}
-                        allowFullScreen={true}
-                    >
-                        {" "}
-                    </iframe>
-                </div>
-            </Flex>
+            <HomeSignIn />
         </>
     );
 };
+
 
 export default Home;
