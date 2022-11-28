@@ -13,6 +13,7 @@ import {
     theme,
     Text,
     useToast,
+    Theme,
 } from "@chakra-ui/react";
 import type { NextPage } from "next";
 import { useEffect, useState } from "react";
@@ -29,7 +30,7 @@ const HomeSignIn: NextPage = (props) => {
         setWidth(window.innerWidth);
     }, []);
 
-    const theme = useTheme();
+    const theme: any = useTheme();
 
     const toast = useToast();
     const onSubmit = async (values: { email: string; password: string }) => {
@@ -46,8 +47,6 @@ const HomeSignIn: NextPage = (props) => {
                     duration: 9000,
                     isClosable: true,
                 });
-            } else {
-                Router.push("/restricted");
             }
         });
     };
