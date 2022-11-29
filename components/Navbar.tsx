@@ -19,6 +19,7 @@ const Navbar: React.FC = () => {
                 bg="#f1f2f3"
                 alignContent="center"
                 position='fixed'
+                boxShadow="lg"
             >
                 <Image
                     src="/logo.webp"

@@ -8,10 +8,11 @@ const IndexLayout: React.FC = () => {
             <Flex
                 h="100vh"
                 bg="#fff"
-                mt='15vh'
-                ml='18vw'
+                mt="15vh"
+                ml="18vw"
                 flexDir="column"
             >
+                
             </Flex>
         </>
     );

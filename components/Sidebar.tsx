@@ -6,9 +6,12 @@ import SidebarLink from "./SidebarLink";
 import { BsBook } from "react-icons/bs";
 import { RiAdminLine } from "react-icons/ri";
 import { FaBars } from "react-icons/fa";
-const Sidebar: React.FC = () => {
+type Props = {
+    open: boolean;
+    setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+};
+const Sidebar: React.FC<Props> = ({ open, setOpen }) => {
     const theme: any = useTheme();
-    const [open, setOpen] = React.useState(false);
     return (
         <>
             <Flex
@@ -20,10 +23,24 @@ const Sidebar: React.FC = () => {
                 gap="2rem"
                 mt="15vh"
                 position="fixed"
-                transition='all 0.5s ease'
+                transition="all 0.5s ease"
             >
-                <Flex pl='1rem' mb='2rem' left={open ? '70%' : '0'} transition='all .5s ease' position='relative'>
-                    <Icon as={FaBars} fill="#f1f2f3" fontSize="2xl" onClick={() => setOpen(!open)}/>
+                <Flex
+                    pl="1rem"
+                    mb="2rem"
+                    left={open ? "70%" : "0"}
+                    transition="all .5s ease"
+                    position="relative"
+                >
+                    <Icon
+                        cursor='pointer'
+                        as={FaBars}
+                        fill="#f1f2f3"
+                        fontSize="2xl"
+                        onClick={() => setOpen(!open)}
+                        transform={open ? "rotate(90deg)" : "rotate(0)"}
+                        transition="all .2s ease"
+                    />
                 </Flex>
                 <SidebarLink
                     icon={AiOutlineHome}
