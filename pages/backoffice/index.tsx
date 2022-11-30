@@ -25,17 +25,21 @@ import { BsTrash } from "react-icons/bs";
 import TableUser from "../../components/TableUsers";
 import BackofficeItem from "../../components/BackofficeItem";
 import { FaChalkboardTeacher } from "react-icons/fa";
+import TableCourses from "../../components/TableCourses";
 
 const Backoffice: React.FC = () => {
     const [open, setOpen] = useState(false);
     const [category, setCategory] = useState("Users");
     const [users, setUsers] = useState([]);
+    const [courses, setCourses] = useState([]);
     useEffect(() => {
         const users = axios
             .get(`${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/users`)
             .then((res) => {
                 setUsers(res.data);
             });
+
+            
     }, []);
 
     return (
@@ -50,6 +54,7 @@ const Backoffice: React.FC = () => {
                             <BackofficeItem icon={FaChalkboardTeacher} text="Courses" setCategory={setCategory} />
                         </Flex>
                             { category === "Users" && <TableUser users={users} /> }
+                            {/* { category === "Courses" && <TableCourses courses={courses} /> } */}
                     </Flex>
                 </Container>
             </Flex>

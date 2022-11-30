@@ -14,7 +14,7 @@ type Props = {
 
 const SidebarLink: React.FC<Props> = ({ icon, path, text, display }) => {
     const theme: any = useTheme();
-    const router = useRouter().pathname
+    const router = useRouter().pathname;
 
     return (
         <>
@@ -23,14 +23,17 @@ const SidebarLink: React.FC<Props> = ({ icon, path, text, display }) => {
                     <Icon
                         as={icon}
                         alignSelf="center"
-                        fontSize="2xl"
-                        fill={path === router ? theme.colors.secondary : "#f1f2f3"}
+                        fontSize="xl"
+                        fill={
+                            path === router ? theme.colors.secondary : "#f1f2f3"
+                        }
                     />
                     <Text
                         fontFamily={theme.fonts.tertiary}
                         color="#fff"
                         alignSelf="center"
                         display={display ? "block" : "none"}
+                        fontSize="sm"
                     >
                         {text}
                     </Text>

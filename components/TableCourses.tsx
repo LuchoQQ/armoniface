@@ -1,3 +1,4 @@
+import React from "react";
 import {
     Button,
     Flex,
@@ -21,19 +22,18 @@ import {
 } from "@chakra-ui/react";
 import { useTheme } from "@emotion/react";
 import Image from "next/image";
-import React from "react";
 import { AiOutlineEdit } from "react-icons/ai";
 import { BsTrash } from "react-icons/bs";
 import { ImNewTab } from "react-icons/im";
 import { User } from "../types";
 
 type Props = {
-    users: User[];
+    courses: [];
 };
 
-const TableUser: React.FC<Props> = ({ users }) => {
-    const theme: any = useTheme();
+const TableCourses: React.FC<Props> = ({ courses }) => {
     const { isOpen, onOpen, onClose } = useDisclosure();
+    const theme: any = useTheme();
     return (
         <>
             <Modal isOpen={isOpen} onClose={onClose}>
@@ -76,23 +76,11 @@ const TableUser: React.FC<Props> = ({ users }) => {
                         </Tr>
                     </Thead>
                     <Tbody>
-                        {users?.map((user) => {
+                        {courses?.map((course) => {
                             return (
                                 <Tr>
                                     <>
-                                        <Td>
-                                            <Image
-                                                src={"/profile.svg"}
-                                                alt="user avatar"
-                                                width={50}
-                                                height={50}
-                                                style={{
-                                                    borderRadius: "50%",
-                                                }}
-                                            />
-                                        </Td>
-                                        <Td>{user.name}</Td>
-                                        <Td>{user.email}</Td>
+                                        <Td></Td>
                                         <Td>
                                             <Icon
                                                 as={ImNewTab}
@@ -119,4 +107,4 @@ const TableUser: React.FC<Props> = ({ users }) => {
     );
 };
 
-export default TableUser;
+export default TableCourses;

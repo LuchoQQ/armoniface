@@ -30,7 +30,7 @@ const Sidebar: React.FC<Props> = ({ open, setOpen }) => {
             >
                 <Flex
                     pl="1rem"
-                    mb="2rem"
+                    mb="1rem"
                     left={open ? "70%" : "0"}
                     transition="all .5s ease"
                     position="relative"
@@ -39,7 +39,7 @@ const Sidebar: React.FC<Props> = ({ open, setOpen }) => {
                         cursor="pointer"
                         as={HiBars3}
                         fill="#f1f2f3"
-                        fontSize="3xl"
+                        fontSize="2xl"
                         onClick={() => setOpen(!open)}
                         transform={open ? "rotate(90deg)" : "rotate(0)"}
                         transition="all .2s ease"
