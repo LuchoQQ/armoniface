@@ -5,13 +5,16 @@ import { AiOutlineHome } from "react-icons/ai";
 import SidebarLink from "./SidebarLink";
 import { BsBook } from "react-icons/bs";
 import { RiAdminLine } from "react-icons/ri";
-import { FaBars } from "react-icons/fa";
+import { HiBars3 } from "react-icons/hi2";
+import { useSession, signOut } from "next-auth/react";
 type Props = {
     open: boolean;
     setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 const Sidebar: React.FC<Props> = ({ open, setOpen }) => {
     const theme: any = useTheme();
+    const { data: session, status } = useSession();
+
     return (
         <>
             <Flex
@@ -33,10 +36,10 @@ const Sidebar: React.FC<Props> = ({ open, setOpen }) => {
                     position="relative"
                 >
                     <Icon
-                        cursor='pointer'
-                        as={FaBars}
+                        cursor="pointer"
+                        as={HiBars3}
                         fill="#f1f2f3"
-                        fontSize="2xl"
+                        fontSize="3xl"
                         onClick={() => setOpen(!open)}
                         transform={open ? "rotate(90deg)" : "rotate(0)"}
                         transition="all .2s ease"
@@ -54,12 +57,15 @@ const Sidebar: React.FC<Props> = ({ open, setOpen }) => {
                     text="Courses"
                     display={open}
                 />
-                <SidebarLink
-                    icon={RiAdminLine}
-                    path="/backoffice"
-                    text="Backoffice"
-                    display={open}
-                />
+                {session?.user?.email === "admin@admin.com" && (
+                    <SidebarLink
+                        icon={RiAdminLine}
+                        path="/backoffice"
+                        text="Backoffice"
+                        display={open}
+                    />
+                )}
+                <Text onClick={() => signOut()}>Salir</Text>
             </Flex>
         </>
     );

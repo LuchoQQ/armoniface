@@ -8,18 +8,27 @@ import HomeSignIn from "../views/HomeSignIn";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import IndexLayout from "../views/IndexLayout";
-const Home: NextPage = (props) => {
+import { unstable_getServerSession } from "next-auth";
+import { authOptions } from "./api/auth/[...nextauth]";
+
+type Props = {
+    user: {
+        name: string,
+        email: string,
+        image: string,
+    },
+    expires: string,
+}
+
+const Home: NextPage<Props> = (props) => {
     const [width, setWidth] = useState(0);
     const { data: session, status } = useSession();
-
     useEffect(() => {
         setWidth(window.innerWidth);
     }, []);
-
     const theme: any = useTheme();
     const [open, setOpen] = useState(false);
 
-    console.log(session, status);
     if (session) {
         return (
             <>
@@ -28,41 +37,7 @@ const Home: NextPage = (props) => {
                     <Sidebar open={open} setOpen={setOpen} />
                     {/* <IndexLayout /> */}
                     <Container open={open} setOpen={setOpen}>
-                        <Flex w="100%" h="20vh" bg={theme.colors.secondary}>
-                            {/* <Text
-                                fontFamily={theme.fonts.tertiary}
-                                color="#f1f2f3"
-                                ml="20%"
-                            >
-                                Bienvenido
-                            </Text> */}
-                        </Flex>
-                        <Flex
-                            w="100%"
-                            h="100%"
-                            justifyContent="center"
-                            position="relative"
-                            top="-10vh"
-                        >
-                            <Flex minW="80%" h="10rem" bg="#fff" rounded="20px">
-                                <Flex px="4rem" gap="1rem">
-                                    <Image
-                                        alignSelf="center"
-                                        src="/profile.svg"
-                                        h="60%"
-                                        rounded="50%"
-                                    />
-                                    <Text
-                                        fontFamily={theme.fonts.tertiary}
-                                        alignSelf="center"
-                                        fontSize="xl"
-                                    >
-                                        ¡Bienvenido{" "}
-                                        {session?.user?.name?.split(" ")[0]}!
-                                    </Text>
-                                </Flex>
-                            </Flex>
-                        </Flex>
+                        <Flex></Flex>
                     </Container>
                 </Flex>
             </>
@@ -75,5 +50,14 @@ const Home: NextPage = (props) => {
         </>
     );
 };
+
+export async function getServerSideProps(context: Props) {
+    const session = await getSession();
+    return {
+        props: {
+            session,
+        },
+    };
+}
 
 export default Home;

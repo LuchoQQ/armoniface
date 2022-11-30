@@ -1,8 +1,8 @@
 import { Flex } from "@chakra-ui/react";
-import React from "react";
+import React, { ReactElement } from "react";
 
 type Props = {
-    children: React.ReactNode;
+    children: ReactElement;
     open: boolean;
     setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
@@ -13,8 +13,6 @@ const Container: React.FC<Props> = ({ open, setOpen, children }) => {
             <Flex
                 h="85vh"
                 w={open ? "85vw" : "100vw"}
-                justifyContent="center"
-                alignContent="center"
                 ml={open ? "15rem" : "4rem"}
                 transition="all .5s ease"
                 mt="15vh"

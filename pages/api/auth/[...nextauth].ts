@@ -1,7 +1,7 @@
 import axios from "axios";
 import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-const authOptions: NextAuthOptions = {
+export const authOptions: NextAuthOptions = {
     session: {
         strategy: "jwt",
     },
@@ -16,7 +16,6 @@ const authOptions: NextAuthOptions = {
                 const { email, password } = credentials as {
                     email: string;
                     password: string;
-                    noseee: string;
                 };
 
                 const user = await axios.post(`${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/users/auth`, {
@@ -25,29 +24,27 @@ const authOptions: NextAuthOptions = {
                 }).then((res) => res.data);
 
                 if (user.status === 'ok') {
-                    return user;
+                    console.log(user)
+                    return {
+                        name: user.name,
+                        email: user.email,
+                        image: user.avatar
+
+                    };
                 } else {
                     return null;
                 }
 
-                /* if (!email || !password) {
-                    throw new Error("Missing email or password");
-                }
-
-                if (email === "admin@admin.com" && password === "123456") {
-                    return { email: "si"}
-                } else {
-                    return null
-                }
-                 */
             }
-        })
-
+        }),
     ],
     pages: {
         signIn: "/",
 
-    }
+    },
+
+    secret: process.env.NEXT_AUTH_SECRET,
+
 }
 
 export default NextAuth(authOptions);

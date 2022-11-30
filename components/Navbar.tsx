@@ -8,7 +8,6 @@ const Navbar: React.FC = () => {
     const { data: session, status } = useSession();
 
     const theme: any = useTheme();
-    console.log(session, status);
     return (
         <>
             <Flex

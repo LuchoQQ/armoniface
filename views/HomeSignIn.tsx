@@ -127,7 +127,7 @@ const HomeSignIn: NextPage = (props) => {
                                                 colorScheme="purple"
                                                 width="full"
                                             >
-                                                Login
+                                                LogIn
                                             </Button>
                                             <Button
                                                 onClick={() => {
@@ -136,7 +136,7 @@ const HomeSignIn: NextPage = (props) => {
                                                 colorScheme="purple"
                                                 width="full"
                                             >
-                                                Unlogin
+                                                LogOut
                                             </Button>
                                         </VStack>
                                     </form>
