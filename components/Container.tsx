@@ -11,7 +11,7 @@ const Container: React.FC<Props> = ({ open, setOpen, children }) => {
     return (
         <>
             <Flex
-                h="85vh"
+                minH="85vh"
                 w={open ? "85vw" : "100vw"}
                 ml={open ? "15rem" : "4rem"}
                 transition="all .5s ease"

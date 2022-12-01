@@ -25,10 +25,12 @@ import Image from "next/image";
 import { AiOutlineEdit } from "react-icons/ai";
 import { BsTrash } from "react-icons/bs";
 import { ImNewTab } from "react-icons/im";
-import { User } from "../types";
+import { Course } from "../types";
+import ModalCourse from "./ModalCourse";
+import AddButton from "./AddButton";
 
 type Props = {
-    courses: [];
+    courses: Course[];
 };
 
 const TableCourses: React.FC<Props> = ({ courses }) => {
@@ -36,43 +38,15 @@ const TableCourses: React.FC<Props> = ({ courses }) => {
     const theme: any = useTheme();
     return (
         <>
-            <Modal isOpen={isOpen} onClose={onClose}>
-                <ModalOverlay />
-                <ModalContent>
-                    <ModalHeader>Modal Title</ModalHeader>
-                    <ModalCloseButton />
-                    <ModalBody>a</ModalBody>
+            <ModalCourse isOpen={isOpen} onClose={onClose} />
 
-                    <ModalFooter>
-                        <Button colorScheme="blue" mr={3} onClick={onClose}>
-                            Close
-                        </Button>
-                        <Button variant="ghost">Secondary Action</Button>
-                    </ModalFooter>
-                </ModalContent>
-            </Modal>
-
-            <Flex px="2rem" py="1rem" onClick={onOpen}>
-                <Text
-                    fontFamily={theme.fonts.tertiary}
-                    border="1px solid green"
-                    px="1rem"
-                    py=".5rem"
-                    rounded="20px"
-                >
-                    Agregar usuario
-                </Text>
-            </Flex>
+            <AddButton onOpen={onOpen} title="Agregar Curso" />
             <TableContainer w="100%">
                 <Table variant="simple">
                     <Thead>
                         <Tr>
-                            <Th>Avatar</Th>
-                            <Th>Nombre</Th>
-                            <Th>Correo</Th>
-                            <Th>Ver más</Th>
-                            <Th>Borrar</Th>
-                            <Th>Editar</Th>
+                            <Th>Title</Th>
+                            <Th>Description</Th>
                         </Tr>
                     </Thead>
                     <Tbody>
@@ -80,7 +54,8 @@ const TableCourses: React.FC<Props> = ({ courses }) => {
                             return (
                                 <Tr>
                                     <>
-                                        <Td></Td>
+                                        <Td>{course.title}</Td>
+                                        <Td>{course.description}</Td>
                                         <Td>
                                             <Icon
                                                 as={ImNewTab}
@@ -88,7 +63,10 @@ const TableCourses: React.FC<Props> = ({ courses }) => {
                                             />
                                         </Td>
                                         <Td>
-                                            <Icon as={BsTrash} fontSize="2xl" />
+                                                <Icon
+                                                    as={BsTrash}
+                                                    fontSize="2xl"
+                                                />
                                         </Td>
                                         <Td>
                                             <Icon

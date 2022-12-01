@@ -6,7 +6,6 @@ import {
     TableContainer,
     Tbody,
     Td,
-    Text,
     Th,
     Thead,
     Tr,
@@ -18,51 +17,53 @@ import {
     ModalBody,
     ModalCloseButton,
     useDisclosure,
+    Box,
+    VStack,
+    FormControl,
+    FormLabel,
+    Input,
+    FormErrorMessage,
+    useToast,
 } from "@chakra-ui/react";
 import { useTheme } from "@emotion/react";
+import axios from "axios";
+import { Field, Formik } from "formik";
 import Image from "next/image";
 import React from "react";
 import { AiOutlineEdit } from "react-icons/ai";
 import { BsTrash } from "react-icons/bs";
 import { ImNewTab } from "react-icons/im";
 import { User } from "../types";
-
+import API from "../utils/API";
+import AddButton from "./AddButton";
+import ModalUser from "./ModalUser";
 type Props = {
     users: User[];
+    setUsers: React.Dispatch<React.SetStateAction<User[]>>;
 };
 
-const TableUser: React.FC<Props> = ({ users }) => {
+const TableUser: React.FC<Props> = ({ users, setUsers }) => {
     const theme: any = useTheme();
+    const toast = useToast();
     const { isOpen, onOpen, onClose } = useDisclosure();
+
+    const onDelete = (id: string) =>
+        API.deleteUser(id)?.then((res) => {
+            // find the index of the user with the id that was deleted and remove it from the array
+            const index = users.findIndex((user) => user._id === id);
+            const newUsers = [...users];
+            newUsers.splice(index, 1);
+            setUsers(newUsers);
+            toast({
+                title: "Usuario eliminado",
+                status: "success",
+            });
+        });
     return (
         <>
-            <Modal isOpen={isOpen} onClose={onClose}>
-                <ModalOverlay />
-                <ModalContent>
-                    <ModalHeader>Modal Title</ModalHeader>
-                    <ModalCloseButton />
-                    <ModalBody>a</ModalBody>
+            <ModalUser isOpen={isOpen} onClose={onClose} users={users} setUsers={setUsers}/>
 
-                    <ModalFooter>
-                        <Button colorScheme="blue" mr={3} onClick={onClose}>
-                            Close
-                        </Button>
-                        <Button variant="ghost">Secondary Action</Button>
-                    </ModalFooter>
-                </ModalContent>
-            </Modal>
-
-            <Flex px="2rem" py="1rem" onClick={onOpen}>
-                <Text
-                    fontFamily={theme.fonts.tertiary}
-                    border="1px solid green"
-                    px="1rem"
-                    py=".5rem"
-                    rounded="20px"
-                >
-                    Agregar usuario
-                </Text>
-            </Flex>
+            <AddButton onOpen={onOpen} title="Agregar Usuario" />
             <TableContainer w="100%">
                 <Table variant="simple">
                     <Thead>
@@ -76,9 +77,9 @@ const TableUser: React.FC<Props> = ({ users }) => {
                         </Tr>
                     </Thead>
                     <Tbody>
-                        {users?.map((user) => {
+                        {users?.map((user, index) => {
                             return (
-                                <Tr>
+                                <Tr key={index}>
                                     <>
                                         <Td>
                                             <Image
@@ -100,7 +101,13 @@ const TableUser: React.FC<Props> = ({ users }) => {
                                             />
                                         </Td>
                                         <Td>
-                                            <Icon as={BsTrash} fontSize="2xl" />
+                                            <Icon
+                                                as={BsTrash}
+                                                fontSize="2xl"
+                                                onClick={() =>
+                                                    onDelete(user._id)
+                                                }
+                                            />
                                         </Td>
                                         <Td>
                                             <Icon
