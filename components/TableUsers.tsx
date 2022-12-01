@@ -9,26 +9,12 @@ import {
     Th,
     Thead,
     Tr,
-    Modal,
-    ModalOverlay,
-    ModalContent,
-    ModalHeader,
-    ModalFooter,
-    ModalBody,
-    ModalCloseButton,
     useDisclosure,
-    Box,
-    VStack,
-    FormControl,
-    FormLabel,
-    Input,
-    FormErrorMessage,
     useToast,
 } from "@chakra-ui/react";
 import { useTheme } from "@emotion/react";
-import axios from "axios";
-import { Field, Formik } from "formik";
 import Image from "next/image";
+import Router from "next/router";
 import React from "react";
 import { AiOutlineEdit } from "react-icons/ai";
 import { BsTrash } from "react-icons/bs";
@@ -98,6 +84,9 @@ const TableUser: React.FC<Props> = ({ users, setUsers }) => {
                                             <Icon
                                                 as={ImNewTab}
                                                 fontSize="2xl"
+                                                onClick={() => {
+                                                    Router.push(`/users/${user._id}`);
+                                                }}
                                             />
                                         </Td>
                                         <Td>

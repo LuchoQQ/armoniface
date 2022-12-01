@@ -13,6 +13,13 @@ const API = {
             return error;
         }
     },
+    getUserById: async (pid: string | string[]) => {
+        try {
+            return await axios.get(`${SERVER_URL}/users/${pid}`);
+        } catch (error) {
+            return error
+        }
+    },
     createUser: async (values: {
         name: string;
         email: string;
@@ -32,7 +39,29 @@ const API = {
         }
     },
 
+    // user and courses methods
+    getMyCoursesByUserId: async (id: string | string[]) => {
+        try {
+            return await axios.get(`${SERVER_URL}/users/courses/${id}`);
+        } catch (error) {
+            return error;
+        }
+    },
+    addCourseToUser: async (id: any, course: any) => {
+        try {
+            return await axios.post(`${SERVER_URL}/users/courses`, { id, course });
 
+        } catch (error) {
+            return error;
+        }
+    },
+    deleteCourseFromUser: async (id: string, courseId: string) => {
+        try {
+            return await axios.delete(`${SERVER_URL}/users/${id}/courses/${courseId}`)
+        } catch (error) {
+            return error;
+        }
+    },
 
     // COURSES METHODS
     getCourses: async () => {
