@@ -50,9 +50,9 @@ const TableCourses: React.FC<Props> = ({ courses }) => {
                         </Tr>
                     </Thead>
                     <Tbody>
-                        {courses?.map((course) => {
+                        {courses?.map((course, key) => {
                             return (
-                                <Tr>
+                                <Tr key={key}>
                                     <>
                                         <Td>{course.title}</Td>
                                         <Td>{course.description}</Td>

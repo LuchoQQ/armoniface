@@ -28,7 +28,7 @@ const Navbar: React.FC = () => {
                 />
                 <Flex ml="auto" gap="2rem" alignSelf="center">
                     <Flex gap="1rem">
-                        <Image src="/profile.svg" h="40px" rounded="50%" />
+                        <Image src="/profile.svg" h="40px" rounded="50%" alt='profile'/>
                         <Text
                             fontFamily={theme.fonts.tertiary}
                             alignSelf="center"

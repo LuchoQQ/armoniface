@@ -57,7 +57,7 @@ const ModalUser: React.FC<Props> = ({ onClose, isOpen, setUsers, users }) => {
                                     }}
                                     onSubmit={async (values) => {
                                         API.createUser(values)
-                                            .then((res) => {
+                                            .then((res: any) => {
                                                 toast({
                                                     title: "Usuario creado exitosamente",
                                                     status: "success",

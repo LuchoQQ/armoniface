@@ -11,7 +11,6 @@ import { FaChalkboardTeacher } from "react-icons/fa";
 import TableCourses from "../../components/TableCourses";
 import { User } from "../../types";
 import API from "../../utils/API";
-
 const Backoffice: React.FC = () => {
     const [open, setOpen] = useState(false);
     const [category, setCategory] = useState("Users");
@@ -19,11 +18,11 @@ const Backoffice: React.FC = () => {
     const [courses, setCourses] = useState([]);
     const toast = useToast();
     useEffect(() => {
-        const users = API.getUsers().then((res) => {
+        const users = API.getUsers().then((res: any) => {
             setUsers(res.data);
         });
 
-        const courses = API.getCourses().then((res) => {
+        const courses = API.getCourses().then((res: any) => {
             setCourses(res.data);
         });
     }, []);

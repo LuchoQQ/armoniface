@@ -72,6 +72,7 @@ const UserProfile: React.FC = () => {
                                         width={150}
                                         height={150}
                                         style={{ borderRadius: "50%" }}
+                                        alt='profile'
                                     />
                                 ) : (
                                     <Image
@@ -79,6 +80,7 @@ const UserProfile: React.FC = () => {
                                         width={150}
                                         height={150}
                                         style={{ borderRadius: "50%" }}
+                                        alt='profile'
                                     />
                                 )}
                                 <Flex flexDir="column">
