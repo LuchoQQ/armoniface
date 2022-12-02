@@ -16,6 +16,7 @@
         "@fontsource/montserrat": "^4.5.13",
         "@fontsource/poppins": "^4.5.10",
         "axios": "^1.2.0",
+        "bcrypt": "^5.1.0",
         "formik": "^2.2.9",
         "framer-motion": "^7.6.12",
         "mongoose": "^6.7.5",
