@@ -19,7 +19,7 @@ import React from "react";
 import { AiOutlineEdit } from "react-icons/ai";
 import { BsTrash } from "react-icons/bs";
 import { ImNewTab } from "react-icons/im";
-import { User } from "../types";
+import { User } from "../../types";
 import API from "../utils/API";
 import AddButton from "./AddButton";
 import ModalUser from "./ModalUser";

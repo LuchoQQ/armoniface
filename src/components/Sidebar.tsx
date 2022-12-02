@@ -24,7 +24,7 @@ const Sidebar: React.FC<Props> = ({ open, setOpen }) => {
                 flexDir="column"
                 py="2rem"
                 gap="2rem"
-                mt="15vh"
+                mt="80px"
                 position="fixed"
                 transition="all 0.5s ease"
             >

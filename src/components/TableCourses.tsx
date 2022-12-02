@@ -25,7 +25,7 @@ import Image from "next/image";
 import { AiOutlineEdit } from "react-icons/ai";
 import { BsTrash } from "react-icons/bs";
 import { ImNewTab } from "react-icons/im";
-import { Course } from "../types";
+import { Course } from "../../types";
 import ModalCourse from "./ModalCourse";
 import AddButton from "./AddButton";
 

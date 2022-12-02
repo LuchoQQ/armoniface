@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 export const authOptions: NextAuthOptions = {
@@ -19,6 +19,11 @@ export const authOptions: NextAuthOptions = {
                     email,
                     password,
                 }).then((res) => res.data);
+                // const user = {
+                //     status: "ok",
+                //     email: "geybitch@gmail.com",
+                //     password: "password",
+                // }
 
                 if (user.status === 'ok') {
 
