@@ -1,6 +1,7 @@
 import axios from 'axios';
 import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import { signIn } from 'next-auth/react';
 export const authOptions: NextAuthOptions = {
     session: {
         strategy: "jwt",
@@ -24,7 +25,6 @@ export const authOptions: NextAuthOptions = {
                 //     email: "geybitch@gmail.com",
                 //     password: "password",
                 // }
-
                 if (user.status === 'ok') {
 
                     return user
@@ -38,7 +38,17 @@ export const authOptions: NextAuthOptions = {
         signIn: "/",
 
     },
-
+    callbacks: {
+        async signIn({ user, account, profile, email, credentials }) {
+            return true
+        },
+        async redirect({ url, baseUrl }) {
+            return baseUrl
+        },
+        async session({ session, user, token }) {
+            return session
+        },
+    },
     secret: process.env.NEXT_AUTH_SECRET,
 
 }

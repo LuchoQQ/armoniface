@@ -9,7 +9,5 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
         case "POST":
             return createUser(req, res)
-        case "DELETE":
-            return res.json('c')
     }
 }
