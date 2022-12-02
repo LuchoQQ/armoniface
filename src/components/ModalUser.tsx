@@ -17,7 +17,6 @@ import {
     VStack,
 } from "@chakra-ui/react";
 import { useTheme } from "@emotion/react";
-import axios from "axios";
 import { Field, Formik } from "formik";
 import React from "react";
 import { User } from "../../types";

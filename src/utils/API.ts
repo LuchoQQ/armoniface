@@ -42,22 +42,22 @@ const API = {
     // user and courses methods
     getMyCoursesByUserId: async (id: string | string[]) => {
         try {
-            return await axios.get(`${SERVER_URL}/users/courses/${id}`);
+            return await axios.get(`${SERVER_URL}/users/${id}/courses}`);
         } catch (error) {
             return error;
         }
     },
-    addCourseToUser: async (id: any, course: any) => {
+    addCourseToUser: async (id: string | string[] | undefined, course: any) => {
         try {
-            return await axios.post(`${SERVER_URL}/users/courses`, { id, course });
+            return await axios.post(`${SERVER_URL}/users/${id}/courses/${course}`);
 
         } catch (error) {
             return error;
         }
     },
-    deleteCourseFromUser: async (id: string, courseId: string) => {
+    deleteCourseFromUser: async (id: any, courseId: any) => {
         try {
-            return await axios.delete(`${SERVER_URL}/users/${id}/courses/${courseId}`)
+            return await axios.delete(`${SERVER_URL}/users/${id}/${courseId}`)
         } catch (error) {
             return error;
         }

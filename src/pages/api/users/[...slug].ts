@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { dbConnect } from '../../../libs/mongoose';
-import { addCourseToUser, createUser, deleteUserFromDB, getAllUsersFromDB, getCoursesOfUserById, getUserById, validateUser } from '../../../controllers/users.controller';
+import { addCourseToUser, createUser, deleteCourseFromUser, deleteUserFromDB, getAllUsersFromDB, getCoursesOfUserById, getUserById, validateUser } from '../../../controllers/users.controller';
 dbConnect()
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -24,6 +24,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 return addCourseToUser(req, res)
             }
         case "DELETE":
+            if (course !== undefined) {
+                return deleteCourseFromUser(req, res)
+            }
             return deleteUserFromDB(req, res)
+
     }
 }

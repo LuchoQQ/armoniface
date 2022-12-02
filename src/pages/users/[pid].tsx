@@ -14,6 +14,7 @@ import {
     Th,
     Thead,
     Tr,
+    useToast,
 } from "@chakra-ui/react";
 import { useTheme } from "@emotion/react";
 import { useRouter } from "next/router";
@@ -34,6 +35,7 @@ const UserProfile: React.FC = () => {
     const { pid } = router.query;
     const [open, setOpen] = useState(false);
 
+    const toast = useToast();
     const theme: any = useTheme();
     useEffect(() => {
         if (pid !== undefined) {
@@ -46,7 +48,6 @@ const UserProfile: React.FC = () => {
 
             API.getMyCoursesByUserId(pid).then((res: any) => {
                 setMyCourses(res.data);
-                console.log(res.data);
             });
         }
     }, [pid]);
@@ -72,7 +73,7 @@ const UserProfile: React.FC = () => {
                                         width={150}
                                         height={150}
                                         style={{ borderRadius: "50%" }}
-                                        alt='profile'
+                                        alt="profile"
                                     />
                                 ) : (
                                     <Image
@@ -80,7 +81,7 @@ const UserProfile: React.FC = () => {
                                         width={150}
                                         height={150}
                                         style={{ borderRadius: "50%" }}
-                                        alt='profile'
+                                        alt="profile"
                                     />
                                 )}
                                 <Flex flexDir="column">
@@ -137,7 +138,7 @@ const UserProfile: React.FC = () => {
                                     <Tr></Tr>
                                 </Tbody>
                                 <Tfoot>
-                                    {myCourses.map((course) => {
+                                    {myCourses?.map((course) => {
                                         return (
                                             <>
                                                 <Tr>
@@ -158,6 +159,38 @@ const UserProfile: React.FC = () => {
                                                             fill="red"
                                                             as={BsTrash}
                                                             fontSize="2xl"
+                                                            onClick={() => {
+                                                                API.deleteCourseFromUser(
+                                                                    pid,
+                                                                    course._id
+                                                                ).then(
+                                                                    (
+                                                                        res: any
+                                                                    ) => {
+                                                                        // pull the course from the list of courses
+                                                                        const newCourses =
+                                                                            myCourses.filter(
+                                                                                (
+                                                                                    c
+                                                                                ) => {
+                                                                                    return (
+                                                                                        c._id !==
+                                                                                        course._id
+                                                                                    );
+                                                                                }
+                                                                            );
+                                                                        setMyCourses(
+                                                                            newCourses
+                                                                        );
+                                                                        toast({
+                                                                            title: "Course removed",
+                                                                            description:
+                                                                                "The course was removed from the user",
+                                                                            status: "error",
+                                                                        });
+                                                                    }
+                                                                );
+                                                            }}
                                                         />
                                                     </Th>
                                                 </Tr>
@@ -185,7 +218,7 @@ const UserProfile: React.FC = () => {
                                     <Tr></Tr>
                                 </Tbody>
                                 <Tfoot>
-                                    {courses.map((course) => {
+                                    {courses?.map((course) => {
                                         return (
                                             <>
                                                 <Tr>
@@ -210,15 +243,27 @@ const UserProfile: React.FC = () => {
                                                             fill="green"
                                                             onClick={() => {
                                                                 API.addCourseToUser(
-                                                                    user?._id,
-                                                                    course
+                                                                    pid,
+                                                                    course._id
                                                                 ).then(
                                                                     (
                                                                         res: any
                                                                     ) => {
-                                                                        console.log(
-                                                                            res
+                                                                        // add the course to the list of courses
+                                                                        const newCourses =
+                                                                            [
+                                                                                ...myCourses,
+                                                                                course,
+                                                                            ];
+                                                                        setMyCourses(
+                                                                            newCourses
                                                                         );
+                                                                        toast({
+                                                                            title: "Course added",
+                                                                            description:
+                                                                                "The course was added",
+                                                                            status: "success",
+                                                                        });
                                                                     }
                                                                 );
                                                             }}

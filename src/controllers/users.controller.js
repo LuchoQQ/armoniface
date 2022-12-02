@@ -71,10 +71,9 @@ export const getCoursesOfUserById = async (req, res) => {
 export const deleteCourseFromUser = async (req, res) => {
     const id = req.query.slug[0];
 
-    const course = req.query.slug[1];
+    const courseId = req.query.slug[1];
 
-    res.json("hola");
-    /*  try {
+    try {
         const user = await User.findById(id);
         if (user === null)
             return res.status(404).json({ message: "user not found" });
@@ -87,7 +86,7 @@ export const deleteCourseFromUser = async (req, res) => {
         return res.status(200).json({ message: "course deleted" });
     } catch (error) {
         return res.status(500).json({ message: error.message });
-    } */
+    }
 };
 
 export const deleteUserFromDB = async (req, res) => {
