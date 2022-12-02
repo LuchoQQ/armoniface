@@ -21,11 +21,11 @@ import React, { useEffect, useState } from "react";
 import { AiOutlineFolderAdd, AiOutlineMail } from "react-icons/ai";
 import { BsTrash } from "react-icons/bs";
 import { MdOutlineAdminPanelSettings } from "react-icons/md";
-import Container from "../../src/components/Container";
-import Navbar from "../../src/components/Navbar";
-import Sidebar from "../../src/components/Sidebar";
-import { Course, User } from "../../types";
-import API from "../../src/utils/API";
+import { Course, User } from "../../../types";
+import Container from "../../components/Container";
+import Navbar from "../../components/Navbar";
+import Sidebar from "../../components/Sidebar";
+import API from "../../utils/API";
 const UserProfile: React.FC = () => {
     const router = useRouter();
     const [user, setUser] = useState<User>();
