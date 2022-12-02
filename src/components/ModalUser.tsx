@@ -20,7 +20,7 @@ import { useTheme } from "@emotion/react";
 import axios from "axios";
 import { Field, Formik } from "formik";
 import React from "react";
-import { User } from "../types";
+import { User } from "../../types";
 import API from "../utils/API";
 
 type Props = {

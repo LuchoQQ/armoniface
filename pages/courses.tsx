@@ -1,10 +1,10 @@
 import { Flex } from "@chakra-ui/react";
 import { useTheme } from "@emotion/react";
 import React, { useState } from "react";
-import Container from "../components/Container";
-import Navbar from "../components/Navbar";
-import Sidebar from "../components/Sidebar";
-import IndexLayout from "../views/IndexLayout";
+import Container from "../src/components/Container";
+import Navbar from "../src/components/Navbar";
+import Sidebar from "../src/components/Sidebar";
+import IndexLayout from "../src/views/IndexLayout";
 
 const Courses: React.FC = () => {
     const theme: any = useTheme();
