@@ -26,7 +26,6 @@ const Home: NextPage<Props> = (props) => {
     useEffect(() => {
         setWidth(window.innerWidth);
     }, []);
-    const theme: any = useTheme();
     const [open, setOpen] = useState(false);
 
     if (session) {
@@ -39,13 +38,13 @@ const Home: NextPage<Props> = (props) => {
                     <Container open={open} setOpen={setOpen}>
                         <Flex flexDirection="column" align="center">
                             <Flex bgColor="tertiary" w="100%" h="120px" align="center" justify="center" zIndex="0">
-                            <Heading as="h1" size="md" fontWeight="extrabold" color="white" mb="6">Home</Heading> 
+                            <Heading as="h1" size="md" fontWeight="extrabold" color="white" mb="6">Inicio</Heading> 
                             </Flex>
                             <Flex mt="-6" w="90%" h="10rem" bgColor="white" zIndex="2" borderRadius="md" align="center" justify="center">
                                 <Heading as="h2" size="xl" fontWeight="extrabold" color="#000">Welcome back, {session?.user?.name}! You fucking piece of shit</Heading>
                             </Flex>
                             <Flex mt="8">
-                                <Grid templateColumns="repeat(4, 1fr)" gap={14} mt="6">
+                                <Grid templateColumns="repeat(4, 1fr)" gap={8} mt="6">
                                     <Box w="250px" h="10rem" bgColor="white" borderRadius="md" p="6">
                                         <Heading as="h3" size="md" fontWeight="extrabold" color="#000">Your Profile</Heading>
                                         <Text mt="2">Name: {session?.user?.name}</Text>
