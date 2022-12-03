@@ -21,28 +21,30 @@ import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import API from "../utils/API";
 
+type Selected = {
+    url: string;
+    title: string;
+};
 const Courses: React.FC = () => {
     const theme: any = useTheme();
     const [open, setOpen] = useState(false);
     const { data: session, status }: any = useSession();
     const [myCourses, setMyCourses] = useState([]);
-    const [url, setUrl]: any = useState<any>({});
+    const [selected, setSelected] = useState<Selected>({
+        url: "",
+        title: "",
+    });
     useEffect(() => {
         if (status == "authenticated") {
             const myCourses = API.getMyCoursesByUserId(session.user?.id).then(
                 (res: any) => {
                     setMyCourses(res.data);
-                    //console.log((filterCoursesByTopic(res.data, "toxina botulinica")))
                 }
             );
         }
-
-        // create a function that filter receive courses and a topic and return the courses that match the topic
     }, [status]);
     const filterCoursesByTopic = (courses: Course[], topic: string) => {
         return courses.filter((course) => {
-            //console.log(course.topic);
-            //console.log(course);
             return course.topic === topic;
         });
     };
@@ -82,17 +84,17 @@ const Courses: React.FC = () => {
                                     <AccordionSection
                                         topic="Acido Botulinico"
                                         courses={toxina}
-                                        setUrl={setUrl}
+                                        setSelected={setSelected}
                                     />
                                     <AccordionSection
                                         topic="Acido Hialuronico Inicial"
                                         courses={acidoInicial}
-                                        setUrl={setUrl}
+                                        setSelected={setSelected}
                                     />
                                     <AccordionSection
                                         topic="Acido Hialuronico Avanzado"
                                         courses={acidoAvanzado}
-                                        setUrl={setUrl}
+                                        setSelected={setSelected}
                                     />
                                 </Accordion>
                             </Flex>
@@ -111,8 +113,11 @@ const Courses: React.FC = () => {
                                 justify="center"
                                 w={{ base: "", sm: "70%" }}
                             >
-                                <Flex flexDir='column'>
-                                    <MediaPlayer url={url.url} title={url.title} />
+                                <Flex flexDir="column">
+                                    <MediaPlayer
+                                        url={selected.url}
+                                        title={selected.title}
+                                    />
                                 </Flex>
                             </Flex>
                         </Flex>
