@@ -12,23 +12,14 @@ import {
 } from "@chakra-ui/react";
 import { useTheme } from "@emotion/react";
 import { useSession } from "next-auth/react";
-<<<<<<< HEAD
-import router from "next/router";
-import React, { useEffect, useState } from "react";
-=======
 import React, { useEffect, useState } from "react";
 import { Course } from "../../types";
 import AccordionSection from "../components/AccordionSection";
->>>>>>> b034de4844143679d11d8c802d35c9cc1caeef15
 import Container from "../components/Container";
 import MediaPlayer from "../components/MediaPlayer";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
-<<<<<<< HEAD
-import API from "../utils/API"
-=======
 import API from "../utils/API";
->>>>>>> b034de4844143679d11d8c802d35c9cc1caeef15
 
 type Selected = {
     url: string;
@@ -36,21 +27,6 @@ type Selected = {
 };
 const Courses: React.FC = () => {
     const [open, setOpen] = useState(false);
-<<<<<<< HEAD
-    const [myCourses, setMyCourses] = useState([]);
-    const { data: session, status } = useSession();
-    const { pid } = router.query;
-
-    useEffect(() => {
-        if (pid !== undefined) {
-            API.getMyCoursesByUserId(pid).then((res: any) => {
-                setMyCourses(res.data);
-                console.log(res.data);
-            });
-        }
-    }, [pid]);
-    
-=======
     const { data: session, status }: any = useSession();
     const [myCourses, setMyCourses] = useState([]);
     const [selected, setSelected] = useState<Selected>({
@@ -80,7 +56,6 @@ const Courses: React.FC = () => {
         myCourses,
         "acido hialuronico avanzado"
     );
->>>>>>> b034de4844143679d11d8c802d35c9cc1caeef15
     return (
         <>
             <Navbar />

@@ -6,7 +6,7 @@ const ChakraNextImage: any = ({src, alt, priority, ...props}: any) => {
 
   return (
     <Box height="100%" position="relative" width="100%" {...props}>
-      <Image alt={alt} priority={true} layout="fill" objectFit="fill" quality="100" src={src} sizes="100%" />
+      <Image alt={alt} priority={true} fill style={{ objectFit: 'fill' }} quality="100" src={src} sizes="100%" />
     </Box>
   );
 };
