@@ -10,30 +10,30 @@ type Props = {
     text: string;
     path: string;
     display: boolean;
+    onClick?: () => void;
 };
 
-const SidebarLink: React.FC<Props> = ({ icon, path, text, display }) => {
-    const theme: any = useTheme();
+const SidebarLink: React.FC<Props> = ({ icon, path, text, display, onClick }) => {
     const router = useRouter().pathname;
 
     return (
         <>
-            <Link href={path}>
+            <Link href={path} onClick={onClick}>
                 <Flex justifyContent="start" gap="1rem" pl="1rem">
                     <Icon
                         as={icon}
                         alignSelf="center"
-                        fontSize="xl"
+                        fontSize="2xl"
                         fill={
-                            path === router ? theme.colors.secondary : "#f1f2f3"
+                            path === router ? "secondary" : "#f1f2f3"
                         }
                     />
                     <Text
-                        fontFamily={theme.fonts.tertiary}
-                        color="#fff"
+                        fontFamily="tertiary"
+                        color={path === router ? "secondary" : "#f1f2f3"}
                         alignSelf="center"
                         display={display ? "block" : "none"}
-                        fontSize="sm"
+                        fontSize="md"
                     >
                         {text}
                     </Text>

@@ -30,7 +30,7 @@ const Backoffice: React.FC = () => {
     return (
         <>
             <Navbar />
-            <Flex w="100vw">
+            <Flex w="100vw" h="100vh">
                 <Sidebar open={open} setOpen={setOpen} />
                 <Container open={open} setOpen={setOpen}>
                     <Flex flexDir="column">

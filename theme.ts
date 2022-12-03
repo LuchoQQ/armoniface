@@ -5,7 +5,7 @@ import "@fontsource/montserrat/600.css";
 
 const theme = extendTheme({
   colors: {
-    primary: "#1f3b31",
+primary: "#1f3b31",
     secondary: "#bd9b6b",
     tertiary: "#b3882A",
     background: "#f3f4f5",
