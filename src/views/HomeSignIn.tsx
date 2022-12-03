@@ -53,20 +53,19 @@ const HomeSignIn: NextPage = (props) => {
   };
   return (
     <>
-      <Flex justifyContent="center">
+      <Flex justifyContent="center" bg="linear-gradient(143deg, rgba(40,110,84,1) 16%, rgba(31,59,49,1) 100%)">
         <Flex
-          w={width / 2}
+          w={{base: "", sm: width / 2}}
           h="100vh"
           justifyContent="center"
-          alignItems="center"
-          bg="primary"
+          alignItems="center"         
         >
           <Flex>
             <Box
               bg="white"
               p={6}
               rounded="md"
-              w="400px"
+              w={{base: "300px", sm: "400px"}}
               h="300px"
               fontFamily={theme.fonts.tertiary}
             >
@@ -113,7 +112,7 @@ const HomeSignIn: NextPage = (props) => {
                       </FormControl>
                       <Button
                         type="submit"
-                        bg="primary"
+                        bg="linear-gradient(143deg, rgba(40,110,84,1) 16%, rgba(31,59,49,1) 100%)"
                         _hover={{
                           bg: "white",
                           color: "primary",
@@ -121,8 +120,9 @@ const HomeSignIn: NextPage = (props) => {
                         }}
                         color="white"
                         width="full"
+                        
                       >
-                        Login
+                        Ingresar
                       </Button>
                     </Flex>
                   </form>
@@ -132,6 +132,7 @@ const HomeSignIn: NextPage = (props) => {
           </Flex>
         </Flex>
         <Flex
+        display={{base: "none", sm: "block"}}
           w={width / 2}
           h="100vh"
           justifyContent="center"

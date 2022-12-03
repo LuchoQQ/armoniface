@@ -54,7 +54,7 @@ const UserProfile: React.FC = () => {
         <>
             <Navbar />
             <Sidebar open={open} setOpen={setOpen} />
-            <Flex w="100%">
+            <Flex w="100%" h="100vh">
                 <Container open={open} setOpen={setOpen}>
                     <>
                         <Flex flexDir="column" w="100%" alignItems="center">

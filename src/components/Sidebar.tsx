@@ -66,7 +66,7 @@ const Sidebar: React.FC<Props> = ({ open, setOpen }) => {
                 )}
                 <SidebarLink
                     icon={RiLogoutBoxLine}
-                    path=""
+                    path="/"
                     text="Salir"
                     display={open}
                     onClick={() => signOut()}
