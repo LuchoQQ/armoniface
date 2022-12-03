@@ -26,12 +26,10 @@ import ChakraNextImage from "../components/ChakraNextImage";
 
 const HomeSignIn: NextPage = (props) => {
   const [width, setWidth] = useState(0);
-  const { data: session, status } = useSession();
+  // const { data: session, status } = useSession();
   useEffect(() => {
     setWidth(window.innerWidth);
   }, []);
-
-  const theme: any = useTheme();
 
   const toast = useToast();
   const onSubmit = async (values: { email: string; password: string }) => {
@@ -67,7 +65,7 @@ const HomeSignIn: NextPage = (props) => {
               rounded="md"
               w={{base: "300px", sm: "400px"}}
               h="300px"
-              fontFamily={theme.fonts.tertiary}
+              fontFamily="tertiary"
             >
               <Formik
                 initialValues={{

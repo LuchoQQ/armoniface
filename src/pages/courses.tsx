@@ -1,15 +1,27 @@
 import { Box, Flex, Heading, Text, Grid } from "@chakra-ui/react";
 import { useTheme } from "@emotion/react";
 import { useSession } from "next-auth/react";
-import React, { useState } from "react";
+import router from "next/router";
+import React, { useEffect, useState } from "react";
 import Container from "../components/Container";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
+import API from "../utils/API"
 
 const Courses: React.FC = () => {
-    const theme: any = useTheme();
     const [open, setOpen] = useState(false);
+    const [myCourses, setMyCourses] = useState([]);
     const { data: session, status } = useSession();
+    const { pid } = router.query;
+
+    useEffect(() => {
+        if (pid !== undefined) {
+            API.getMyCoursesByUserId(pid).then((res: any) => {
+                setMyCourses(res.data);
+                console.log(res.data);
+            });
+        }
+    }, [pid]);
     
     return (
         <>
