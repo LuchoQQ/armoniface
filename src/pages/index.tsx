@@ -1,16 +1,11 @@
-import { Button, Flex, Grid, Heading } from "@chakra-ui/react";
+import { Flex, Heading } from "@chakra-ui/react";
 import Container from "../components/Container";
 import type { NextPage } from "next";
 import { useEffect, useState } from "react";
-import { useTheme } from "@emotion/react";
-import { getSession, signIn, useSession, signOut } from "next-auth/react";
+import { getSession, useSession, } from "next-auth/react";
 import HomeSignIn from "../views/HomeSignIn";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
-import IndexLayout from "../views/IndexLayout";
-import { unstable_getServerSession } from "next-auth";
-import { authOptions } from "./api/auth/[...nextauth]";
-import SimpleCarousel from '../components/SimpleCarousel';
 type Props = {
     user: {
         name: string;
