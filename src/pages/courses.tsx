@@ -2,10 +2,9 @@ import { Box, Flex, Heading, Text, Grid } from "@chakra-ui/react";
 import { useTheme } from "@emotion/react";
 import { useSession } from "next-auth/react";
 import React, { useState } from "react";
-import Container from "../src/components/Container";
-import Navbar from "../src/components/Navbar";
-import Sidebar from "../src/components/Sidebar";
-import IndexLayout from "../src/views/IndexLayout";
+import Container from "../components/Container";
+import Navbar from "../components/Navbar";
+import Sidebar from "../components/Sidebar";
 
 const Courses: React.FC = () => {
     const theme: any = useTheme();

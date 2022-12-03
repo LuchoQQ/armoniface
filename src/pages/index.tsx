@@ -1,13 +1,13 @@
 import { Box, Button, Flex, Grid, Heading, Icon, Image, Text } from "@chakra-ui/react";
-import Container from "../src/components/Container";
+import Container from "../components/Container";
 import type { NextPage } from "next";
 import { useEffect, useState } from "react";
 import { useTheme } from "@emotion/react";
 import { getSession, signIn, useSession, signOut } from "next-auth/react";
-import HomeSignIn from "../src/views/HomeSignIn";
-import Navbar from "../src/components/Navbar";
-import Sidebar from "../src/components/Sidebar";
-import IndexLayout from "../src/views/IndexLayout";
+import HomeSignIn from "../views/HomeSignIn";
+import Navbar from "../components/Navbar";
+import Sidebar from "../components/Sidebar";
+import IndexLayout from "../views/IndexLayout";
 import { unstable_getServerSession } from "next-auth";
 import { authOptions } from "./api/auth/[...nextauth]";
 

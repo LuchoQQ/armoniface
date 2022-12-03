@@ -24,7 +24,6 @@ const Navbar: React.FC = () => {
         <ChakraNextImage
           src="/assets/logo.webp"
           alt="logo"
-          // fit="contain"
           h="60px"
           w="110px"
           alignSelf="center"
