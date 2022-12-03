@@ -20,6 +20,7 @@ const Navbar: React.FC = () => {
         alignContent="center"
         position="fixed"
         boxShadow="lg"
+        zIndex='100'
       >
         <ChakraNextImage
           src="/assets/logo.webp"
@@ -38,14 +39,8 @@ const Navbar: React.FC = () => {
             >
               {session?.user?.name}
             </Text>
-            <Icon
-              as={AiOutlineArrowDown}
-              alignSelf="center"
-              fontSize="sm"
-              fill={theme.colors.secondary}
-            />
           </Flex>
-        </Flex>
+        </Flex> 
       </Flex>
     </>
   );
