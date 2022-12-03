@@ -23,11 +23,12 @@ export const getCourseById = async (req, res) => {
 
 
 export const createCourse = async (req, res) => {
-    const { title, url, description } = req.body;
+    const { title, url, description, topic } = req.body;
     try {
         const course = await Course.create({
             title,
             url,
+            topic,
             description,
         });
         return res.status(201).json({

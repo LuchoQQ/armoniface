@@ -26,6 +26,7 @@ const Sidebar: React.FC<Props> = ({ open, setOpen }) => {
                 mt="80px"
                 position="fixed"
                 transition="all 0.5s ease"
+                zIndex='999999'
             >
                 <Flex
                     pl="1rem"

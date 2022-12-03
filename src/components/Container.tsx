@@ -11,13 +11,12 @@ const Container: React.FC<Props> = ({ open, setOpen, children }) => {
     return (
         <>
             <Flex
-                minH="85vh"
+                h="100%"
                 w="100vw"
                 ml={open ? "15rem" : "4rem"}
                 transition="all .5s ease"
                 mt="80px"
                 flexDir='column'
-                bg='#f1f2f3'
             >
                 {children}
             </Flex>

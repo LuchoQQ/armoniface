@@ -12,11 +12,13 @@ export const authOptions: NextAuthOptions = {
             credentials: {
                 email: { label: "Email", type: "text", placeholder: "jsmith" },
                 password: { label: "Password", type: "password" },
+
             },
             async authorize(credentials: any, req: any) {
                 const { email, password } = credentials as any
 
                 const user = await axios.post(`${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/users/auth`, {
+
                     email,
                     password,
                 }).then((res) => res.data);
@@ -26,7 +28,6 @@ export const authOptions: NextAuthOptions = {
                 //     password: "password",
                 // }
                 if (user.status === 'ok') {
-
                     return user
                 }
                 return null
@@ -34,20 +35,20 @@ export const authOptions: NextAuthOptions = {
             }
         }),
     ],
+    callbacks: {
+        async session({ session, token, user }: any) {
+            session = {
+                user: {
+                    ...session.user,
+                    id: token.sub,
+                },
+            }
+            return session;
+        },
+    },
     pages: {
         signIn: "/",
 
-    },
-    callbacks: {
-        async signIn({ user, account, profile, email, credentials }) {
-            return true
-        },
-        async redirect({ url, baseUrl }) {
-            return baseUrl
-        },
-        async session({ session, user, token }) {
-            return session
-        },
     },
     secret: process.env.NEXT_AUTH_SECRET,
 
