@@ -72,11 +72,11 @@ const Home: NextPage<Props> = (props) => {
                                 <Flex
                                     px="2rem"
                                     py="1rem"
-                                    border={`1px solid green`}
+                                    border={`1px solid ${theme.colors.primary}`}
                                     mt="2rem"
                                     rounded="20px"
                                     transition="all .2s ease"
-                                    _hover={{ bg: "green", color: "white" }}
+                                    _hover={{ bg: theme.colors.primary, color: "white" }}
                                 >
                                     <Text fontFamily="tertiary">
                                         Ir a cursos
