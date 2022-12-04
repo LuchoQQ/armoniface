@@ -6,6 +6,7 @@ import {
     Box,
     Text,
     Button,
+    Flex,
 } from "@chakra-ui/react";
 import React from "react";
 import { Course } from "../../types";
@@ -30,19 +31,27 @@ const AccordionSection: React.FC<Props> = ({ topic, courses, setSelected }) => {
                 <AccordionIcon />
             </AccordionButton>
             <AccordionPanel py={4}>
-                {courses.map((course, index) => (
-                    <Button
-                        key={index}
-                        onClick={() => {
-                            setSelected({
-                                url: course.url,
-                                title: course.title,
-                            });
-                        }}
-                    >
-                        {course.title}
-                    </Button>
-                ))}
+                <Flex flexDir='column' gap='1rem'>
+                {courses.map((course, index) => {
+                    return (
+                        <Button
+                            key={index}
+                            variant="outline"
+                            colorScheme="secondary"
+                            onClick={() =>
+                                setSelected({
+                                    url: course.url,
+                                    title: course.title,
+                                })
+                            }
+                        >
+                            {course.title}
+                        </Button>
+                    );
+                })}
+                
+                
+                </Flex>
             </AccordionPanel>
         </AccordionItem>
     );

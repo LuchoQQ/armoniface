@@ -17,6 +17,7 @@ import {
     useToast,
 } from "@chakra-ui/react";
 import { useTheme } from "@emotion/react";
+import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { AiOutlineFolderAdd, AiOutlineMail } from "react-icons/ai";
@@ -34,6 +35,12 @@ const UserProfile: React.FC = () => {
     const [myCourses, setMyCourses] = useState<Course[]>([]);
     const { pid } = router.query;
     const [open, setOpen] = useState(false);
+    useSession({
+        required: true,
+        onUnauthenticated() {
+            router.push('/')
+        },
+    })
 
     const toast = useToast();
     const theme: any = useTheme();
@@ -55,7 +62,7 @@ const UserProfile: React.FC = () => {
         <>
             <Navbar />
             <Sidebar open={open} setOpen={setOpen} />
-            <Flex w="100%" h="100vh">
+            <Flex w="100%" minH="100vh">
                 <Container open={open} setOpen={setOpen}>
                     <>
                         <Flex flexDir="column" w="100%" alignItems="center">
@@ -124,7 +131,7 @@ const UserProfile: React.FC = () => {
                         >
                             My Courses
                         </Text>
-                        <TableContainer>
+                        <TableContainer py='2rem'>
                             <Table variant="simple">
                                 <TableCaption></TableCaption>
                                 <Thead>

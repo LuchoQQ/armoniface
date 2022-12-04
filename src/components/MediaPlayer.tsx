@@ -7,7 +7,6 @@ type Props = {
 };
 
 const MediaPlayer: React.FC<Props> = ({ url, title }) => {
-  console.log(url);
   return (
     <>
       <Heading as="h3" my="6" ml={{base: 2, md: "4", "2xl": "8"}} size={{sm: "md", md: "lg", xl:"xl"}} fontWeight="bold" color="#000">

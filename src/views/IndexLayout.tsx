@@ -29,7 +29,7 @@ const IndexLayout: React.FC = () => {
                             alignSelf="center"
                             fontSize="xl"
                         >
-                            ¡Bienvenido {session?.user?.name?.split(" ")[0]}!
+                            ¡Bienvenido/a {session?.user?.name?.split(" ")[0]}!
                         </Text>
                     </Flex>
                 </Flex>

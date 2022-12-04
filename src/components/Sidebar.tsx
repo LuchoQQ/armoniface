@@ -7,12 +7,14 @@ import { BsBook } from "react-icons/bs";
 import { RiAdminLine, RiLogoutBoxLine } from "react-icons/ri";
 import { HiBars3 } from "react-icons/hi2";
 import { useSession, signOut } from "next-auth/react";
+import { useRouter } from "next/router";
 type Props = {
     open: boolean;
     setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 const Sidebar: React.FC<Props> = ({ open, setOpen }) => {
     const { data: session, status } = useSession();
+    const router = useRouter().pathname;
 
     return (
         <>
@@ -26,7 +28,7 @@ const Sidebar: React.FC<Props> = ({ open, setOpen }) => {
                 mt="80px"
                 position="fixed"
                 transition="all 0.5s ease"
-                zIndex='999999'
+                zIndex="999999"
             >
                 <Flex
                     pl="1rem"
@@ -65,13 +67,36 @@ const Sidebar: React.FC<Props> = ({ open, setOpen }) => {
                         display={open}
                     />
                 )}
-                <SidebarLink
+                <Flex
+                    justifyContent="start"
+                    gap="1rem"
+                    pl="1rem"
+                    onClick={() => signOut()}
+                    cursor="pointer"
+                >
+                    <Icon
+                        as={RiLogoutBoxLine}
+                        alignSelf="center"
+                        fontSize="2xl"
+                        fill="#f1f2f3"
+                    />
+                    <Text
+                        fontFamily="tertiary"
+                        alignSelf="center"
+                        display={open ? "block" : "none"}
+                        fontSize="md"
+                        color='#f1f2f3'
+                    >
+                        Salir
+                    </Text>
+                </Flex>
+                {/*  <SidebarLink
                     icon={RiLogoutBoxLine}
                     path="/"
                     text="Salir"
                     display={open}
                     onClick={() => signOut()}
-                />
+                /> */}
                 {/* <Flex>
                 <Icon as={AiOutlineHome} fill="#f1f2f3" fontSize="2xl" onClick={() => signOut()}/>
                 

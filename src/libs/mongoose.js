@@ -6,7 +6,6 @@ const conn = {
 
 export async function dbConnect() {
     const db = await connect(process.env.MONGO_URI);
-    console.log(db.connection.db.databaseName);
     conn.isConnected = db.connections[0].readyState;
 }
 
