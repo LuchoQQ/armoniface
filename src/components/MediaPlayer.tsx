@@ -1,40 +1,32 @@
-import { Heading } from "@chakra-ui/react";
+import { Box, Heading } from "@chakra-ui/react";
 import React from "react";
 
 type Props = {
-    url: string;
-    title: string
+  url: string;
+  title: string;
 };
 
 const MediaPlayer: React.FC<Props> = ({ url, title }) => {
-    console.log(url);
-    return (
-        <>
-            <Heading
-                as="h3"
-                mb="6"
-                size="xl"
-                fontWeight="extrabold"
-                color="#000"
-            >
-                {title}
-            </Heading>
-            <div
+  console.log(url);
+  return (
+    <>
+      <Heading as="h3" my="6" ml={{base: 2, md: "4", "2xl": "8"}} size={{sm: "md", md: "lg", xl:"xl"}} fontWeight="bold" color="#000">
+        {title}
+      </Heading>
+      <Box w="100%" h="100%">
+        <iframe
+          allow="autoplay"
+          allowFullScreen
+          allowTransparency
+          frameBorder="0"
+          src={url}
+          scrolling="no"
+          name="videoPlayer"
+          style={{ width: "95%", height: "95%", margin: "auto" }}
+        ></iframe>
+      </Box>
 
-            >
-                <iframe
-                    allow="autoplay"
-                    allowFullScreen
-                    allowTransparency
-                    frameBorder="0"
-                    src={url}
-                    scrolling="no"
-                    name="videoPlayer"
-                    style={{ width: "500px", height: "500px" }}
-                ></iframe>
-            </div>
-
-            {/*             <div style="position:relative; width:1px; min-width:100%;padding-bottom:56.25%;">
+      {/*             <div style="position:relative; width:1px; min-width:100%;padding-bottom:56.25%;">
                 <iframe
                     allow="autoplay"
                     class="spotlightr"
@@ -49,8 +41,8 @@ const MediaPlayer: React.FC<Props> = ({ url, title }) => {
                     {" "}
                 </iframe>
             </div> */}
-        </>
-    );
+    </>
+  );
 };
 
 export default MediaPlayer;

@@ -13,7 +13,7 @@ import { Course } from "../../types";
 type Props = {
     topic: string;
     courses: Course[];
-    setUrl: React.Dispatch<React.SetStateAction<string>>;
+    setUrl: React.Dispatch<React.SetStateAction<{url: string, title: string}>>;
 };
 const AccordionSection: React.FC<Props> = ({ topic, courses, setUrl }) => {
     return (
