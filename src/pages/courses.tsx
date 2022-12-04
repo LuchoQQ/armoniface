@@ -90,7 +90,7 @@ const Courses: React.FC = () => {
                             >
                                 <Accordion allowToggle>
                                     <AccordionSection
-                                        topic="Ácido Botulínico"
+                                        topic="Toxina Botulínica"
                                         courses={toxina}
                                         setSelected={setSelected}
                                     />
@@ -110,7 +110,7 @@ const Courses: React.FC = () => {
                         <Flex
                             flexDirection="column"
                             align="center"
-                            // w={{ base: "", sm: "70%" }}
+                            
                         >
                             <Flex
                                 flexDir="column"
@@ -121,7 +121,7 @@ const Courses: React.FC = () => {
                                     xl: "800px",
                                     "2xl": "1300px",
                                 }}
-                                h={{
+                                minH={{
                                     md: "350px",
                                     lg: "450px",
                                     xl: "500px",
