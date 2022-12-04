@@ -1,9 +1,10 @@
-import { Flex, Icon, Image, Text } from "@chakra-ui/react";
+import { Flex, Icon, Text } from "@chakra-ui/react";
 import { AiOutlineArrowDown } from "react-icons/ai";
 import { useTheme } from "@emotion/react";
 import { useSession } from "next-auth/react";
 import React from "react";
 import ChakraNextImage from "./ChakraNextImage";
+import Image from "next/image";
 
 const Navbar: React.FC = () => {
   const { data: session, status } = useSession();
@@ -31,7 +32,7 @@ const Navbar: React.FC = () => {
         />
         <Flex ml="auto" gap="2rem" alignSelf="center">
           <Flex gap="1rem">
-            <Image src="/profile.svg" h="40px" rounded="50%" alt="profile" />
+            <Image src="/profile.svg" height={40} width={40} style={{ borderRadius: "50%"}} alt="profile" />
             <Text
               fontFamily={theme.fonts.tertiary}
               alignSelf="center"

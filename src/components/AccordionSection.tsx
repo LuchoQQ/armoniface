@@ -10,12 +10,17 @@ import {
 import React from "react";
 import { Course } from "../../types";
 
+type Selected = {
+    url: string;
+    title: string;
+};
+
 type Props = {
     topic: string;
     courses: Course[];
-    setUrl: React.Dispatch<React.SetStateAction<{url: string, title: string}>>;
+    setSelected: React.Dispatch<React.SetStateAction<Selected>>;
 };
-const AccordionSection: React.FC<Props> = ({ topic, courses, setUrl }) => {
+const AccordionSection: React.FC<Props> = ({ topic, courses, setSelected }) => {
     return (
         <AccordionItem p="1rem">
             <AccordionButton>
@@ -29,7 +34,7 @@ const AccordionSection: React.FC<Props> = ({ topic, courses, setUrl }) => {
                     <Button
                         key={index}
                         onClick={() => {
-                            setUrl({
+                            setSelected({
                                 url: course.url,
                                 title: course.title,
                             });
