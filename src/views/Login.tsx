@@ -24,12 +24,12 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import Router from "next/router";
 import ChakraNextImage from "../components/ChakraNextImage";
 
-const HomeSignIn: NextPage = (props) => {
-    const [width, setWidth] = useState(0);
-    // const { data: session, status } = useSession();
-    useEffect(() => {
-        setWidth(window.innerWidth);
-    }, []);
+const Login: NextPage = (props) => {
+  const [width, setWidth] = useState(0);
+  // const { data: session, status } = useSession();
+  useEffect(() => {
+    setWidth(window.innerWidth);
+  }, []);
 
     const toast = useToast();
     const onSubmit = async (values: { email: string; password: string }) => {
@@ -184,4 +184,4 @@ const HomeSignIn: NextPage = (props) => {
     );
 };
 
-export default HomeSignIn;
+export default Login;
