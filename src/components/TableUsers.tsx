@@ -1,6 +1,4 @@
 import {
-    Button,
-    Flex,
     Icon,
     Table,
     TableContainer,

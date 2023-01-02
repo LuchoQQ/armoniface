@@ -1,4 +1,4 @@
-import { Button, Flex, Grid, Heading, Text } from "@chakra-ui/react";
+import { Flex, Heading, Text } from "@chakra-ui/react";
 import Container from "../components/Container";
 import type { NextPage } from "next";
 import { useEffect, useState } from "react";
@@ -19,14 +19,13 @@ type Props = {
 };
 
 const Home: NextPage<Props> = (props) => {
-    const [width, setWidth] = useState(0);
+    //const [width, setWidth] = useState(0);
     const { data: session, status } = useSession();
-    useEffect(() => {
+    /*     useEffect(() => {
         setWidth(window.innerWidth);
-    }, []);
+    }, []); */
     const [open, setOpen] = useState(false);
     const theme: any = useTheme();
-    const router = useRouter();
     if (session) {
         return (
             <>
@@ -68,7 +67,7 @@ const Home: NextPage<Props> = (props) => {
                                 </Heading>
                             </Flex>
                             {/* <SimpleCarousel /> */}
-                            <Link href='/courses'>
+                            <Link href="/courses">
                                 <Flex
                                     px="2rem"
                                     py="1rem"
@@ -76,7 +75,10 @@ const Home: NextPage<Props> = (props) => {
                                     mt="2rem"
                                     rounded="20px"
                                     transition="all .2s ease"
-                                    _hover={{ bg: theme.colors.primary, color: "white" }}
+                                    _hover={{
+                                        bg: theme.colors.primary,
+                                        color: "white",
+                                    }}
                                 >
                                     <Text fontFamily="tertiary">
                                         Ir a cursos

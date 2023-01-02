@@ -1,5 +1,4 @@
 import { Flex, Icon, Text } from "@chakra-ui/react";
-import { useTheme } from "@emotion/react";
 import React from "react";
 import { AiOutlineHome } from "react-icons/ai";
 import SidebarLink from "./SidebarLink";

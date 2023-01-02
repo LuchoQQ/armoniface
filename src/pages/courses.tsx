@@ -1,18 +1,8 @@
 import {
-    Box,
     Flex,
-    Heading,
-    Text,
-    Grid,
     Accordion,
-    AccordionItem,
-    AccordionButton,
-    AccordionIcon,
-    AccordionPanel,
 } from "@chakra-ui/react";
-import { useTheme } from "@emotion/react";
 import { useSession } from "next-auth/react";
-import { redirect } from "next/dist/server/api-utils";
 import { Router, useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { Course } from "../../types";

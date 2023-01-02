@@ -1,7 +1,6 @@
 import { Flex, Icon, Text } from "@chakra-ui/react";
 import React from "react";
 import { IconType } from "react-icons";
-import { AiOutlineUsergroupAdd } from "react-icons/ai";
 
 type Props = {
     icon: IconType;

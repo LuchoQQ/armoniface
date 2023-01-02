@@ -1,5 +1,4 @@
-import { Flex, Icon, Text } from "@chakra-ui/react";
-import { AiOutlineArrowDown } from "react-icons/ai";
+import { Flex, Text } from "@chakra-ui/react";
 import { useTheme } from "@emotion/react";
 import { useSession } from "next-auth/react";
 import React from "react";

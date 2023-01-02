@@ -1,27 +1,16 @@
 import React from "react";
 import {
-    Button,
-    Flex,
     Icon,
     Table,
     TableContainer,
     Tbody,
     Td,
-    Text,
     Th,
     Thead,
     Tr,
-    Modal,
-    ModalOverlay,
-    ModalContent,
-    ModalHeader,
-    ModalFooter,
-    ModalBody,
-    ModalCloseButton,
     useDisclosure,
 } from "@chakra-ui/react";
 import { useTheme } from "@emotion/react";
-import Image from "next/image";
 import { AiOutlineEdit } from "react-icons/ai";
 import { BsTrash } from "react-icons/bs";
 import { ImNewTab } from "react-icons/im";
