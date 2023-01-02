@@ -3,22 +3,15 @@ import Container from "../components/Container";
 import type { NextPage } from "next";
 import { useEffect, useState } from "react";
 import { getSession, useSession } from "next-auth/react";
-import HomeSignIn from "../views/HomeSignIn";
+import Login from "../views/Login";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import { useTheme } from "@emotion/react";
 import { useRouter } from "next/router";
 import Link from "next/link";
-type Props = {
-    user: {
-        name: string;
-        email: string;
-        image: string;
-    };
-    expires: string;
-};
+import Register from "../views/Register";
 
-const Home: NextPage<Props> = (props) => {
+const Home: NextPage = () => {
     const [width, setWidth] = useState(0);
     const { data: session, status } = useSession();
     useEffect(() => {
@@ -92,12 +85,12 @@ const Home: NextPage<Props> = (props) => {
 
     return (
         <>
-            <HomeSignIn />
+            <Login />
         </>
     );
 };
 
-export async function getServerSideProps(context: Props) {
+export async function getServerSideProps() {
     const session = await getSession();
     return {
         props: {

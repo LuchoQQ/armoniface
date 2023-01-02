@@ -24,15 +24,14 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import Router from "next/router";
 import ChakraNextImage from "../components/ChakraNextImage";
 
-const HomeSignIn: NextPage = (props) => {
+const Register: NextPage = (props) => {
   const [width, setWidth] = useState(0);
-  // const { data: session, status } = useSession();
   useEffect(() => {
     setWidth(window.innerWidth);
   }, []);
 
   const toast = useToast();
-  const onSubmit = async (values: { email: string; password: string }) => {
+  const onSubmit = async (values: { email: string; password: string; registerCode: string; }) => {
     const res = await signIn("credentials", {
       email: values.email,
       password: values.password,
@@ -64,13 +63,14 @@ const HomeSignIn: NextPage = (props) => {
               p={6}
               rounded="md"
               w={{base: "300px", sm: "400px"}}
-              h="300px"
+              // h="300px"
               fontFamily="tertiary"
             >
               <Formik
                 initialValues={{
                   email: "",
                   password: "",
+                  registerCode: "",
                 }}
                 onSubmit={onSubmit}
               >
@@ -78,7 +78,7 @@ const HomeSignIn: NextPage = (props) => {
                   <form onSubmit={handleSubmit}>
                     <Flex gap={8} flexDirection="column" align="flex-start">
                       <FormControl>
-                        <FormLabel htmlFor="email">Correo</FormLabel>
+                        <FormLabel htmlFor="email">Correo Electrónico</FormLabel>
                         <Field
                           as={Input}
                           id="email"
@@ -108,6 +108,16 @@ const HomeSignIn: NextPage = (props) => {
                         />
                         <FormErrorMessage>{errors.password}</FormErrorMessage>
                       </FormControl>
+                        <FormControl isInvalid={!!errors.registerCode && touched.registerCode}>
+                          <FormLabel htmlFor="registerCode">Código de registro</FormLabel>
+                          <Field
+                            as={Input}
+                            id="registerCode"
+                            name="registerCode"
+                            type="registerCode"
+                            variant="filled"
+                          />
+                        </FormControl>
                       <Button
                         type="submit"
                         bg="linear-gradient(143deg, rgba(40,110,84,1) 16%, rgba(31,59,49,1) 100%)"
@@ -122,6 +132,7 @@ const HomeSignIn: NextPage = (props) => {
                       >
                         Ingresar
                       </Button>
+                      <Text fontSize="smaller">Iniciar Sesión</Text>
                     </Flex>
                   </form>
                 )}
@@ -157,4 +168,4 @@ const HomeSignIn: NextPage = (props) => {
   );
 };
 
-export default HomeSignIn;
+export default Register;

@@ -90,11 +90,7 @@ const Courses: React.FC = () => {
                             >
                                 <Accordion allowToggle>
                                     <AccordionSection
-<<<<<<< HEAD
                                         topic="Toxina Botulínica"
-=======
-                                        topic="Toxina Botulínico"
->>>>>>> 50efec6015745a9d21ad863ba220dab5506a6ec4
                                         courses={toxina}
                                         setSelected={setSelected}
                                     />
