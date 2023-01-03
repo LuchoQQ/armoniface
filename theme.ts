@@ -14,16 +14,16 @@ const theme = extendTheme({
     },
   },
   colors: {
-primary: "#1f3b31",
+    primary: "#1f3b31",
     secondary: "#bd9b6b",
     tertiary: "#b3882A",
     background: "#f3f4f5",
-},
-fonts: {
+  },
+  fonts: {
     primary: "Poppins",
     secondary: "Libre Baskerville",
     tertiary: "Montserrat",
-},
+  },
 });
 
 export default theme;
