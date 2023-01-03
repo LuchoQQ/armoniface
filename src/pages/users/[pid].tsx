@@ -36,9 +36,9 @@ const UserProfile: React.FC = () => {
     useSession({
         required: true,
         onUnauthenticated() {
-            router.push('/')
+            router.push("/");
         },
-    })
+    });
 
     const toast = useToast();
     const theme: any = useTheme();
@@ -56,6 +56,40 @@ const UserProfile: React.FC = () => {
             });
         }
     }, [pid]);
+
+    // add course to myCourses array and remove from courses array
+    const addCourse = (course: Course) => {
+        API.addCourseToUser(pid, course._id).then((res: any) => {
+            if (res.status === 200) {
+                toast({
+                    title: "Curso agregado",
+                    description: "El curso se ha agregado correctamente",
+                    status: "success",
+                    duration: 3000,
+                    isClosable: true,
+                });
+                setMyCourses([...myCourses, course]);
+                setCourses(courses.filter((c) => c._id !== course._id));
+            }
+        });
+    };
+    // delete course from myCourses array and add to courses array
+    const deleteCourse = (course: Course) => {
+        API.deleteCourseFromUser(pid, course._id).then((res: any) => {
+            if (res.status === 200) {
+                toast({
+                    title: "Curso eliminado",
+                    description: "El curso se ha eliminado correctamente",
+                    status: "success",
+                    duration: 3000,
+                    isClosable: true,
+                });
+                setCourses([...courses, course]);
+                setMyCourses(myCourses.filter((c) => c._id !== course._id));
+            }
+        });
+    };
+
     return (
         <>
             <Navbar />
@@ -129,7 +163,7 @@ const UserProfile: React.FC = () => {
                         >
                             My Courses
                         </Text>
-                        <TableContainer py='2rem'>
+                        <TableContainer py="2rem">
                             <Table variant="simple">
                                 <TableCaption></TableCaption>
                                 <Thead>
@@ -165,35 +199,8 @@ const UserProfile: React.FC = () => {
                                                             as={BsTrash}
                                                             fontSize="2xl"
                                                             onClick={() => {
-                                                                API.deleteCourseFromUser(
-                                                                    pid,
-                                                                    course._id
-                                                                ).then(
-                                                                    (
-                                                                        res: any
-                                                                    ) => {
-                                                                        // pull the course from the list of courses
-                                                                        const newCourses =
-                                                                            myCourses.filter(
-                                                                                (
-                                                                                    c
-                                                                                ) => {
-                                                                                    return (
-                                                                                        c._id !==
-                                                                                        course._id
-                                                                                    );
-                                                                                }
-                                                                            );
-                                                                        setMyCourses(
-                                                                            newCourses
-                                                                        );
-                                                                        toast({
-                                                                            title: "Course removed",
-                                                                            description:
-                                                                                "The course was removed from the user",
-                                                                            status: "error",
-                                                                        });
-                                                                    }
+                                                                deleteCourse(
+                                                                    course
                                                                 );
                                                             }}
                                                         />
@@ -247,7 +254,10 @@ const UserProfile: React.FC = () => {
                                                             fontSize="2xl"
                                                             fill="green"
                                                             onClick={() => {
-                                                                API.addCourseToUser(
+                                                                addCourse(
+                                                                    course
+                                                                );
+                                                                /* API.addCourseToUser(
                                                                     pid,
                                                                     course._id
                                                                 ).then(
@@ -270,7 +280,7 @@ const UserProfile: React.FC = () => {
                                                                             status: "success",
                                                                         });
                                                                     }
-                                                                );
+                                                                ); */
                                                             }}
                                                         />
                                                     </Th>

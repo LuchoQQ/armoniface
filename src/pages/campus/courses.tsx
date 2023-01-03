@@ -1,7 +1,4 @@
-import {
-    Flex,
-    Accordion,
-} from "@chakra-ui/react";
+import { Flex, Accordion } from "@chakra-ui/react";
 import { useSession } from "next-auth/react";
 import { Router, useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
@@ -19,11 +16,11 @@ type Selected = {
 };
 const Courses: React.FC = () => {
     const [open, setOpen] = useState(false);
-    const router = useRouter()
+    const router = useRouter();
     const { data: session, status }: any = useSession({
         required: true,
         onUnauthenticated() {
-            router.push('/')
+            router.push("/");
         },
     });
     const [myCourses, setMyCourses] = useState([]);
@@ -97,11 +94,7 @@ const Courses: React.FC = () => {
                                 </Accordion>
                             </Flex>
                         </Flex>
-                        <Flex
-                            flexDirection="column"
-                            align="center"
-                            
-                        >
+                        <Flex flexDirection="column" align="center">
                             <Flex
                                 flexDir="column"
                                 bg="white"
