@@ -5,13 +5,13 @@ import {
 import { useSession } from "next-auth/react";
 import { Router, useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import { Course } from "../../types";
-import AccordionSection from "../components/AccordionSection";
-import Container from "../components/Container";
-import MediaPlayer from "../components/MediaPlayer";
-import Navbar from "../components/Navbar";
-import Sidebar from "../components/Sidebar";
-import API from "../utils/API";
+import { Course } from "../../../types";
+import AccordionSection from "../../components/AccordionSection";
+import Container from "../../components/Container";
+import MediaPlayer from "../../components/MediaPlayer";
+import Navbar from "../../components/Navbar";
+import Sidebar from "../../components/Sidebar";
+import API from "../../utils/API";
 
 type Selected = {
     url: string;

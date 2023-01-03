@@ -54,7 +54,7 @@ const Sidebar: React.FC<Props> = ({ open, setOpen }) => {
                 />
                 <SidebarLink
                     icon={BsBook}
-                    path="/courses"
+                    path="/campus/courses"
                     text="Cursos"
                     display={open}
                 />
@@ -68,7 +68,7 @@ const Sidebar: React.FC<Props> = ({ open, setOpen }) => {
                     )}
                     <SidebarLink
                         icon={BsBook}
-                        path="/about"
+                        path="/campus/about"
                         text="Sobre nosotros"
                         display={open}
                     />
