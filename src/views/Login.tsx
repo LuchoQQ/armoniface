@@ -47,7 +47,7 @@ const Login: NextPage = (props) => {
     <>
       <Flex justifyContent="center" bg="linear-gradient(143deg, rgba(40,110,84,1) 16%, rgba(31,59,49,1) 100%)">
         <Flex
-          w={{base: "", sm: width / 2}}
+          w={{base: "", sm: "50%"}}
           h="100vh"
           justifyContent="center"
           alignItems="center"         
@@ -124,8 +124,8 @@ const Login: NextPage = (props) => {
           </Flex>
         </Flex>
         <Flex
-        display={{base: "none", sm: "block"}}
-          w={width / 2}
+        display={{base: "none", lg: "block"}}
+          w="50%"
           h="100vh"
           justifyContent="center"
           alignContent="center"
