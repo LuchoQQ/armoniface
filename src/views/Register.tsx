@@ -23,36 +23,15 @@ import axios from "axios";
 import { signIn, signOut, useSession } from "next-auth/react";
 import Router from "next/router";
 import ChakraNextImage from "../components/ChakraNextImage";
+import API from "../utils/API";
 
 const Register: NextPage = (props) => {
-  const [width, setWidth] = useState(0);
-  useEffect(() => {
-    setWidth(window.innerWidth);
-  }, []);
-
   const toast = useToast();
-  const onSubmit = async (values: { email: string; password: string; registerCode: string; }) => {
-    const res = await signIn("credentials", {
-      email: values.email,
-      password: values.password,
-      redirect: false,
-    }).then((res) => {
-      if (res?.error) {
-        toast({
-          title: "An error occurred.",
-          description: res.error,
-          status: "error",
-          duration: 9000,
-          isClosable: true,
-        });
-      }
-    });
-  };
   return (
     <>
       <Flex justifyContent="center" bg="linear-gradient(143deg, rgba(40,110,84,1) 16%, rgba(31,59,49,1) 100%)">
         <Flex
-          w={{base: "", sm: width / 2}}
+          w={{base: "", sm: "50%"}}
           h="100vh"
           justifyContent="center"
           alignItems="center"         
@@ -63,20 +42,46 @@ const Register: NextPage = (props) => {
               p={6}
               rounded="md"
               w={{base: "300px", sm: "400px"}}
-              // h="300px"
               fontFamily="tertiary"
             >
               <Formik
                 initialValues={{
+                  name: "",
                   email: "",
                   password: "",
                   registerCode: "",
                 }}
-                onSubmit={onSubmit}
+                onSubmit={async (values) => {
+                  API.createUser(values)
+                      .then((res: any) => {
+                          toast({
+                              title: "Usuario creado exitosamente",
+                              status: "success",
+                              duration: 3000,
+                          });
+                          // Router.push("/login");
+                      })
+                      .catch((err) => {
+                          toast({
+                              title: "Error al crear usuario",
+                              description: err.message,
+                          });
+                      });
+              }}
               >
                 {({ handleSubmit, errors, touched }) => (
                   <form onSubmit={handleSubmit}>
                     <Flex gap={8} flexDirection="column" align="flex-start">
+                      <FormControl>
+                        <FormLabel htmlFor="name">Nombre Completo</FormLabel>
+                        <Field
+                          as={Input}
+                          id="name"
+                          name="name"
+                          type="name"
+                          variant="filled"
+                        />
+                      </FormControl>
                       <FormControl>
                         <FormLabel htmlFor="email">Correo Electrónico</FormLabel>
                         <Field
@@ -116,7 +121,16 @@ const Register: NextPage = (props) => {
                             name="registerCode"
                             type="registerCode"
                             variant="filled"
+                            validate={(value: string) => {
+                              let error;
+                              if (value !== "armonia") {
+                                error =
+                                  "Código de registro incorrecto";
+                              }
+                              return error;
+                            }}
                           />
+                          <FormErrorMessage>{errors.registerCode}</FormErrorMessage>
                         </FormControl>
                       <Button
                         type="submit"
@@ -130,7 +144,7 @@ const Register: NextPage = (props) => {
                         width="full"
                         
                       >
-                        Ingresar
+                        Registrarme
                       </Button>
                       <Text fontSize="smaller">Iniciar Sesión</Text>
                     </Flex>
@@ -141,8 +155,8 @@ const Register: NextPage = (props) => {
           </Flex>
         </Flex>
         <Flex
-        display={{base: "none", sm: "block"}}
-          w={width / 2}
+        display={{base: "none", lg: "block"}}
+          w="50%"
           h="100vh"
           justifyContent="center"
           alignContent="center"

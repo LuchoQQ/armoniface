@@ -26,8 +26,8 @@ const Navbar: React.FC = () => {
         <ChakraNextImage
           src="/assets/logo.webp"
           alt="logo"
-          h="60px"
-          w="110px"
+          h="50px"
+          w="100px"
           alignSelf="center"
         />
         <Flex ml="auto" gap="2rem" alignSelf="center">

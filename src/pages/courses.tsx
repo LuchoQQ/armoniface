@@ -27,6 +27,7 @@ type Selected = {
     url: string;
     title: string;
 };
+
 const Courses: React.FC = () => {
     const [open, setOpen] = useState(false);
     const router = useRouter()

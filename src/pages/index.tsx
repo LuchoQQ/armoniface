@@ -85,7 +85,7 @@ const Home: NextPage = () => {
 
     return (
         <>
-            <Login />
+            <Register />
         </>
     );
 };

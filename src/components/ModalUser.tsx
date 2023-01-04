@@ -81,7 +81,7 @@ const ModalUser: React.FC<Props> = ({ onClose, isOpen, setUsers, users }) => {
                                                 align="flex-start"
                                             >
                                                 <FormControl>
-                                                    <FormLabel htmlFor="email">
+                                                    <FormLabel htmlFor="name">
                                                         Nombre
                                                     </FormLabel>
                                                     <Field
