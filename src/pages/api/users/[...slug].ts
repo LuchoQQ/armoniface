@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { dbConnect } from '../../../libs/mongoose';
-import { addCourseToUser, createUser, deleteCourseFromUser, deleteUserFromDB, getAllUsersFromDB, getCoursesOfUserById, getUserById, validateUser } from '../../../controllers/users.controller';
+import { addCourseToUser, deleteCourseFromUser, deleteUserFromDB, getCoursesOfUserById, getUserById, validateUser } from '../../../controllers/users.controller';
 dbConnect()
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {

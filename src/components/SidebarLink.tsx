@@ -1,5 +1,4 @@
 import { Flex, Icon, Text } from "@chakra-ui/react";
-import { useTheme } from "@emotion/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";

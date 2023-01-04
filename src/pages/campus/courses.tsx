@@ -1,27 +1,14 @@
-import {
-    Box,
-    Flex,
-    Heading,
-    Text,
-    Grid,
-    Accordion,
-    AccordionItem,
-    AccordionButton,
-    AccordionIcon,
-    AccordionPanel,
-} from "@chakra-ui/react";
-import { useTheme } from "@emotion/react";
+import { Flex, Accordion } from "@chakra-ui/react";
 import { useSession } from "next-auth/react";
-import { redirect } from "next/dist/server/api-utils";
 import { Router, useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import { Course } from "../../types";
-import AccordionSection from "../components/AccordionSection";
-import Container from "../components/Container";
-import MediaPlayer from "../components/MediaPlayer";
-import Navbar from "../components/Navbar";
-import Sidebar from "../components/Sidebar";
-import API from "../utils/API";
+import { Course } from "../../../types";
+import AccordionSection from "../../components/AccordionSection";
+import Container from "../../components/Container";
+import MediaPlayer from "../../components/MediaPlayer";
+import Navbar from "../../components/Navbar";
+import Sidebar from "../../components/Sidebar";
+import API from "../../utils/API";
 
 type Selected = {
     url: string;
@@ -30,11 +17,11 @@ type Selected = {
 
 const Courses: React.FC = () => {
     const [open, setOpen] = useState(false);
-    const router = useRouter()
+    const router = useRouter();
     const { data: session, status }: any = useSession({
         required: true,
         onUnauthenticated() {
-            router.push('/')
+            router.push("/");
         },
     });
     const [myCourses, setMyCourses] = useState([]);
@@ -108,11 +95,7 @@ const Courses: React.FC = () => {
                                 </Accordion>
                             </Flex>
                         </Flex>
-                        <Flex
-                            flexDirection="column"
-                            align="center"
-                            
-                        >
+                        <Flex flexDirection="column" align="center">
                             <Flex
                                 flexDir="column"
                                 bg="white"

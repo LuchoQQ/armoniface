@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { createUser, deleteUserFromDB, getAllUsersFromDB, getUserById, validateUser } from '../../../controllers/users.controller';
+import { createUser, getAllUsersFromDB } from '../../../controllers/users.controller';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     const { method } = req;

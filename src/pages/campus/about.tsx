@@ -1,15 +1,15 @@
 import { Button, Flex, Grid, Heading, Text } from "@chakra-ui/react";
-import Container from "../components/Container";
+import Container from "../../components/Container";
 import type { NextPage } from "next";
 import { useEffect, useState } from "react";
 import { getSession, useSession } from "next-auth/react";
-import Login from "../views/Login";
-import Navbar from "../components/Navbar";
-import Sidebar from "../components/Sidebar";
+import Login from "../../views/Login";
+import Navbar from "../../components/Navbar";
+import Sidebar from "../../components/Sidebar";
 import { useTheme } from "@emotion/react";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import Register from "../views/Register";
+import Register from "../../views/Register";
 
 const About = () => {
   const [width, setWidth] = useState(0);

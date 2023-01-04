@@ -1,7 +1,7 @@
 import { Flex, useToast } from "@chakra-ui/react";
-import { getSession, useSession } from "next-auth/react";
+import { getSession } from "next-auth/react";
 import React, { useEffect, useState } from "react";
-import { AiOutlineEdit, AiOutlineUsergroupAdd } from "react-icons/ai";
+import { AiOutlineUsergroupAdd } from "react-icons/ai";
 import Container from "../../components/Container";
 import Navbar from "../../components/Navbar";
 import Sidebar from "../../components/Sidebar";
