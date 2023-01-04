@@ -48,11 +48,21 @@ const UserProfile: React.FC = () => {
                 setUser(res.data);
             });
             API.getCourses().then((res: any) => {
-                setCourses(res.data);
-            });
-
-            API.getMyCoursesByUserId(pid).then((res: any) => {
-                setMyCourses(res.data);
+                let courses = res.data;
+                // compare courses with myCourses and filter courses that are not in myCourses array and set it to courses array
+                API.getMyCoursesByUserId(pid).then((res: any) => {
+                    setMyCourses(res.data);
+                    courses = courses.filter((course: Course) => {
+                        let found = false;
+                        res.data.forEach((myCourse: Course) => {
+                            if (course._id === myCourse._id) {
+                                found = true;
+                            }
+                        });
+                        return !found;
+                    });
+                    setCourses(courses);
+                });
             });
         }
     }, [pid]);
