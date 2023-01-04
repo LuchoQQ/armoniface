@@ -24,6 +24,7 @@ import { useRouter } from "next/router";
 import { signIn, signOut, useSession } from "next-auth/react";
 import Router from "next/router";
 import ChakraNextImage from "../components/ChakraNextImage";
+import Link from "next/link";
 
 const Login: NextPage = (props) => {
     const toast = useToast();
@@ -71,7 +72,7 @@ const Login: NextPage = (props) => {
                             p={6}
                             rounded="md"
                             w={{ base: "300px", sm: "400px" }}
-                            h="300px"
+                            // h="320px"
                             fontFamily="tertiary"
                         >
                             <Formik
@@ -147,6 +148,7 @@ const Login: NextPage = (props) => {
                                     </form>
                                 )}
                             </Formik>
+                                <Link href="/register"><Text fontSize="smaller" mt="4" _hover={{color: "gray"}}>Crear nueva cuenta</Text></Link>
                         </Box>
                     </Flex>
                 </Flex>

@@ -24,18 +24,22 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import Router from "next/router";
 import ChakraNextImage from "../components/ChakraNextImage";
 import API from "../utils/API";
+import Link from "next/link";
+import router from "next/router";
 
 const Register: NextPage = (props) => {
+    const [isRegistered, setIsRegistered] = useState(false)
     const toast = useToast();
     return (
         <>
             <Flex
                 justifyContent="center"
                 bg="linear-gradient(143deg, rgba(40,110,84,1) 16%, rgba(31,59,49,1) 100%)"
+                h="100vh"
             >
                 <Flex
                     w={{ base: "", sm: "50%" }}
-                    h="100vh"
+                    // h="100vh"
                     justifyContent="center"
                     alignItems="center"
                 >
@@ -70,6 +74,7 @@ const Register: NextPage = (props) => {
                                                 description: err.message,
                                             });
                                         });
+                                        setIsRegistered(true);
                                 }}
                             >
                                 {({ handleSubmit, errors, touched }) => (
@@ -182,6 +187,10 @@ const Register: NextPage = (props) => {
                                                 }}
                                                 color="white"
                                                 width="full"
+                                                isDisabled={isRegistered}
+                                                onClick={() => {
+                                                  router.push("/login");
+                                              }}
                                             >
                                                 Registrarme
                                             </Button>
@@ -189,13 +198,14 @@ const Register: NextPage = (props) => {
                                     </form>
                                 )}
                             </Formik>
+                            <Link href="/login"><Text fontSize="smaller" mt="4" _hover={{color: "gray"}}>Crear nueva cuenta</Text></Link>
                         </Box>
                     </Flex>
                 </Flex>
                 <Flex
                     display={{ base: "none", lg: "block" }}
                     w="50%"
-                    h="100vh"
+                    // h="100vh"
                     justifyContent="center"
                     alignContent="center"
                     position="relative"

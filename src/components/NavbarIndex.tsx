@@ -10,16 +10,19 @@ const NavbarIndex: React.FC = () => {
         <>
             <Flex
                 w="100%"
-                h="10vh"
-                bg="#fff"
+                h="80px"
+                display={{base: "none", md: "flex"}}
+                bg="#f1f2f3"
                 justifyContent="flex-end"
                 alignItems="center"
                 px="5rem"
                 gap="2rem"
+                boxShadow="lg"
                 position='fixed'
                 zIndex={100}
             >
-                <ChakraNextImage src="/assets/logo.webp" w="100px" alt="logo" />
+                <ChakraNextImage src="/assets/logo.webp" h="50px"
+                    w="100px" alt="logo" />
                 <Text
                     fontSize="xl"
                     mr="auto"

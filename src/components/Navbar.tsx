@@ -19,10 +19,10 @@ const Navbar: React.FC = () => {
                 w="100%"
                 h="80px"
                 justifyContent="center"
-                px="3rem"
-                bg="#f1f2f3"
+                px="5rem"
                 alignContent="center"
                 position="fixed"
+                bg="#f1f2f3"
                 boxShadow="lg"
                 zIndex="100"
             >
@@ -33,7 +33,7 @@ const Navbar: React.FC = () => {
                     w="100px"
                     alignSelf="center"
                     onClick={() => {
-                        router.push("/");
+                        router.push("/campus");
                     }}
                 />
                 <Flex ml="auto" gap="2rem" alignSelf="center">
