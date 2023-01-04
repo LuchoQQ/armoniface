@@ -4,46 +4,59 @@ import { useSession } from "next-auth/react";
 import React from "react";
 import ChakraNextImage from "./ChakraNextImage";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 const Navbar: React.FC = () => {
-  const { data: session, status } = useSession();
+    const { data: session, status } = useSession();
 
-  const theme: any = useTheme();
-  return (
-    <>
-      <Flex
-        w="100%"
-        h="80px"
-        justifyContent="center"
-        px="3rem"
-        bg="#f1f2f3"
-        alignContent="center"
-        position="fixed"
-        boxShadow="lg"
-        zIndex='100'
-      >
-        <ChakraNextImage
-          src="/assets/logo.webp"
-          alt="logo"
-          h="50px"
-          w="100px"
-          alignSelf="center"
-        />
-        <Flex ml="auto" gap="2rem" alignSelf="center">
-          <Flex gap="1rem">
-            <Image src="/profile.svg" height={40} width={40} style={{ borderRadius: "50%"}} alt="profile" />
-            <Text
-              fontFamily={theme.fonts.tertiary}
-              alignSelf="center"
-              fontSize="sm"
+    const theme: any = useTheme();
+
+    const router = useRouter();
+
+    return (
+        <>
+            <Flex
+                w="100%"
+                h="80px"
+                justifyContent="center"
+                px="3rem"
+                bg="#f1f2f3"
+                alignContent="center"
+                position="fixed"
+                boxShadow="lg"
+                zIndex="100"
             >
-              {session?.user?.name}
-            </Text>
-          </Flex>
-        </Flex> 
-      </Flex>
-    </>
-  );
+                <ChakraNextImage
+                    src="/assets/logo.webp"
+                    alt="logo"
+                    h="50px"
+                    w="100px"
+                    alignSelf="center"
+                    onClick={() => {
+                        router.push("/");
+                    }}
+                />
+                <Flex ml="auto" gap="2rem" alignSelf="center">
+                    <Flex gap="1rem">
+                        <Image
+                            src="/profile.svg"
+                            height={40}
+                            width={40}
+                            style={{ borderRadius: "50%" }}
+                            alt="profile"
+                        />
+                        <Text
+                            fontFamily={theme.fonts.tertiary}
+                            alignSelf="center"
+                            fontSize="sm"
+                        >
+                            {session?.user?.name}
+                        </Text>
+                    </Flex>
+                </Flex>
+            </Flex>
+        </>
+    );
 };
 
 export default Navbar;

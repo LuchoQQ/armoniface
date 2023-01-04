@@ -48,7 +48,7 @@ const Sidebar: React.FC<Props> = ({ open, setOpen }) => {
                 </Flex>
                 <SidebarLink
                     icon={AiOutlineHome}
-                    path="/"
+                    path="/campus"
                     text="Inicio"
                     display={open}
                 />
@@ -60,18 +60,18 @@ const Sidebar: React.FC<Props> = ({ open, setOpen }) => {
                 />
                 {session?.user?.email === "admin@admin.com" && (
                     <SidebarLink
-                    icon={RiAdminLine}
-                    path="/backoffice"
-                    text="Administrar"
-                    display={open}
-                    />
-                    )}
-                    <SidebarLink
-                        icon={BsBook}
-                        path="/campus/about"
-                        text="Sobre nosotros"
+                        icon={RiAdminLine}
+                        path="/campus/backoffice"
+                        text="Administrar"
                         display={open}
                     />
+                )}
+                <SidebarLink
+                    icon={BsBook}
+                    path="/campus/about"
+                    text="Sobre nosotros"
+                    display={open}
+                />
                 <Flex
                     justifyContent="start"
                     gap="1rem"
@@ -90,7 +90,7 @@ const Sidebar: React.FC<Props> = ({ open, setOpen }) => {
                         alignSelf="center"
                         display={open ? "block" : "none"}
                         fontSize="md"
-                        color='#f1f2f3'
+                        color="#f1f2f3"
                     >
                         Salir
                     </Text>

@@ -3,13 +3,9 @@ import Container from "../components/Container";
 import type { NextPage } from "next";
 import { useEffect, useState } from "react";
 import { getSession, useSession } from "next-auth/react";
-import Login from "../views/Login";
-import Navbar from "../components/Navbar";
-import Sidebar from "../components/Sidebar";
 import { useTheme } from "@emotion/react";
-import { useRouter } from "next/router";
-import Link from "next/link";
-import Register from "../views/Register";
+import ChakraNextImage from "../components/ChakraNextImage";
+import NavbarIndex from "../components/NavbarIndex";
 
 const Home: NextPage = () => {
     const [width, setWidth] = useState(0);
@@ -19,13 +15,13 @@ const Home: NextPage = () => {
     }, []); */
     const [open, setOpen] = useState(false);
     const theme: any = useTheme();
-    if (session) {
+    /* if (session) {
         return (
             <>
                 <Navbar />
                 <Flex w="100%" bg="#f1f2f3">
                     <Sidebar open={open} setOpen={setOpen} />
-                    {/* <IndexLayout /> */}
+                    {/* <IndexLayout />
                     <Container open={open} setOpen={setOpen}>
                         <Flex flexDirection="column" align="center">
                             <Flex
@@ -37,7 +33,6 @@ const Home: NextPage = () => {
                                 zIndex="0"
                                 boxShadow="lg"
                             >
-                                {/* <Heading as="h1" size="md" fontWeight="extrabold" color="white" mb="6">Inicio</Heading>  */}
                             </Flex>
                             <Flex
                                 mt="-6"
@@ -59,7 +54,6 @@ const Home: NextPage = () => {
                                     Bienvenido/a {session?.user?.name}!
                                 </Heading>
                             </Flex>
-                            {/* <SimpleCarousel /> */}
                             <Link href="/courses">
                                 <Flex
                                     px="2rem"
@@ -83,12 +77,11 @@ const Home: NextPage = () => {
                 </Flex>
             </>
         );
-    }
+    } */
 
     return (
         <>
-            <Register />
-            <Login />
+            <NavbarIndex />
         </>
     );
 };
