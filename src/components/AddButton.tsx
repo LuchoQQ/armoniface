@@ -1,4 +1,4 @@
-import { Flex, Text } from "@chakra-ui/react";
+import { Button, Flex, Text } from "@chakra-ui/react";
 import { useTheme } from "@emotion/react";
 import React from "react";
 
@@ -12,7 +12,11 @@ const AddButton: React.FC<Props> = ({onOpen, title}) => {
     return (
         <>
             <Flex px="2rem" py="1rem" onClick={onOpen}>
-                <Text
+                <Button
+                _hover={{
+                    bg: "primary",
+                    color: "white",
+                }}
                     fontFamily={theme.fonts.tertiary}
                     border="1px solid green"
                     px="1rem"
@@ -20,7 +24,7 @@ const AddButton: React.FC<Props> = ({onOpen, title}) => {
                     rounded="20px"
                 >
                     {title}
-                </Text>
+                </Button>
             </Flex>
         </>
     );

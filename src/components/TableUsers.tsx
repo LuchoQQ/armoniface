@@ -81,6 +81,7 @@ const TableUser: React.FC<Props> = ({ users, setUsers }) => {
                                         <Td>
                                             <Icon
                                                 as={ImNewTab}
+                                                cursor="pointer"
                                                 fontSize="2xl"
                                                 onClick={() => {
                                                     Router.push(`/users/${user._id}`);
@@ -90,6 +91,7 @@ const TableUser: React.FC<Props> = ({ users, setUsers }) => {
                                         <Td>
                                             <Icon
                                                 as={BsTrash}
+                                                cursor="pointer"
                                                 fontSize="2xl"
                                                 onClick={() =>
                                                     onDelete(user._id)
@@ -100,6 +102,7 @@ const TableUser: React.FC<Props> = ({ users, setUsers }) => {
                                             <Icon
                                                 as={AiOutlineEdit}
                                                 fontSize="2xl"
+                                                cursor="pointer"
                                             />
                                         </Td>
                                     </>

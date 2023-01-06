@@ -29,7 +29,7 @@ const Home: NextPage = () => {
     return (
         <>
             <Navbar />
-            <Flex w="100%" h="100vh" bg="#f1f2f3">
+            <Flex w="100%" bg="#f1f2f3">
                 <Sidebar open={open} setOpen={setOpen} />
                 {/* <IndexLayout /> */}
                 <Container open={open} setOpen={setOpen}>
@@ -46,7 +46,7 @@ const Home: NextPage = () => {
                             {/* <Heading as="h1" size="md" fontWeight="extrabold" color="white" mb="6">Inicio</Heading>  */}
                         </Flex>
                         <Flex
-                            mt="-6"
+                            mt="-12"
                             w="90%"
                             h="10rem"
                             bgColor="white"
