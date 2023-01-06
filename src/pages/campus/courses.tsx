@@ -64,13 +64,13 @@ const Courses: React.FC = () => {
                         w="100%"
                         margin="auto"
                         gap={{ base: 12, lg: "12" }}
-                        flexDirection={{ base: "column", sm: "row" }}
+                        flexDirection={{ base: "column-reverse", sm: "row" }}
                     >
-                        <Flex flexDirection="column" align="center" mx="10">
+                        <Flex flexDirection="column" align="center" mx="4">
                             <Flex
                                 bgColor="white"
                                 gap="12"
-                                maxW="300px"
+                                minW="290px"
                                 align="center"
                                 zIndex="0"
                                 borderRadius="lg"
@@ -112,7 +112,7 @@ const Courses: React.FC = () => {
                                     "2xl": "800px",
                                 }}
                                 borderRadius="xl"
-                                mr="2"
+                                mx="2"
                             >
                                 <MediaPlayer
                                     url={selected.url}

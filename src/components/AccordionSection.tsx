@@ -26,7 +26,7 @@ const AccordionSection: React.FC<Props> = ({ topic, courses, setSelected }) => {
         <AccordionItem p="1rem">
             <AccordionButton>
                 <Box flex="1" textAlign="left">
-                    <Text fontFamily="tertiary">{topic}</Text>
+                    <Text fontFamily="tertiary" fontSize="sm">{topic}</Text>
                 </Box>
                 <AccordionIcon />
             </AccordionButton>
@@ -35,6 +35,7 @@ const AccordionSection: React.FC<Props> = ({ topic, courses, setSelected }) => {
                 {courses.map((course, index) => {
                     return (
                         <Button
+                        size="sm"
                             key={index}
                             variant="outline"
                             colorScheme="secondary"
