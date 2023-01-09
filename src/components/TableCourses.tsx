@@ -9,6 +9,7 @@ import {
     Thead,
     Tr,
     useDisclosure,
+    useToast,
 } from "@chakra-ui/react";
 import { useTheme } from "@emotion/react";
 import { AiOutlineEdit } from "react-icons/ai";
@@ -17,17 +18,44 @@ import { ImNewTab } from "react-icons/im";
 import { Course } from "../../types";
 import ModalCourse from "./ModalCourse";
 import AddButton from "./AddButton";
+import API from "../utils/API";
 
 type Props = {
     courses: Course[];
+    setCourses: React.Dispatch<React.SetStateAction<Course[]>>;
 };
 
-const TableCourses: React.FC<Props> = ({ courses }) => {
+const TableCourses: React.FC<Props> = ({ courses, setCourses }) => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const theme: any = useTheme();
+    const toast = useToast();
+    const onDelete = (id: string) =>
+        API.deleteCourse(id)
+            ?.then((res) => {
+                toast({
+                    title: "Curso eliminado",
+                    status: "success",
+                });
+                const index = courses.findIndex((course) => course._id === id);
+                const newCourses = [...courses];
+                newCourses.splice(index, 1);
+                setCourses(newCourses);
+                // find the index of the user with the id that was deleted and remove it from the array
+            })
+            .catch((err) => {
+                toast({
+                    title: "Error al crear usuario",
+                    description: err.message,
+                });
+            });
     return (
         <>
-            <ModalCourse isOpen={isOpen} onClose={onClose} />
+            <ModalCourse
+                isOpen={isOpen}
+                onClose={onClose}
+                setCourses={setCourses}
+                courses={courses}
+            />
 
             <AddButton onOpen={onOpen} title="Agregar Curso" />
             <TableContainer w="100%">
@@ -44,7 +72,7 @@ const TableCourses: React.FC<Props> = ({ courses }) => {
                                 <Tr key={key}>
                                     <>
                                         <Td>{course.title}</Td>
-                                        <Td>{course.description}</Td>
+                                        <Td>{course.topic}</Td>
                                         <Td>
                                             <Icon
                                                 as={ImNewTab}
@@ -52,10 +80,11 @@ const TableCourses: React.FC<Props> = ({ courses }) => {
                                             />
                                         </Td>
                                         <Td>
-                                                <Icon
-                                                    as={BsTrash}
-                                                    fontSize="2xl"
-                                                />
+                                            <Icon
+                                                as={BsTrash}
+                                                fontSize="2xl"
+                                                onClick={() => onDelete(course._id)}
+                                            />
                                         </Td>
                                         <Td>
                                             <Icon

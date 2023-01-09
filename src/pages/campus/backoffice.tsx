@@ -9,14 +9,13 @@ import TableUser from "../../components/TableUsers";
 import BackofficeItem from "../../components/BackofficeItem";
 import { FaChalkboardTeacher } from "react-icons/fa";
 import TableCourses from "../../components/TableCourses";
-import { User } from "../../../types";
+import { User, Course } from "../../../types";
 import API from "../../utils/API";
 const Backoffice: React.FC = () => {
     const [open, setOpen] = useState(false);
     const [category, setCategory] = useState("Users");
     const [users, setUsers] = useState<User[]>([]);
-    const [courses, setCourses] = useState([]);
-    const toast = useToast();
+    const [courses, setCourses] = useState<Course[]>([]);
     useEffect(() => {
         const users = API.getUsers().then((res: any) => {
             setUsers(res.data);
@@ -50,7 +49,7 @@ const Backoffice: React.FC = () => {
                             <TableUser users={users} setUsers={setUsers} />
                         )}
                         {category === "Courses" && (
-                            <TableCourses courses={courses} />
+                            <TableCourses courses={courses} setCourses={setCourses}/>
                         )}
                     </Flex>
                 </Container>

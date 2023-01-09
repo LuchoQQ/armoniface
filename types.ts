@@ -10,7 +10,6 @@ export interface User {
 export interface Course {
     _id: string;
     title: string;
-    description: string;
     url: string;
     topic: string
 }

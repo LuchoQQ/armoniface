@@ -24,6 +24,8 @@ const Courses: React.FC = () => {
             router.push("/");
         },
     });
+    const [topics, setTopics] = useState<any>([]);
+
     const [myCourses, setMyCourses] = useState([]);
     const [selected, setSelected] = useState<Selected>({
         url: "",
@@ -34,6 +36,10 @@ const Courses: React.FC = () => {
             const myCourses = API.getMyCoursesByUserId(session.user?.id).then(
                 (res: any) => {
                     setMyCourses(res.data);
+                    const topics = new Set(
+                        res.data.map((course: Course) => course.topic)
+                    );
+                    setTopics(Array.from(topics));
                 }
             );
         }
@@ -77,21 +83,20 @@ const Courses: React.FC = () => {
                                 flexDirection="column"
                             >
                                 <Accordion allowToggle>
-                                    <AccordionSection
-                                        topic="Toxina Botulínica"
-                                        courses={toxina}
-                                        setSelected={setSelected}
-                                    />
-                                    <AccordionSection
-                                        topic="Ácido Hialurónico Inicial"
-                                        courses={acidoInicial}
-                                        setSelected={setSelected}
-                                    />
-                                    <AccordionSection
-                                        topic="Ácido Hialurónico Avanzado"
-                                        courses={acidoAvanzado}
-                                        setSelected={setSelected}
-                                    />
+                                    {topics.map((topic: any) => {
+                                        return (
+                                            <>
+                                                <AccordionSection
+                                                    topic={topic}
+                                                    courses={filterCoursesByTopic(
+                                                        myCourses,
+                                                        topic
+                                                    )}
+                                                    setSelected={setSelected}
+                                                />
+                                            </>
+                                        );
+                                    })}
                                 </Accordion>
                             </Flex>
                         </Flex>
@@ -127,4 +132,4 @@ const Courses: React.FC = () => {
     );
 };
 
-export default Courses;
+export default Courses

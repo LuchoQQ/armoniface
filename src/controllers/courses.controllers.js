@@ -34,6 +34,7 @@ export const createCourse = async (req, res) => {
         return res.status(201).json({
             status: "ok",
             message: "user created sucessfull",
+            ...course._doc,
         });
     } catch (error) {
         return res.status(500).json({

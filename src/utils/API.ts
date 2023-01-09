@@ -40,6 +40,36 @@ const API = {
         }
     },
 
+    // COURSES METHODS
+    getCourses: async () => {
+        try {
+            return await axios.get(`${SERVER_URL}/courses/`);
+        } catch (error) {
+            return error;
+        }
+    },
+    createCourse: async (values: {
+        title: string;
+        topic: string,
+        url: string,
+    }) => {
+        try {
+            return await axios.post(`${SERVER_URL}/courses/`, values);
+        } catch (error) {
+            return error;
+        }
+    },
+    deleteCourse: async (id: string) => {
+        try {
+            return await axios.delete(`${SERVER_URL}/courses/${id}`);
+        } catch (error) {
+            return error;
+        }
+    },
+
+
+
+
     // user and courses methods
     getMyCoursesByUserId: async (id: string | string[]) => {
         try {
@@ -64,14 +94,7 @@ const API = {
         }
     },
 
-    // COURSES METHODS
-    getCourses: async () => {
-        try {
-            return await axios.get(`${SERVER_URL}/courses/`);
-        } catch (error) {
-            return error;
-        }
-    },
+
 }
 
 export default API
