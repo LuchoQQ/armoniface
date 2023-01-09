@@ -199,7 +199,7 @@ const UserProfile: React.FC = () => {
                                                     <Th>
                                                         <Text>
                                                             {
-                                                                course?.description
+                                                                course?.topic
                                                             }
                                                         </Text>
                                                     </Th>
