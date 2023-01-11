@@ -44,7 +44,7 @@ const NavbarIndex: React.FC = () => {
         />
         <NavbarLinkScroll text='Inicio' path='inicio' />
         <NavbarLinkScroll text='About' path='about' />
-        <NavbarLinkScroll text='Courses' path='Courses' />
+        <NavbarLinkScroll text='Courses' path='courses' />
         <Button
           fontSize="xl"
           ml="auto"

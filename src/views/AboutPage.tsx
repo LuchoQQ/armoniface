@@ -1,4 +1,4 @@
-import { Flex, ListItem, Text, UnorderedList } from "@chakra-ui/react";
+import { Flex, Grid, ListItem, Text, UnorderedList } from "@chakra-ui/react";
 import React from "react";
 import ChakraNextImage from "../components/ChakraNextImage";
 import AboutIcon from "../components/AboutIcon";
@@ -7,25 +7,13 @@ import { AiFillMedicineBox } from "react-icons/ai";
 const AboutPage: React.FC = () => {
     return (
         <>
-            <Flex
-                h="100vh"
-                bg="#dedede"
-                zIndex="100"
-                p="5rem"
-                align="center"
-                id="about"
-                flexDir="column"
-            >
-                <Flex>
-                    <Flex w='50%'>
+            <Grid minH="100vh" bg="#dedede" zIndex="100" p="5rem" id="about" alignContent='center'>
+                <Flex mb='4rem'>
+                    <Flex w="50%">
                         <ChakraNextImage src="/client.jpg" fit="contain" />
                     </Flex>
-                    <Flex
-                        w='50%'
-                    >
-                        <Text>
-                            Formate con especializados en el área
-                        </Text>
+                    <Flex w="50%" flexDir='column'>
+                        <Text>Formate con especializados en el área</Text>
                         <Text>
                             ¿Por qué{" "}
                             <span style={{ fontWeight: "bold" }}>
@@ -68,7 +56,7 @@ const AboutPage: React.FC = () => {
                     <AboutIcon icon={AiFillMedicineBox} text="nose" />
                     <AboutIcon icon={AiFillMedicineBox} text="nose" />
                 </Flex>
-            </Flex>
+            </Grid>
         </>
     );
 };

@@ -5,16 +5,8 @@ import ChakraNextImage from "../components/ChakraNextImage";
 const IndexPage: React.FC = () => {
     return (
         <>
-            <Flex h="100vh" bg="#75BAA2" justifyContent="center" id="inicio">
-                <ChakraNextImage
-                    src="/assets/bg3.png"
-                    w="100%"
-                    h="100%"
-                    alt="logo"
-                    fit="cover"
-                    position="absolute"
-                    left="0"
-                />
+            <Flex h="100vh" justifyContent="center" id="inicio">
+                
                 <Flex
                     w="50%"
                     h="100%"
@@ -27,7 +19,7 @@ const IndexPage: React.FC = () => {
                 >
                     <Grid
                         fontSize={["xl", "4xl", "4xl", "4xl", "4xl", "4xl"]}
-                        color="#dedede"
+                        color="#d3d2d2"
                     >
                         <Text
                             fontSize={["lg", "lg", "lg", "lg", "sm"]}
@@ -35,12 +27,14 @@ const IndexPage: React.FC = () => {
                         >
                             Health&Care
                         </Text>
-                        <Text color="#fff">ARMONIFACE</Text>
+                        <Text color="#fff" fontWeight="bold">
+                            ARMONIFACE
+                        </Text>
                         <Text color="#fff" letterSpacing={0} fontWeight="bold">
                             DICK
                         </Text>
                         <Text
-                            fontSize={["md", "md", "md", "md", "sm", "sm"]}
+                            fontSize={["md", "md", "md", "md", "md", "md"]}
                             w="400px"
                             mt="6"
                             color="#f1f2f3"
@@ -57,7 +51,7 @@ const IndexPage: React.FC = () => {
                             Cras vulputate dictum felis eu sodales. Proin nisl
                             neque, maximus nec enim id{" "}
                         </Text>
-                        <Button bg="secondary" color='#202020' mt="2rem" w=''>
+                        <Button bg="secondary" color="#202020" mt="2rem" w="">
                             Ver más
                         </Button>
                     </Grid>
@@ -65,10 +59,12 @@ const IndexPage: React.FC = () => {
                 <Flex
                     w="50%"
                     h="100%"
-                    bg=""
+                   /*  bg="#dedede"
+                    rounded="50%"
+                    boxShadow='0px 0px 20px 10px #dedede' */
                     justifyContent="center"
                     position="relative"
-                >
+                    >
                     <ChakraNextImage
                         src="/assets/imac2.png"
                         w="500px"
@@ -77,7 +73,7 @@ const IndexPage: React.FC = () => {
                         fit="contain"
                         position="relative"
                         left="0"
-                        top="0"
+                        top="4px"
                         _before={{
                             content: '""',
                             width: "1px",
