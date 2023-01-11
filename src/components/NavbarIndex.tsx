@@ -12,6 +12,7 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import { AiOutlineMenu, AiFillInstagram, AiFillMail } from "react-icons/ai";
 import ChakraNextImage from "./ChakraNextImage";
+import NavbarLinkScroll from "./NavbarLinkScroll";
 
 const NavbarIndex: React.FC = () => {
   const router = useRouter();
@@ -33,6 +34,7 @@ const NavbarIndex: React.FC = () => {
         boxShadow="lg"
         position="fixed"
         zIndex={100}
+        fontSize='xl'
       >
         <ChakraNextImage
           src="/assets/logo.webp"
@@ -40,56 +42,22 @@ const NavbarIndex: React.FC = () => {
           w="100px"
           alt="logo"
         />
-        <Box
-          fontSize="xl"
-          // mr="auto"
-          ml="4rem"
-          onClick={() => {
-            router.push("/");
-          }}
-        >
-          INICIO
-        </Box>
-        <Box
-          fontSize="xl"
-          
-          onClick={() => {
-            router.push("/");
-          }}
-        >
-          DICK
-        </Box>
-        <Box
-          fontSize="xl"
-          
-          onClick={() => {
-            router.push("/");
-          }}
-        >
-          SOBRE NOSOTROS
-        </Box>
-        <Box
-          fontSize="xl"
-          
-          onClick={() => {
-            router.push("/");
-          }}
-        >
-          CONTÁCTANOS
-        </Box>
+        <NavbarLinkScroll text='Inicio' path='inicio' />
+        <NavbarLinkScroll text='About' path='about' />
+        <NavbarLinkScroll text='Courses' path='Courses' />
         <Button
           fontSize="xl"
           ml="auto"
           onClick={() => {
             router.push("/login");
           }}
-          colorScheme="green"
+          bg='#cf962d'
         >
           Acceder
         </Button>
         <Button
           fontSize="xl"
-          colorScheme="green"
+          bg='#cf962d'
           onClick={() => {
             router.push("/register");
           }}

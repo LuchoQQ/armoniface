@@ -1,8 +1,8 @@
 import { extendTheme } from "@chakra-ui/react";
-import "@fontsource/poppins";
+import "@fontsource/poppins/800.css";
 import "@fontsource/libre-baskerville";
 import "@fontsource/montserrat/600.css";
-
+import "@fontsource/merriweather-sans/700.css"
 const theme = extendTheme({
   styles: {
     global: {
@@ -14,13 +14,13 @@ const theme = extendTheme({
     },
   },
   colors: {
-    primary: "#1f3b31",
-    secondary: "#bd9b6b",
-    tertiary: "#b3882A",
-    background: "#f3f4f5",
+    primary: "#025940",
+    secondary: "#cf962d",
+    tertiary: "#adbfa8",
+    background: "#f2b29b",
   },
   fonts: {
-    primary: "Poppins",
+    primary: "Merriweather Sans",
     secondary: "Libre Baskerville",
     tertiary: "Montserrat",
   },
