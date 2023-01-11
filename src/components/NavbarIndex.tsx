@@ -22,11 +22,11 @@ const NavbarIndex: React.FC = () => {
     <>
       {/* Desktop navbar */}
       <Flex
-        w="100%"
+        w="100vw"
         h="80px"
         display={{ base: "none", md: "flex" }}
         bg="#f1f2f3"
-        justifyContent="flex-end"
+        // justifyContent="flex-end"
         alignItems="center"
         px="5rem"
         gap="2rem"
@@ -40,41 +40,66 @@ const NavbarIndex: React.FC = () => {
           w="100px"
           alt="logo"
         />
-        <Text
+        <Box
           fontSize="xl"
-          mr="auto"
+          // mr="auto"
           ml="4rem"
           onClick={() => {
             router.push("/");
           }}
         >
-          Inicio
-        </Text>
+          INICIO
+        </Box>
+        <Box
+          fontSize="xl"
+          
+          onClick={() => {
+            router.push("/");
+          }}
+        >
+          DICK
+        </Box>
+        <Box
+          fontSize="xl"
+          
+          onClick={() => {
+            router.push("/");
+          }}
+        >
+          SOBRE NOSOTROS
+        </Box>
+        <Box
+          fontSize="xl"
+          
+          onClick={() => {
+            router.push("/");
+          }}
+        >
+          CONTÁCTANOS
+        </Box>
         <Button
           fontSize="xl"
+          ml="auto"
           onClick={() => {
             router.push("/login");
           }}
+          colorScheme="green"
         >
           Acceder
         </Button>
-        <Flex
-          px="1rem"
-          py=".5rem"
-          bg="primary"
-          rounded="20px"
+        <Button
+          fontSize="xl"
+          colorScheme="green"
           onClick={() => {
             router.push("/register");
           }}
         >
-          <Button fontSize="xl" color="#f1f2f3">
-            Registrarse
-          </Button>
-        </Flex>
+          Inscríbete
+        </Button>
       </Flex>
 
       {/* Mobile navbar */}
-      <Box position="relative">
+      <Box position="relative" display={{ base: "block", md: "none" }}>
         <Icon
           as={AiOutlineMenu}
           {...getButtonProps()}

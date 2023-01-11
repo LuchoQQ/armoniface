@@ -70,10 +70,10 @@ const Home: NextPage = () => {
                             <Flex
                                 px="2rem"
                                 py="1rem"
-                                border={`1px solid ${theme.colors.primary}`}
                                 mt="2rem"
                                 rounded="20px"
                                 transition="all .2s ease"
+                                border={`1px solid ${theme.colors.primary}`}
                                 _hover={{
                                     bg: theme.colors.primary,
                                     color: "white",

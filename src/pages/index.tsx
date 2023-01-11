@@ -14,30 +14,30 @@ import {
 import { GiButterfly } from "react-icons/gi";
 import { AiFillMedicineBox } from "react-icons/ai";
 const Home: NextPage = () => {
-  const [width, setWidth] = useState(0);
-  const [height, setHeight] = useState(0);
-  const { data: session, status } = useSession();
-  useEffect(() => {
-    setWidth(window.innerWidth);
-    setHeight(window.innerHeight);
-  }, []);
-  const [open, setOpen] = useState(false);
+//   const [width, setWidth] = useState(0);
+//   const [height, setHeight] = useState(0);
+//   const { data: session, status } = useSession();
+//   useEffect(() => {
+//     setWidth(window.innerWidth);
+//     setHeight(window.innerHeight);
+//   }, []);
+//   const [open, setOpen] = useState(false);
   const theme: any = useTheme();
 
   return (
     <>
       <NavbarIndex />
-      <Flex w={width} h={height} bg="#12241d" justifyContent="center">
-        <ChakraNextImage
+      <Flex pt="80px" h="100vh" bg="#12241d" justifyContent="center">
+        {/* <ChakraNextImage
           src="/assets/bg2.png"
-          w={width}
-          h={height}
+          w="500px"
+          h="500px"
           alt="logo"
           fit="cover"
           position="absolute"
           left="0"
           zIndex="1"
-        />
+        /> */}
         <Flex
           w="50%"
           h="100%"
@@ -52,35 +52,26 @@ const Home: NextPage = () => {
             <Text fontSize="lg" color="secondary">
               Health&Care
             </Text>
-            <Text>A better life starts</Text>
-            <Text fontWeight="semibold">with a beautiful</Text>
+            <Text>ARMONIFACE</Text>
+            {/* <Text fontWeight="semibold"></Text> */}
             <Text
               color="secondary"
               letterSpacing={4}
               textDecoration="underline"
             >
-              SMILE
+              DICK
             </Text>
-            <Text fontSize="md" w="600px" mt="6rem">
+            <Text fontSize="md" w="600px" mt="6">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
               ut luctus quam. Nunc in ligula orci.
             </Text>
-            <Text fontSize="md" w="600px" mt="2rem">
+            <Text fontSize="md" w="600px">
               Cras vulputate dictum felis eu sodales. Proin nisl neque, maximus
               nec enim id{" "}
             </Text>
-            <Flex gap="2rem" mt="3rem">
-              <Button bg="secondary" _hover={{ color: "#000" }}>
-                Registrarse
-              </Button>
-              <Button
-                bg="transparent"
-                border={`1px solid ${theme.colors.secondary}`}
-                _hover={{ color: "#000" }}
-              >
-                Acceder
-              </Button>
-            </Flex>
+            <Button colorScheme="green" mt="2rem">
+              QUIERO UNIRME
+            </Button>
           </Grid>
         </Flex>
         <Flex
@@ -92,8 +83,8 @@ const Home: NextPage = () => {
         >
           <ChakraNextImage
             src="/assets/imac2.png"
-            w="700px"
-            h="750px"
+            w="500px"
+            h="550px"
             alignSelf="flex-end"
             fit="contain"
             position="relative"
@@ -110,7 +101,7 @@ const Home: NextPage = () => {
           />
         </Flex>
       </Flex>
-      <Flex  w={width} bg="#" zIndex="100" p="5rem">
+      <Flex h="100vh" bg="orange" zIndex="100" p="5rem" align="center">
         <Flex w="50%" h="500px" bg="" gap="1rem">
           <ChakraNextImage src="/client.jpg" fit="contain" />
         </Flex>
@@ -143,7 +134,7 @@ const Home: NextPage = () => {
         </Flex>
         
       </Flex>
-      <Flex justifyContent='center' w={width} gap='2rem' pb='4rem'>
+      <Flex justifyContent='center' align="center" gap='2rem' pb='4rem' h="100vh" bg="green">
         <Flex w='4rem' h='4rem'  justifyContent='center' alignItems='center' rounded='50%' bg='primary' flexDir='column'>
             <Icon as={AiFillMedicineBox} fontSize='4xl' fill='secondary'/>
         </Flex>
@@ -174,165 +165,3 @@ export async function getServerSideProps() {
 }
 
 export default Home;
-
-/* import { Flex, Text, Image as ChakraImage } from "@chakra-ui/react";
-import { useTheme } from "@emotion/react";
-import Image from "next/image";
-import React from "react";
-import ChakraNextImage from "../components/ChakraNextImage";
-
-const Index: React.FC = () => {
-    const theme: any = useTheme();
-    const [width, setWidth] = React.useState(0);
-    const [height, setHeight] = React.useState(0);
-
-    React.useEffect(() => {
-        setWidth(window.innerWidth);
-
-        setHeight(window.innerHeight);
-    }, []);
-    return (
-        <>
-            <Flex
-                fontFamily="tertiary"
-                alignItems="center"
-                px="5rem"
-                position="fixed"
-                zIndex={100}
-                w="100%"
-                bg='#fff'
-            >
-                <Image
-                    src="/assets/logo.webp"
-                    width={100}
-                    height={100}
-                    alt="logo"
-                />
-                <Flex gap="1rem" ml="20%" color="#000" mr="auto">
-                    <Text>Nosotros</Text>
-                    <Text>Cursos</Text>
-                    <Text>Contacto</Text>
-                </Flex>
-                <Flex>
-                    <Text
-                        bg="secondary"
-                        px="1rem"
-                        py=".5rem"
-                        color="#000"
-                        rounded="10px"
-                        mr="auto"
-                    >
-                        Acceder
-                    </Text>
-                </Flex>
-            </Flex>
-
-            <Flex position="relative" overflow="hidden" h={height}>
-                <Flex
-                    flexDir="column"
-                    w="50%"
-                    justifyContent="end"
-                    alignItems="end"
-                    mr="5rem"
-                >
-                    <ChakraNextImage
-                        src="/assets/bg.png"
-                        alt="bg"
-                        position="absolute"
-                        w="100%"
-                        h="100vh"
-                        left='0'
-                        zIndex={1}
-                    />
-                    <Flex
-                        flexDir="column"
-                        fontFamily="secondary"
-                        position="relative"
-                        zIndex={100}
-                        mb="10rem"
-                    >
-                        <Text fontSize="xs" color="secondary">
-                            HEALT & CARE
-                        </Text>
-                        <Text
-                            fontSize="3xl"
-                            letterSpacing="0.05rem"
-                            color="#f1f2f3"
-                        >
-                            A better life starts
-                        </Text>
-                        <Text
-                            fontSize="3xl"
-                            fontWeight="bold"
-                            letterSpacing="0.05rem"
-                            color="#f1f2f3"
-                        >
-                            with a beautiful
-                        </Text>
-                        <Text
-                            fontSize="3xl"
-                            fontWeight="bold"
-                            letterSpacing="0.2rem"
-                            color="secondary"
-                            fontFamily={"secondary"}
-                        >
-                            smile
-                        </Text>
-                        <Text fontSize="0.7rem" mt="1rem" color="#dedede">
-                            Quis ut laborum ut eu. Eu eiusmod ut tempor quis
-                            cillum aute. Laboris cupidatat
-                        </Text>
-                        <Text fontSize="0.7rem" mt="1rem" color="#dedede">
-                            Quis ut laborum ut eu. Eu eiusmod ut tempor
-                        </Text>
-                        <Flex gap="2rem" mt="1rem" w="100%">
-                            <Text
-                                bg="secondary"
-                                px="1rem"
-                                py=".5rem"
-                                rounded="10px"
-                                color="#000"
-                                border="1px solid #000"
-                            >
-                                Cursos
-                            </Text>
-                            <Text
-                                px="1rem"
-                                py=".5rem"
-                                color="secondary"
-                                border={`1px solid ${theme.colors.secondary}`}
-                                rounded="10px"
-                            >
-                                Cursos
-                            </Text>
-                        </Flex>
-                    </Flex>
-                </Flex>
-                <Flex w="50%" ml="10rem" position="relative">
-                    <Flex
-                        position="absolute"
-                        w="400px"
-                        h="80%"
-                        rounded="50%"
-                        bg="#dedede"
-                        zIndex={20}
-                        alignSelf="end"
-                    ></Flex>
-                    <ChakraNextImage
-                        src="/assets/dentist.png"
-                        alt="dentist"
-                        fit="cover"
-                        w="300px"
-                        h="400px"
-                        alignSelf="end"
-                        position="relative"
-                        zIndex={50}
-                    />
-                </Flex>
-            </Flex>
-        </>
-    );
-};
-
-export default Index;
- */
