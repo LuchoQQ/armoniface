@@ -13,7 +13,7 @@ const NavbarLinkScroll: React.FC<Props> = ({ path, text }) => {
 
     return (
         <>
-            <Box as={Link} to={path} spy={true} smooth={true} duration={500} cursor='pointer'>
+            <Box as={Link} to={path} spy={true} smooth={true} duration={500} cursor='pointer' fontSize="lg" color="fontSecondary" mx="1" _hover={{color: "#cf962d"}}>
                 {text}
             </Box>
         </>

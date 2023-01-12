@@ -86,6 +86,7 @@ const TableUser: React.FC<Props> = ({ users, setUsers }) => {
                                                 onClick={() => {
                                                     Router.push(`/users/${user._id}`);
                                                 }}
+                                                _hover={{color: "#cf962d"}}
                                             />
                                         </Td>
                                         <Td>
@@ -96,6 +97,7 @@ const TableUser: React.FC<Props> = ({ users, setUsers }) => {
                                                 onClick={() =>
                                                     onDelete(user._id)
                                                 }
+                                                _hover={{color: "#cf962d"}}
                                             />
                                         </Td>
                                         <Td>
@@ -103,6 +105,7 @@ const TableUser: React.FC<Props> = ({ users, setUsers }) => {
                                                 as={AiOutlineEdit}
                                                 fontSize="2xl"
                                                 cursor="pointer"
+                                                _hover={{color: "#cf962d"}}
                                             />
                                         </Td>
                                     </>

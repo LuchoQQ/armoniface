@@ -77,12 +77,16 @@ const TableCourses: React.FC<Props> = ({ courses, setCourses }) => {
                                             <Icon
                                                 as={ImNewTab}
                                                 fontSize="2xl"
+                                                cursor="pointer"
+                                                _hover={{color: "#cf962d"}}
                                             />
                                         </Td>
                                         <Td>
                                             <Icon
                                                 as={BsTrash}
                                                 fontSize="2xl"
+                                                cursor="pointer"
+                                                _hover={{color: "#cf962d"}}
                                                 onClick={() => onDelete(course._id)}
                                             />
                                         </Td>
@@ -90,6 +94,8 @@ const TableCourses: React.FC<Props> = ({ courses, setCourses }) => {
                                             <Icon
                                                 as={AiOutlineEdit}
                                                 fontSize="2xl"
+                                                cursor="pointer"
+                                                _hover={{color: "#cf962d"}}
                                             />
                                         </Td>
                                     </>

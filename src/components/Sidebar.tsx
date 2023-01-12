@@ -39,7 +39,7 @@ const Sidebar: React.FC<Props> = ({ open, setOpen }) => {
                     <Icon
                         cursor="pointer"
                         as={HiBars3}
-                        fill="#f1f2f3"
+                        fill={open ? "secondary" : "font"}
                         fontSize="2xl"
                         onClick={() => setOpen(!open)}
                         transform={open ? "rotate(90deg)" : "rotate(0)"}
@@ -69,7 +69,7 @@ const Sidebar: React.FC<Props> = ({ open, setOpen }) => {
                 <SidebarLink
                     icon={BsBook}
                     path="/campus/about"
-                    text="Sobre nosotros"
+                    text="Nosotros"
                     display={open}
                 />
                 <Flex

@@ -36,17 +36,16 @@ const ModalUser: React.FC<Props> = ({ onClose, isOpen, setUsers, users }) => {
         <>
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
-                <ModalContent>
+                <ModalContent m="auto">
                     <ModalHeader>Crear usuario</ModalHeader>
                     <ModalCloseButton />
                     <ModalBody>
                         <Flex
-                            bg="gray.100"
                             align="center"
                             justify="center"
-                            py="1rem"
+                            // py="1rem"
                         >
-                            <Box bg="white" p={6} rounded="md" w={64}>
+                            <Box bg="white" pt="2" pb="6" rounded="md" w={64}>
                                 <Formik
                                     initialValues={{
                                         name: "",
@@ -154,7 +153,7 @@ const ModalUser: React.FC<Props> = ({ onClose, isOpen, setUsers, users }) => {
                                                 </FormControl>
                                                 <Button
                                                     type="submit"
-                                                    colorScheme="green"
+                                                    fontFamily="tertiary" color="fontSecondary" bg="secondary" _hover={{ bg: "#e09e24" }} _active={{ bg: "" }}
                                                     width="full"
                                                 >
                                                     Crear

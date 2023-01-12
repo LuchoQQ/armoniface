@@ -7,7 +7,7 @@ import { AiFillMedicineBox } from "react-icons/ai";
 const AboutPage: React.FC = () => {
     return (
         <>
-            <Grid minH="100vh" bg="#dedede" zIndex="100" p="5rem" id="about" alignContent='center'>
+            <Grid minH="100vh" bg="background" zIndex="100" p="5rem" id="about" alignContent='center'>
                 <Flex mb='4rem'>
                     <Flex w="50%">
                         <ChakraNextImage src="/client.jpg" fit="contain" />

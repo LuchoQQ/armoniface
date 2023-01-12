@@ -11,7 +11,7 @@ type Props = {
 const BackofficeItem: React.FC<Props> = ({ icon, text, setCategory }) => {
     return (
         <>
-            <Flex cursor="pointer" onClick={() => setCategory(text)}>
+            <Flex cursor="pointer" _hover={{color: "#cf962d"}} onClick={() => setCategory(text)}>
                 <Icon as={icon} fontSize="xl" />
                 <Text ml="2">{text}</Text>
             </Flex>

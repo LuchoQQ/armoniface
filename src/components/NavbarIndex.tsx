@@ -34,30 +34,43 @@ const NavbarIndex: React.FC = () => {
         boxShadow="lg"
         position="fixed"
         zIndex={100}
-        fontSize='xl'
+        fontSize="xl"
       >
         <ChakraNextImage
           src="/assets/logo.webp"
           h="50px"
           w="100px"
           alt="logo"
+          mr="10"
         />
-        <NavbarLinkScroll text='Inicio' path='inicio' />
-        <NavbarLinkScroll text='About' path='about' />
-        <NavbarLinkScroll text='Courses' path='courses' />
+        <Divider orientation="vertical" />
+        <NavbarLinkScroll text="Inicio" path="inicio" />
+        <Divider orientation="vertical" />
+        <NavbarLinkScroll text="Nosotros" path="about" />
+        <Divider orientation="vertical" />
+        <NavbarLinkScroll text="Cursos" path="courses" />
+        <Divider orientation="vertical" />
+        <NavbarLinkScroll text="Contáctanos" path="contact" />
+        <Divider orientation="vertical" />
         <Button
           fontSize="xl"
           ml="auto"
           onClick={() => {
             router.push("/login");
           }}
-          bg='#cf962d'
+          bg="secondary"
+          color="fontSecondary"
+          _hover={{ bg: "#e09e24" }}
+          _active={{ bg: "" }}
         >
           Acceder
         </Button>
         <Button
           fontSize="xl"
-          bg='#cf962d'
+          bg="secondary"
+          color="fontSecondary"
+          _hover={{ bg: "#e09e24" }}
+          _active={{ bg: "" }}
           onClick={() => {
             router.push("/register");
           }}
@@ -67,15 +80,25 @@ const NavbarIndex: React.FC = () => {
       </Flex>
 
       {/* Mobile navbar */}
-      <Box position="relative" display={{ base: "block", md: "none" }}>
+      <Box position="relative" display={{ base: "block", md: "none" }} zIndex="100">
+        <Box bg="#f1f2f3" h="47px" position="fixed" w="100vw">
+        <ChakraNextImage
+          src="/assets/logo.webp"
+          h="40px"
+          w="80px"
+          alt="logo"
+          ml="4"
+          mt="1"
+        />
+        </Box>
         <Icon
           as={AiOutlineMenu}
           {...getButtonProps()}
           position="absolute"
-          top="2"
-          right="1"
+          top="4"
+          right="3"
           zIndex="100"
-        />
+          />
         <motion.div
           {...getDisclosureProps()}
           hidden={hidden}
@@ -84,11 +107,11 @@ const NavbarIndex: React.FC = () => {
           onAnimationComplete={() => setHidden(!isOpen)}
           animate={{ width: isOpen ? 300 : 0 }}
           style={{
-            //   background: 'red',
-            backdropFilter: "blur(10px)",
-            overflow: "hidden",
-            whiteSpace: "nowrap",
-            position: "absolute",
+              background: '#adbfa8',
+              // backdropFilter: "blur(10px)",
+              overflow: "hidden",
+              whiteSpace: "nowrap",
+              position: "absolute",
             right: "0",
             height: "100vh",
             top: "0",
@@ -112,10 +135,10 @@ const NavbarIndex: React.FC = () => {
             </Flex>
             <Divider />
             <Flex flexDirection="column" gap="1rem">
-              <Button fontFamily="tertiary" colorScheme="green">
+              <Button fontFamily="tertiary" color="fontSecondary" bg="secondary" _hover={{ bg: "#e09e24" }} _active={{ bg: "" }}>
                 Acceder
               </Button>
-              <Button fontFamily="tertiary" colorScheme="green">
+              <Button fontFamily="tertiary" color="fontSecondary" bg="secondary" _hover={{ bg: "#e09e24" }} _active={{ bg: "" }}>
                 Registrarse
               </Button>
             </Flex>
@@ -127,6 +150,7 @@ const NavbarIndex: React.FC = () => {
           </Flex>
         </motion.div>
       </Box>
+              
     </>
   );
 };

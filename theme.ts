@@ -17,7 +17,9 @@ const theme = extendTheme({
     primary: "#025940",
     secondary: "#cf962d",
     tertiary: "#adbfa8",
-    background: "#f2b29b",
+    background: "#dedede",
+    font: "#f1f2f3",
+    fontSecondary: "#202020",
   },
   fonts: {
     primary: "Merriweather Sans",
