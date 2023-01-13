@@ -29,7 +29,10 @@ import Link from "next/link";
 const Login: NextPage = (props) => {
     const toast = useToast();
     const router = useRouter();
+    const [loading, setLoading] = useState(false);
+
     const onSubmit = async (values: { email: string; password: string }) => {
+        setLoading(true);
         const res = await signIn("credentials", {
             email: values.email,
             password: values.password,
@@ -44,16 +47,22 @@ const Login: NextPage = (props) => {
                     isClosable: true,
                 });
             }
+            toast({
+                title: "Login sucessfull",
+                status: "success",
+                duration: 9000,
+                isClosable: true,
+            });
+            setLoading(false);
         });
-        router.push("/campus");
     };
-    const { data: session, status }: any = useSession()
+    const { data: session, status }: any = useSession();
     useEffect(() => {
         if (status == "authenticated") {
             router.push("/campus");
         }
     }, [status]);
-    
+
     return (
         <>
             <Flex
@@ -72,7 +81,6 @@ const Login: NextPage = (props) => {
                             p={6}
                             rounded="md"
                             w={{ base: "300px", sm: "400px" }}
-                            // h="320px"
                             fontFamily="tertiary"
                         >
                             <Formik
@@ -132,6 +140,7 @@ const Login: NextPage = (props) => {
                                                 </FormErrorMessage>
                                             </FormControl>
                                             <Button
+                                                isLoading={loading}
                                                 type="submit"
                                                 bg="linear-gradient(143deg, rgba(40,110,84,1) 16%, rgba(31,59,49,1) 100%)"
                                                 _hover={{
@@ -148,7 +157,15 @@ const Login: NextPage = (props) => {
                                     </form>
                                 )}
                             </Formik>
-                                <Link href="/register"><Text fontSize="smaller" mt="4" _hover={{color: "gray"}}>Crear nueva cuenta</Text></Link>
+                            <Link href="/register">
+                                <Text
+                                    fontSize="smaller"
+                                    mt="4"
+                                    _hover={{ color: "gray" }}
+                                >
+                                    Crear nueva cuenta
+                                </Text>
+                            </Link>
                         </Box>
                     </Flex>
                 </Flex>

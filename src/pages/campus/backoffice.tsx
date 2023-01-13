@@ -1,5 +1,5 @@
-import { Flex, useToast } from "@chakra-ui/react";
-import { getSession } from "next-auth/react";
+import { Flex } from "@chakra-ui/react";
+import { getSession, useSession } from "next-auth/react";
 import React, { useEffect, useState } from "react";
 import { AiOutlineUsergroupAdd } from "react-icons/ai";
 import Container from "../../components/Container";
@@ -11,6 +11,7 @@ import { FaChalkboardTeacher } from "react-icons/fa";
 import TableCourses from "../../components/TableCourses";
 import { User, Course } from "../../../types";
 import API from "../../utils/API";
+import { useRouter } from "next/router";
 const Backoffice: React.FC = () => {
     const [open, setOpen] = useState(false);
     const [category, setCategory] = useState("Users");
@@ -26,6 +27,13 @@ const Backoffice: React.FC = () => {
         });
     }, []);
 
+    const router = useRouter()
+    const { data: session, status }: any = useSession({
+        required: true,
+        onUnauthenticated() {
+            router.push("/login");
+        },
+    });
     return (
         <>
             <Navbar />
@@ -49,7 +57,10 @@ const Backoffice: React.FC = () => {
                             <TableUser users={users} setUsers={setUsers} />
                         )}
                         {category === "Courses" && (
-                            <TableCourses courses={courses} setCourses={setCourses}/>
+                            <TableCourses
+                                courses={courses}
+                                setCourses={setCourses}
+                            />
                         )}
                     </Flex>
                 </Container>
