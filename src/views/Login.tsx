@@ -92,6 +92,7 @@ const Login: NextPage = (props) => {
                                             gap={8}
                                             flexDirection="column"
                                             align="flex-start"
+                                            fontFamily='secondary'
                                         >
                                             <FormControl>
                                                 <FormLabel htmlFor="email">
@@ -103,6 +104,7 @@ const Login: NextPage = (props) => {
                                                     name="email"
                                                     type="email"
                                                     variant="filled"
+                                                    fontFamily='primary'
                                                 />
                                             </FormControl>
                                             <FormControl
@@ -111,7 +113,7 @@ const Login: NextPage = (props) => {
                                                     touched.password
                                                 }
                                             >
-                                                <FormLabel htmlFor="password">
+                                                <FormLabel htmlFor="password" fontFamily='secondary'>
                                                     Contraseña
                                                 </FormLabel>
                                                 <Field
@@ -146,6 +148,7 @@ const Login: NextPage = (props) => {
                                                 }}
                                                 color="white"
                                                 width="full"
+                                                fontFamily='primary'
                                             >
                                                 Ingresar
                                             </Button>
@@ -153,15 +156,6 @@ const Login: NextPage = (props) => {
                                     </form>
                                 )}
                             </Formik>
-                            <Link href="/register">
-                                <Text
-                                    fontSize="smaller"
-                                    mt="4"
-                                    _hover={{ color: "gray" }}
-                                >
-                                    Crear nueva cuenta
-                                </Text>
-                            </Link>
                         </Box>
                     </Flex>
                 </Flex>

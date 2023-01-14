@@ -3,6 +3,7 @@ import {
     Button,
     Flex,
     Grid,
+    Icon,
     Text,
     chakra,
     keyframes,
@@ -12,6 +13,7 @@ import {
 import React, { useEffect, useState } from "react";
 import ChakraNextImage from "../components/ChakraNextImage";
 import { isValidMotionProp, motion } from "framer-motion";
+import { AiOutlineArrowRight } from "react-icons/ai";
 
 const IndexPage: React.FC = () => {
     const [width, setWidth] = useState(0);
@@ -79,13 +81,14 @@ const IndexPage: React.FC = () => {
                             del área
                             <br />
                             <Button
-                                fontSize="lg"
-                                bg="secondary"
+                                fontSize="sm"
+                                bg='#fff'
                                 color="fontSecondary"
-                                _hover={{ bg: "#e09e24" }}
-                                _active={{ bg: "" }}
+                                fontFamily='secondary'
+                                fontWeight='regular'
                             >
                                 Ver más
+                                <Icon ml='1rem'as={AiOutlineArrowRight} fontSize='lg'/>
                             </Button>
                         </Text>
                     </Flex>

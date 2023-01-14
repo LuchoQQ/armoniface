@@ -1,6 +1,6 @@
 import { extendTheme } from "@chakra-ui/react";
 import "@fontsource/montserrat";
-import "@fontsource/merriweather-sans/800.css"; 
+import "@fontsource/merriweather-sans/"; 
 const theme = extendTheme({
   styles: {
     global: {
@@ -13,7 +13,7 @@ const theme = extendTheme({
   },
   colors: {
     primary: "#025940",
-    secondary: "#FCA120",
+    secondary: "#037070",
     tertiary: "#adbfa8",
     background: "#dedede",
     font: "#dedede",

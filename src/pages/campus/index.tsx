@@ -66,22 +66,6 @@ const Home: NextPage = () => {
               </Heading>
             </Flex>
             {/* <SimpleCarousel /> */}
-            <Link href="/courses">
-              <Button
-                w="160px"
-                h="50px"
-                rounded="20px"
-                transition="all .2s ease"
-                mt="8"
-                bg="secondary"
-                color="fontSecondary"
-                _hover={{ bg: "#e09e24" }}
-                _active={{ bg: "" }}
-                fontFamily="tertiary"
-              >
-                Ir a cursos
-              </Button>
-            </Link>
           </Flex>
         </Container>
       </Flex>

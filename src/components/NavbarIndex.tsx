@@ -12,12 +12,14 @@ import { useRouter } from "next/router";
 import { AiOutlineMenu, AiFillInstagram, AiFillMail } from "react-icons/ai";
 import ChakraNextImage from "./ChakraNextImage";
 import NavbarLinkScroll from "./NavbarLinkScroll";
+import { useTheme } from "@emotion/react";
 
 const NavbarIndex: React.FC = () => {
     const router = useRouter();
     const { getButtonProps, getDisclosureProps, isOpen } = useDisclosure();
     const [hidden, setHidden] = useState(!isOpen);
 
+    const theme: any = useTheme();
     return (
         <>
             {/* Desktop navbar */}
@@ -57,24 +59,11 @@ const NavbarIndex: React.FC = () => {
                     onClick={() => {
                         router.push("/login");
                     }}
-                    bg="secondary"
+                    border={`1px solid ${theme.colors.primary}`}
                     color="fontSecondary"
-                    _hover={{ bg: "#e09e24" }}
                     _active={{ bg: "" }}
                 >
                     Acceder
-                </Button>
-                <Button
-                    fontSize="lg"
-                    bg="secondary"
-                    color="fontSecondary"
-                    _hover={{ bg: "#e09e24" }}
-                    _active={{ bg: "" }}
-                    onClick={() => {
-                        router.push("/register");
-                    }}
-                >
-                    Inscríbete
                 </Button>
             </Flex>
 

@@ -23,7 +23,7 @@ const AddButton: React.FC<Props> = ({ onOpen, title }) => {
           color="fontSecondary"
           _hover={{ bg: "#e09e24" }}
           _active={{ bg: "" }}
-          fontFamily="tertiary"
+          fontFamily="primary"
         >
           {title}
         </Button>

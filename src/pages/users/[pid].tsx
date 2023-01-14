@@ -104,7 +104,7 @@ const UserProfile: React.FC = () => {
         <>
             <Navbar />
             <Sidebar open={open} setOpen={setOpen} />
-            <Flex w="100%" minH="100vh">
+            <Flex w="100%" minH="100vh" fontFamily='secondary'>
                 <Container open={open} setOpen={setOpen}>
                     <>
                         <Flex flexDir="column" w="100%" alignItems="center">
@@ -168,7 +168,7 @@ const UserProfile: React.FC = () => {
                         </Flex>
                         <Text
                             px="1rem"
-                            fontFamily={theme.fonts.tertiary}
+                            fontFamily={theme.fonts.secondary}
                             mb="1rem"
                         >
                             My Courses
@@ -190,7 +190,19 @@ const UserProfile: React.FC = () => {
                                     {myCourses?.map((course) => {
                                         return (
                                             <>
-                                                <Tr>
+                                                <Tr
+                                                    position='relative'
+                                                    _after={{
+                                                        content: '""',
+                
+                                                        position: "absolute",
+                                                        h: "1px",
+                                                        w: "80%",
+                                                        left: "10%",
+                                                        top: "100%",
+                                                        bg: "#cccccc",
+                                                    }}
+                                                >
                                                     <Th>
                                                         <Text>
                                                             {course?.title}
@@ -198,9 +210,7 @@ const UserProfile: React.FC = () => {
                                                     </Th>
                                                     <Th>
                                                         <Text>
-                                                            {
-                                                                course?.topic
-                                                            }
+                                                            {course?.topic}
                                                         </Text>
                                                     </Th>
                                                     <Th as={Flex}>
@@ -223,7 +233,7 @@ const UserProfile: React.FC = () => {
                                 </Tfoot>
                             </Table>
                         </TableContainer>
-                        <Text px="1rem" fontFamily={theme.fonts.tertiary}>
+                        <Text px="1rem" fontFamily={theme.fonts.secondary}>
                             Add Courses
                         </Text>
                         <TableContainer>
@@ -243,7 +253,19 @@ const UserProfile: React.FC = () => {
                                     {courses?.map((course) => {
                                         return (
                                             <>
-                                                <Tr>
+                                                <Tr
+                                                    position='relative'
+                                                    _after={{
+                                                        content: '""',
+
+                                                        position: "absolute",
+                                                        h: "1px",
+                                                        w: "80%",
+                                                        left: "10%",
+                                                        top: "100%",
+                                                        bg: "#cccccc",
+                                                    }}
+                                                >
                                                     <Th>
                                                         <Text>
                                                             {course?.title}
@@ -251,9 +273,7 @@ const UserProfile: React.FC = () => {
                                                     </Th>
                                                     <Th>
                                                         <Text>
-                                                            {
-                                                                course?.topic
-                                                            }
+                                                            {course?.topic}
                                                         </Text>
                                                     </Th>
                                                     <Th as={Flex}>
