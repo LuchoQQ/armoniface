@@ -3,7 +3,6 @@ import {
   Button,
   Flex,
   Icon,
-  Text,
   useDisclosure,
   Divider,
 } from "@chakra-ui/react";
@@ -13,6 +12,7 @@ import { useRouter } from "next/router";
 import { AiOutlineMenu, AiFillInstagram, AiFillMail } from "react-icons/ai";
 import ChakraNextImage from "./ChakraNextImage";
 import NavbarLinkScroll from "./NavbarLinkScroll";
+
 
 const NavbarIndex: React.FC = () => {
   const router = useRouter();
@@ -53,7 +53,7 @@ const NavbarIndex: React.FC = () => {
         <NavbarLinkScroll text="Contáctanos" path="contact" />
         <Divider orientation="vertical" />
         <Button
-          fontSize="xl"
+          fontSize="lg"
           ml="auto"
           onClick={() => {
             router.push("/login");
@@ -66,7 +66,7 @@ const NavbarIndex: React.FC = () => {
           Acceder
         </Button>
         <Button
-          fontSize="xl"
+          fontSize="lg"
           bg="secondary"
           color="fontSecondary"
           _hover={{ bg: "#e09e24" }}
