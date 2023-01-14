@@ -1,17 +1,26 @@
-import { Box, Button, Flex, Grid, Text, chakra, keyframes, shouldForwardProp, useTheme } from "@chakra-ui/react";
+import {
+    Box,
+    Button,
+    Flex,
+    Grid,
+    Text,
+    chakra,
+    keyframes,
+    shouldForwardProp,
+    useTheme,
+} from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import ChakraNextImage from "../components/ChakraNextImage";
 import { isValidMotionProp, motion } from "framer-motion";
 
 const IndexPage: React.FC = () => {
-  const [width, setWidth] = useState(0);
+    const [width, setWidth] = useState(0);
     const [height, setHeight] = useState(0);
     useEffect(() => {
         setWidth(window.innerWidth);
         setHeight(window.innerHeight);
     }, []);
     const theme: any = useTheme();
-
 
     const animationKeyframes = keyframes`
     0% { transform: scale(1) rotate(0); border-radius: 20%;  x: '500px'}
@@ -27,8 +36,17 @@ const IndexPage: React.FC = () => {
     });
     return (
         <>
-            <Flex w={width} h={height - 80} position="relative" mt="80px">
-                <ChakraNextImage src="/assets/bg.jpeg" position="absolute" />
+            <Flex
+                w={width}
+                h={height}
+                position="relative"
+                id="inicio"
+            >
+                <ChakraNextImage
+                    src="/assets/bg.jpeg"
+                    position="absolute"
+                />
+
                 <Flex position="relative" w="100%" h="100%">
                     <Flex
                         w="50%"
@@ -85,12 +103,7 @@ const IndexPage: React.FC = () => {
                         />
                     </Flex>
                 </Flex>
-                <Flex
-                    w="100%"
-                    bg="transparent"
-                    position="absolute"
-                    alignSelf="flex-end"
-                >
+                <Flex w="100%" bg="transparent" position="absolute" alignSelf='flex-end'>
                     <ChakraBox
                         animate={{
                             x: [0, -width],

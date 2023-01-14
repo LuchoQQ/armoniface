@@ -46,8 +46,8 @@ const Home: NextPage = () => {
     });
     return (
         <>
-            <NavbarIndex />
-            <Grid justifyContent="center" overflow="hidden" id="inicio">
+            <Grid justifyContent="center" overflow="hidden">
+                <NavbarIndex />
                 <IndexPage />
                 <AboutPage />
                 <CoursesPage />
