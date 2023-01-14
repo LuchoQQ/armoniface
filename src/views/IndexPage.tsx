@@ -1,96 +1,136 @@
-import { Button, Flex, Grid, Text } from "@chakra-ui/react";
-import React from "react";
+import { Box, Button, Flex, Grid, Text, chakra, keyframes, shouldForwardProp, useTheme } from "@chakra-ui/react";
+import React, { useEffect, useState } from "react";
 import ChakraNextImage from "../components/ChakraNextImage";
+import { isValidMotionProp, motion } from "framer-motion";
 
 const IndexPage: React.FC = () => {
-  return (
-    <>
-      <Flex h="100vh" justifyContent="center" id="inicio">
-        <Flex
-          w="50%"
-          h="100%"
-          alignItems="center"
-          justifyContent="center"
-          position="relative"
-          zIndex="1"
-          flexDir="column"
-          fontFamily="primary"
-        >
-          <Grid
-            fontSize={["xl", "4xl", "4xl", "4xl", "4xl", "4xl"]}
-            // color="#d3d2d2"
-          >
-            <Text fontSize={["lg", "lg", "lg", "lg", "sm"]} color="font">
-              Health&Care
-            </Text>
-            <Text color="font" fontWeight="bold">
-              ARMONIFACE
-            </Text>
+  const [width, setWidth] = useState(0);
+    const [height, setHeight] = useState(0);
+    useEffect(() => {
+        setWidth(window.innerWidth);
+        setHeight(window.innerHeight);
+    }, []);
+    const theme: any = useTheme();
 
-            <Text
-              fontSize={["md", "md", "md", "md", "md", "md"]}
-              w="400px"
-              mt="6"
-              color="font"
-            >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-              ut luctus quam. Nunc in ligula orci.
-            </Text>
-            <Text
-              fontSize={["md", "md", "md", "md", "sm", "sm"]}
-              w="400px"
-              mt="1rem"
-              color="font"
-            >
-              Cras vulputate dictum felis eu sodales. Proin nisl neque, maximus
-              nec enim id{" "}
-            </Text>
-            <Button
-              bg="secondary"
-              color="fontSecondary"
-              _hover={{ bg: "#e09e24" }}
-              _active={{ bg: "" }}
-              mt="2rem"
-            //   w=""
-            >
-              Ver más
-            </Button>
-          </Grid>
-        </Flex>
-        <Flex
-          w="50%"
-          h="100%"
-          /*  bg="#dedede"
-                    rounded="50%"
-                    boxShadow='0px 0px 20px 10px #dedede' */
-          justifyContent="center"
-          position="relative"
-          display={{ base: "none", md: "flex" }}
-        >
-          <ChakraNextImage
-            src="/assets/imac2.png"
-            w="500px"
-            h="550px"
-            alignSelf="flex-end"
-            fit="contain"
-            position="relative"
-            left="0"
-            top="4px"
-            _before={{
-              content: '""',
-              width: "1px",
-              h: "1px",
-              bg: "#",
-              left: "50%",
-              position: "absolute",
-              top: "200px",
-              boxShadow: "0px 0px 1000px 70px #fff",
-            }}
-          />
-        </Flex>
-      </Flex>
-    </>
-  );
+
+    const animationKeyframes = keyframes`
+    0% { transform: scale(1) rotate(0); border-radius: 20%;  x: '500px'}
+    100% { transform: scale(1) rotate(360deg); border-radius: 20%; x: '0px' }
+  `;
+    const animation = `${animationKeyframes} 90s linear infinite`;
+    const ChakraBox = chakra(motion.div, {
+        /**
+         * Allow motion props and non-Chakra props to be forwarded.
+         */
+        shouldForwardProp: (prop) =>
+            isValidMotionProp(prop) || shouldForwardProp(prop),
+    });
+    return (
+        <>
+            <Flex w={width} h={height - 80} position="relative" mt="80px">
+                <ChakraNextImage src="/assets/bg.jpeg" position="absolute" />
+                <Flex position="relative" w="100%" h="100%">
+                    <Flex
+                        w="50%"
+                        flexDir="column"
+                        justifyContent="center"
+                        alignItems="flex-end"
+                    >
+                        <Text
+                            fontFamily="primary"
+                            fontSize="5xl"
+                            color="#f1f2f3"
+                        >
+                            <span style={{ fontWeight: "bold" }}>
+                                Capacitate
+                            </span>{" "}
+                            en <br />
+                            <span
+                                style={{
+                                    fontWeight: "900",
+                                    fontFamily: theme.fonts.secondary,
+                                }}
+                            >
+                                ARMONIZACION FACIAL
+                            </span>{" "}
+                            <br />
+                            con{" "}
+                            <span style={{ fontWeight: "bold" }}>
+                                especialistas
+                            </span>{" "}
+                            del área
+                            <br />
+                            <Button
+                                fontSize="lg"
+                                bg="secondary"
+                                color="fontSecondary"
+                                _hover={{ bg: "#e09e24" }}
+                                _active={{ bg: "" }}
+                            >
+                                Ver más
+                            </Button>
+                        </Text>
+                    </Flex>
+                    <Flex
+                        w="50%"
+                        h="100%"
+                        flexDir="column"
+                        justifyContent="flex-end"
+                    >
+                        <Box w="1rem" h="1rem" />
+                        <ChakraNextImage
+                            src="/assets/imac2.png"
+                            h="500px"
+                            fit="contain"
+                        />
+                    </Flex>
+                </Flex>
+                <Flex
+                    w="100%"
+                    bg="transparent"
+                    position="absolute"
+                    alignSelf="flex-end"
+                >
+                    <ChakraBox
+                        animate={{
+                            x: [0, -width],
+                        }}
+                        // @ts-ignore no problem in operation, although type error appears.
+                        transition={{
+                            duration: 30,
+                            ease: "linear",
+                            repeat: Infinity,
+                            repeatType: "loop",
+                        }}
+                        left="0"
+                        w="100%"
+                    >
+                        <Flex
+                            h="20vh"
+                            alignItems="center"
+                            gap="5rem"
+                            fontSize="9xl"
+                            fontFamily={theme.fonts.secondary}
+                            color="rgba(255,255,255,0.03)"
+                            whiteSpace="nowrap"
+                            w="100%"
+                        >
+                            <Text>ARMONIFACE</Text>
+                            <Text>ARMONIFACE</Text>
+                            <Text>ARMONIFACE</Text>
+                            <Text>ARMONIFACE</Text>
+                            <Text>ARMONIFACE</Text>
+                            <Text>ARMONIFACE</Text>
+                            <Text>ARMONIFACE</Text>
+                            <Text>ARMONIFACE</Text>
+                            <Text>ARMONIFACE</Text>
+                            <Text>ARMONIFACE</Text>
+                        </Flex>
+                    </ChakraBox>
+                </Flex>
+            </Flex>
+        </>
+    );
 };
 
 export default IndexPage;

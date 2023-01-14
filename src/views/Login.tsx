@@ -57,11 +57,7 @@ const Login: NextPage = (props) => {
         });
     };
     const { data: session, status }: any = useSession();
-    useEffect(() => {
-        if (status == "authenticated") {
-            router.push("/campus");
-        }
-    }, [status]);
+   
 
     return (
         <>

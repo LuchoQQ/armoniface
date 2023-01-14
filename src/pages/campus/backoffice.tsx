@@ -27,7 +27,7 @@ const Backoffice: React.FC = () => {
         });
     }, []);
 
-    const router = useRouter()
+    const router = useRouter();
     const { data: session, status }: any = useSession({
         required: true,
         onUnauthenticated() {
@@ -46,11 +46,13 @@ const Backoffice: React.FC = () => {
                                 icon={AiOutlineUsergroupAdd}
                                 text="Users"
                                 setCategory={setCategory}
+                                category={category}
                             />
                             <BackofficeItem
                                 icon={FaChalkboardTeacher}
                                 text="Courses"
                                 setCategory={setCategory}
+                                category={category}
                             />
                         </Flex>
                         {category === "Users" && (

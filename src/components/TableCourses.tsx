@@ -69,7 +69,20 @@ const TableCourses: React.FC<Props> = ({ courses, setCourses }) => {
                     <Tbody>
                         {courses?.map((course, key) => {
                             return (
-                                <Tr key={key}>
+                                <Tr
+                                    key={key}
+                                    position="relative"
+                                    _after={{
+                                        content: '""',
+
+                                        position: "absolute",
+                                        h: "1px",
+                                        w: "80%",
+                                        left: "10%",
+                                        top: "100%",
+                                        bg: "#cccccc",
+                                    }}
+                                >
                                     <>
                                         <Td>{course.title}</Td>
                                         <Td>{course.topic}</Td>
@@ -78,7 +91,7 @@ const TableCourses: React.FC<Props> = ({ courses, setCourses }) => {
                                                 as={ImNewTab}
                                                 fontSize="2xl"
                                                 cursor="pointer"
-                                                _hover={{color: "#cf962d"}}
+                                                _hover={{ color: "#cf962d" }}
                                             />
                                         </Td>
                                         <Td>
@@ -86,8 +99,10 @@ const TableCourses: React.FC<Props> = ({ courses, setCourses }) => {
                                                 as={BsTrash}
                                                 fontSize="2xl"
                                                 cursor="pointer"
-                                                _hover={{color: "#cf962d"}}
-                                                onClick={() => onDelete(course._id)}
+                                                _hover={{ color: "#cf962d" }}
+                                                onClick={() =>
+                                                    onDelete(course._id)
+                                                }
                                             />
                                         </Td>
                                         <Td>
@@ -95,7 +110,7 @@ const TableCourses: React.FC<Props> = ({ courses, setCourses }) => {
                                                 as={AiOutlineEdit}
                                                 fontSize="2xl"
                                                 cursor="pointer"
-                                                _hover={{color: "#cf962d"}}
+                                                _hover={{ color: "#cf962d" }}
                                             />
                                         </Td>
                                     </>

@@ -45,7 +45,12 @@ const TableUser: React.FC<Props> = ({ users, setUsers }) => {
         });
     return (
         <>
-            <ModalUser isOpen={isOpen} onClose={onClose} users={users} setUsers={setUsers}/>
+            <ModalUser
+                isOpen={isOpen}
+                onClose={onClose}
+                users={users}
+                setUsers={setUsers}
+            />
 
             <AddButton onOpen={onOpen} title="Agregar Usuario" />
             <TableContainer w="100%">
@@ -63,7 +68,20 @@ const TableUser: React.FC<Props> = ({ users, setUsers }) => {
                     <Tbody>
                         {users?.map((user, index) => {
                             return (
-                                <Tr key={index}>
+                                <Tr
+                                    key={index}
+                                    position="relative"
+                                    _after={{
+                                        content: '""',
+
+                                        position: "absolute",
+                                        h: "1px",
+                                        w: "80%",
+                                        left: "10%",
+                                        top: "100%",
+                                        bg: "#cccccc",
+                                    }}
+                                >
                                     <>
                                         <Td>
                                             <Image
@@ -84,9 +102,11 @@ const TableUser: React.FC<Props> = ({ users, setUsers }) => {
                                                 cursor="pointer"
                                                 fontSize="2xl"
                                                 onClick={() => {
-                                                    Router.push(`/users/${user._id}`);
+                                                    Router.push(
+                                                        `/users/${user._id}`
+                                                    );
                                                 }}
-                                                _hover={{color: "#cf962d"}}
+                                                _hover={{ color: "#cf962d" }}
                                             />
                                         </Td>
                                         <Td>
@@ -97,7 +117,7 @@ const TableUser: React.FC<Props> = ({ users, setUsers }) => {
                                                 onClick={() =>
                                                     onDelete(user._id)
                                                 }
-                                                _hover={{color: "#cf962d"}}
+                                                _hover={{ color: "#cf962d" }}
                                             />
                                         </Td>
                                         <Td>
@@ -105,7 +125,7 @@ const TableUser: React.FC<Props> = ({ users, setUsers }) => {
                                                 as={AiOutlineEdit}
                                                 fontSize="2xl"
                                                 cursor="pointer"
-                                                _hover={{color: "#cf962d"}}
+                                                _hover={{ color: "#cf962d" }}
                                             />
                                         </Td>
                                     </>
