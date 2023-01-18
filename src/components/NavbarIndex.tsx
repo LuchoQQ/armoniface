@@ -9,7 +9,12 @@ import {
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { useRouter } from "next/router";
-import { AiOutlineMenu, AiFillInstagram, AiFillMail, AiOutlineClose } from "react-icons/ai";
+import {
+    AiOutlineMenu,
+    AiFillInstagram,
+    AiFillMail,
+    AiOutlineClose,
+} from "react-icons/ai";
 import ChakraNextImage from "./ChakraNextImage";
 import NavbarLinkScroll from "./NavbarLinkScroll";
 import { useTheme } from "@emotion/react";
@@ -68,28 +73,30 @@ const NavbarIndex: React.FC = () => {
             </Flex>
 
             {/* Mobile navbar */}
-            <Box
-                display={['block', 'block', 'none', 'none']}
+            <Flex
+                display={["flex", "flex", "none", "none"]}
                 position="fixed"
-                top='-4px'
+                top="-4px"
                 zIndex="100"
+                w="100%"
+                h="10vh"
+                bg="#f1f2f3"
+                justifyContent='space-between'
+                px='2rem'
+                alignItems='center'
             >
-                <Box bg="#f1f2f3" h="47px"  w="100vw">
-                    <ChakraNextImage
-                        src="/assets/logo.webp"
-                        h="40px"
-                        w="80px"
-                        alt="logo"
-                        ml="4"
-                        mt="1"
-                    />
-                </Box>
+                <ChakraNextImage
+                    src="/assets/logo.webp"
+                    h="40px"
+                    w="80px"
+                    alt="logo"
+                    ml="4"
+                    mt="1"
+                />
                 <Icon
                     as={AiOutlineMenu}
+                    fontSize="3xl"
                     {...getButtonProps()}
-                    position="absolute"
-                    top="4"
-                    right="3"
                     zIndex="100"
                 />
                 <motion.div
@@ -120,7 +127,7 @@ const NavbarIndex: React.FC = () => {
                                 top="4"
                                 right="3"
                                 zIndex="100"
-                                fontSize="2xl"
+                                fontSize="3xl"
                             />
                             <NavbarLinkScroll text="Inicio" path="inicio" />
 
@@ -134,14 +141,18 @@ const NavbarIndex: React.FC = () => {
                             />
                         </Flex>
                         <Divider />
-                        <Flex flexDirection="column" gap="1rem" alignItems='center'>
+                        <Flex
+                            flexDirection="column"
+                            gap="1rem"
+                            alignItems="center"
+                        >
                             <Button
                                 w="80%"
                                 fontFamily="primary"
                                 color="#dedede"
                                 bg="secondary"
                                 _hover={{
-                                    bg: '#023b3b'
+                                    bg: "#023b3b",
                                 }}
                             >
                                 Acceder
@@ -161,7 +172,7 @@ const NavbarIndex: React.FC = () => {
                         </Flex>
                     </Flex>
                 </motion.div>
-            </Box>
+            </Flex>
         </>
     );
 };
