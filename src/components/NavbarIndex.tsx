@@ -69,6 +69,7 @@ const NavbarIndex: React.FC = () => {
 
             {/* Mobile navbar */}
             <Box
+                display={['block', 'block', 'none', 'none']}
                 position="fixed"
                 top='-4px'
                 zIndex="100"
