@@ -40,7 +40,7 @@ const IndexPage: React.FC = () => {
         <>
             <Flex
                 w={width}
-                h={height}
+                minH={height}
                 position="relative"
                 id="inicio"
             >
@@ -49,16 +49,17 @@ const IndexPage: React.FC = () => {
                     position="absolute"
                 />
 
-                <Flex position="relative" w="100%" h="100%">
+                <Flex position="relative" w="100%" h="100%" flexDir={['column','column','row','row','row']} gap={['5rem','5rem','0rem','0rem','0rem']}>
                     <Flex
-                        w="50%"
+                        w={["100%","100%","50%","50%","50%"]}
                         flexDir="column"
                         justifyContent="center"
-                        alignItems="flex-end"
+                        alignItems={["center","center","flex-end","flex-end","flex-end"]}
+                        pt={['5rem','5rem','5rem','0rem','0rem']}
                     >
                         <Text
                             fontFamily="primary"
-                            fontSize="5xl"
+                            fontSize={["2xl","3xl","5xl","5xl","5xl"]}
                             color="#f1f2f3"
                         >
                             <span style={{ fontWeight: "bold" }}>
@@ -93,7 +94,7 @@ const IndexPage: React.FC = () => {
                         </Text>
                     </Flex>
                     <Flex
-                        w="50%"
+                        w={["100%","100%","50%","50%","50%"]}
                         h="100%"
                         flexDir="column"
                         justifyContent="flex-end"
