@@ -7,16 +7,38 @@ type Props = {
     icon: IconType;
     text: string;
     setCategory: React.Dispatch<React.SetStateAction<string>>;
-    category: string
+    category: string;
 };
 
-const BackofficeItem: React.FC<Props> = ({ icon, text, setCategory, category }) => {
-    const theme: any = useTheme()
+const BackofficeItem: React.FC<Props> = ({
+    icon,
+    text,
+    setCategory,
+    category,
+}) => {
+    const theme: any = useTheme();
     return (
         <>
-            <Flex cursor="pointer"  onClick={() => setCategory(text)}  rounded='20px' border={`1px solid ${theme.colors.secondary} `} px='1rem' py='.5rem'>
-                <Icon as={icon} fontSize="xl" />
-                <Text ml="2" color={text ===  category ? theme.colors.secondary : '#202020'}>{text}</Text>
+            <Flex
+                cursor="pointer"
+                onClick={() => setCategory(text)}
+                rounded="20px"
+                border={`1px solid ${theme.colors.secondary} `}
+                px="1rem"
+                py=".5rem"
+                bg='primary'
+                boxShadow='rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;'
+            >
+                <Icon as={icon} fontSize="xl" fill='#f1f2f3'/>
+                <Text
+                    ml="2"
+                    fontFamily="secondary"
+                    color={
+                        text === category ? '#202020' : "#f1f2f3"
+                    }
+                >
+                    {text}
+                </Text>
             </Flex>
         </>
     );

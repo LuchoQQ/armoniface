@@ -153,7 +153,11 @@ const ModalUser: React.FC<Props> = ({ onClose, isOpen, setUsers, users }) => {
                                                 </FormControl>
                                                 <Button
                                                     type="submit"
-                                                    fontFamily="tertiary" color="fontSecondary" bg="secondary" _hover={{ bg: "#e09e24" }} _active={{ bg: "" }}
+                                                    fontFamily="secondary"
+                                                    color="secondary"
+                                                    border={`1px solid ${theme.colors.primary}`}
+                                                    _hover={{ bg: "#e09e24" }}
+                                                    _active={{ bg: "" }}
                                                     width="full"
                                                 >
                                                     Crear

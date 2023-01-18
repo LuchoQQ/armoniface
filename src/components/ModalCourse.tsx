@@ -35,7 +35,7 @@ const ModalCourse: React.FC<Props> = ({ onClose, isOpen, setCourses, courses }) 
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
                 <ModalContent>
-                    <ModalHeader>Crear usuario</ModalHeader>
+                    <ModalHeader>Crear curso</ModalHeader>
                     <ModalCloseButton />
                     <ModalBody>
                         <Flex
@@ -112,6 +112,7 @@ const ModalCourse: React.FC<Props> = ({ onClose, isOpen, setCourses, courses }) 
                                                         name="url"
                                                         type="text"
                                                         variant="filled"
+                                                        required={true}
                                                     />
                                                 </FormControl>
                                                 <Button

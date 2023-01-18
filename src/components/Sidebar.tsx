@@ -39,8 +39,8 @@ const Sidebar: React.FC<Props> = ({ open, setOpen }) => {
                     <Icon
                         cursor="pointer"
                         as={HiBars3}
-                        fill={open ? "secondary" : "font"}
-                        fontSize="2xl"
+                        fill="#dedede"
+                        fontSize="3xl"
                         onClick={() => setOpen(!open)}
                         transform={open ? "rotate(90deg)" : "rotate(0)"}
                         transition="all .2s ease"
@@ -66,18 +66,14 @@ const Sidebar: React.FC<Props> = ({ open, setOpen }) => {
                         display={open}
                     />
                 )}
-                <SidebarLink
-                    icon={BsBook}
-                    path="/campus/about"
-                    text="Nosotros"
-                    display={open}
-                />
+
                 <Flex
                     justifyContent="start"
                     gap="1rem"
                     pl="1rem"
                     onClick={() => signOut()}
                     cursor="pointer"
+                    mt="5rem"
                 >
                     <Icon
                         as={RiLogoutBoxLine}
@@ -86,7 +82,7 @@ const Sidebar: React.FC<Props> = ({ open, setOpen }) => {
                         fill="#f1f2f3"
                     />
                     <Text
-                        fontFamily="tertiary"
+                        fontFamily="secondary"
                         alignSelf="center"
                         display={open ? "block" : "none"}
                         fontSize="md"

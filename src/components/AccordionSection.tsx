@@ -26,7 +26,7 @@ const AccordionSection: React.FC<Props> = ({ topic, courses, setSelected }) => {
         <AccordionItem p="1rem">
             <AccordionButton>
                 <Box flex="1" textAlign="left">
-                    <Text fontFamily="tertiary" fontSize="sm">{topic}</Text>
+                    <Text fontFamily="secondary" fontSize="sm">{topic}</Text>
                 </Box>
                 <AccordionIcon />
             </AccordionButton>

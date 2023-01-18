@@ -12,27 +12,49 @@ type Props = {
     onClick?: () => void;
 };
 
-const SidebarLink: React.FC<Props> = ({ icon, path, text, display, onClick }) => {
+const SidebarLink: React.FC<Props> = ({
+    icon,
+    path,
+    text,
+    display,
+    onClick,
+}) => {
     const router = useRouter().pathname;
 
     return (
         <>
             <Link href={path} onClick={onClick}>
-                <Flex justifyContent="start" gap="1rem" pl="1rem">
+                <Flex
+                    justifyContent="start"
+                    gap="1rem"
+                    pl="1rem"
+                    position='relative'
+                    _before={{
+                        content: `""`,
+                        position: 'absolute',
+                        height: '100%',
+                        bg: 'red',
+                        left: '0',
+                        top: '0'
+                    }}
+                >
                     <Icon
                         as={icon}
                         alignSelf="center"
                         fontSize="2xl"
-                        fill={
-                            path === router ? "secondary" : "#f1f2f3"
-                        }
+                        fill='#38a868'
+
                     />
                     <Text
-                        fontFamily="tertiary"
-                        color={path === router ? "secondary" : "#f1f2f3"}
+                        fontFamily="secondary"
+                        color="#fff"
+                        _hover={{
+                            color: '#dedede'
+                        }}
                         alignSelf="center"
                         display={display ? "block" : "none"}
-                        fontSize="md"
+                        fontSize="sm"
+                        
                     >
                         {text}
                     </Text>
