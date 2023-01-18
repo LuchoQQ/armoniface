@@ -48,6 +48,7 @@ const NavbarIndex: React.FC = () => {
                     w="100px"
                     alt="logo"
                     mr="10"
+                    fit='cover'
                 />
                 <Divider orientation="vertical" />
                 <NavbarLinkScroll text="Inicio" path="inicio" />

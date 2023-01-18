@@ -1,32 +1,31 @@
-import { Flex, Icon, Text } from "@chakra-ui/react";
+import { Flex, Icon, Text, useTheme } from "@chakra-ui/react";
 import React from "react";
 import { IconType } from "react-icons/lib";
 
 type Props = {
-    icon: IconType,
-    text: string
-}
+    icon: IconType;
+    text: string;
+};
 
-const AboutIcon: React.FC<Props> = ({icon, text}) => {
+const AboutIcon: React.FC<Props> = ({ icon, text }) => {
+    const theme: any = useTheme();
+
     return (
         <>
             <Flex flexDir="column">
-                <Flex
-                    w="4rem"
-                    h="4rem"
-                    justifyContent="center"
-                    alignItems="center"
-                    rounded="50%"
-                    bg="primary"
-                    flexDir="column"
-                >
-                    <Icon
-                        as={icon}
-                        fontSize="4xl"
-                        fill="secondary"
-                    />
+                <Flex justifyContent='center'>
+                    <Flex
+                        w="4rem"
+                        h="4rem"
+                        alignItems="center"
+                        justifyContent="center"
+                        rounded="50%"
+                        border={`1px solid ${theme.colors.primary}`}
+                    >
+                        <Icon as={icon} fontSize="4xl" fill="primary" />
+                    </Flex>
                 </Flex>
-                <Text textAlign="center">{text}</Text>
+                <Text fontFamily='secondary' mt='1rem' textAlign='center'>{text}</Text>
             </Flex>
         </>
     );
