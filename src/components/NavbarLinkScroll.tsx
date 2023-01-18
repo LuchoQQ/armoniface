@@ -1,4 +1,4 @@
-import { Box, useTheme } from "@chakra-ui/react";
+import { Box, Text, useTheme } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import React from "react";
 import { Link } from "react-scroll";
@@ -20,6 +20,7 @@ const NavbarLinkScroll: React.FC<Props> = ({ path, text }) => {
         smooth={true}
         duration={500}
         cursor='pointer'
+        
         // @ts-ignore
         activeStyle={{
           color: theme.colors.primary,
@@ -31,7 +32,7 @@ const NavbarLinkScroll: React.FC<Props> = ({ path, text }) => {
         //|mx="1"
         //_hover={{ color: "#cf962d" }}
       >
-        {text}
+        <Text >{text}</Text>
       </Box>
     </>
   );

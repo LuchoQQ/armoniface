@@ -9,7 +9,7 @@ import {
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { useRouter } from "next/router";
-import { AiOutlineMenu, AiFillInstagram, AiFillMail } from "react-icons/ai";
+import { AiOutlineMenu, AiFillInstagram, AiFillMail, AiOutlineClose } from "react-icons/ai";
 import ChakraNextImage from "./ChakraNextImage";
 import NavbarLinkScroll from "./NavbarLinkScroll";
 import { useTheme } from "@emotion/react";
@@ -69,11 +69,11 @@ const NavbarIndex: React.FC = () => {
 
             {/* Mobile navbar */}
             <Box
-                position="relative"
-                display={{ base: "block", md: "none" }}
+                position="fixed"
+                top='-4px'
                 zIndex="100"
             >
-                <Box bg="#f1f2f3" h="47px" position="fixed" w="100vw">
+                <Box bg="#f1f2f3" h="47px"  w="100vw">
                     <ChakraNextImage
                         src="/assets/logo.webp"
                         h="40px"
@@ -97,72 +97,55 @@ const NavbarIndex: React.FC = () => {
                     initial={false}
                     onAnimationStart={() => setHidden(false)}
                     onAnimationComplete={() => setHidden(!isOpen)}
-                    animate={{ width: isOpen ? 300 : 0 }}
+                    animate={{ width: isOpen ? "100%" : 0 }}
                     style={{
-                        background: "#adbfa8",
+                        background: "#f1f2f3",
                         // backdropFilter: "blur(10px)",
                         overflow: "hidden",
                         whiteSpace: "nowrap",
-                        position: "absolute",
+                        position: "fixed",
                         right: "0",
                         height: "100vh",
                         top: "0",
+                        zIndex: "100",
                     }}
                 >
                     <Flex direction="column" mt="10" gap="3rem">
-                        <Flex direction="column" gap="2rem">
-                            <Box
-                                fontFamily="tertiary"
-                                alignSelf="flex-start"
-                                fontSize="md"
-                            >
-                                Inicio
-                            </Box>
-                            <Box
-                                fontFamily="tertiary"
-                                alignSelf="flex-start"
-                                fontSize="md"
-                            >
-                                Sobre nosotros
-                            </Box>
+                        <Flex direction="column" gap="2rem" px="4rem" py="2rem">
+                            <Icon
+                                as={AiOutlineClose}
+                                {...getButtonProps()}
+                                position="absolute"
+                                top="4"
+                                right="3"
+                                zIndex="100"
+                                fontSize="2xl"
+                            />
+                            <NavbarLinkScroll text="Inicio" path="inicio" />
 
-                            <Box
-                                fontFamily="tertiary"
-                                alignSelf="flex-start"
-                                fontSize="md"
-                            >
-                                Galería
-                            </Box>
-                            <Box
-                                fontFamily="tertiary"
-                                alignSelf="flex-start"
-                                fontSize="md"
-                            >
-                                Contáctanos
-                            </Box>
+                            <NavbarLinkScroll text="Nosotros" path="about" />
+
+                            <NavbarLinkScroll text="Cursos" path="courses" />
+
+                            <NavbarLinkScroll
+                                text="Contáctanos"
+                                path="contact"
+                            />
                         </Flex>
                         <Divider />
-                        <Flex flexDirection="column" gap="1rem">
+                        <Flex flexDirection="column" gap="1rem" alignItems='center'>
                             <Button
-                                fontFamily="tertiary"
-                                color="fontSecondary"
+                                w="80%"
+                                fontFamily="primary"
+                                color="#dedede"
                                 bg="secondary"
-                                _hover={{ bg: "#e09e24" }}
-                                _active={{ bg: "" }}
+                                _hover={{
+                                    bg: '#023b3b'
+                                }}
                             >
                                 Acceder
                             </Button>
-                            <Button
-                                fontFamily="tertiary"
-                                color="fontSecondary"
-                                bg="secondary"
-                                _hover={{ bg: "#e09e24" }}
-                                _active={{ bg: "" }}
-                            >
-                                Registrarse
-                            </Button>
                         </Flex>
-                        <Divider />
                         <Flex gap="2rem" justify="center">
                             <Icon
                                 fill="#black"
