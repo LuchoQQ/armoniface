@@ -48,7 +48,7 @@ const ModalCourse: React.FC<Props> = ({
             });
     }, []);
     const [checkbox, setCheckbox] = React.useState(false);
-    const toast = useToast()
+    const toast = useToast();
     return (
         <>
             <Modal isOpen={isOpen} onClose={onClose}>
@@ -110,7 +110,7 @@ const ModalCourse: React.FC<Props> = ({
                                                         variant="filled"
                                                     />
                                                 </FormControl>
-                                                
+
                                                 <FormControl>
                                                     <FormLabel htmlFor="topic">
                                                         Tema
@@ -121,12 +121,18 @@ const ModalCourse: React.FC<Props> = ({
                                                         name="topic"
                                                         type="text"
                                                         variant="filled"
-                                                        placeholder='Selecciona un tema'
+                                                        placeholder="Selecciona un tema"
                                                     >
                                                         {topics.map(
-                                                            (topic: Topic) => {
+                                                            (
+                                                                topic: Topic,
+                                                                key
+                                                            ) => {
                                                                 return (
                                                                     <option
+                                                                        key={
+                                                                            key
+                                                                        }
                                                                         value={
                                                                             topic.title
                                                                         }
@@ -139,7 +145,7 @@ const ModalCourse: React.FC<Props> = ({
                                                             }
                                                         )}
                                                     </Field>
-                                                    </FormControl>
+                                                </FormControl>
                                                 <FormControl>
                                                     <FormLabel htmlFor="name">
                                                         URL
