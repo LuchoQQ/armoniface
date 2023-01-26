@@ -67,8 +67,32 @@ const API = {
         }
     },
 
+    // TOPICS METHODS
 
-
+    getTopics: async () => {
+        try {
+            return await axios.get(`${SERVER_URL}/topics/`);
+        } catch (error) {
+            return error;
+        }
+    },
+    createTopic: async (values: {
+        title: string;
+    }) => {
+        try {
+            return await axios.post(`${SERVER_URL}/topics/`, values);
+        } catch (error) {
+            return error;
+        }
+    },
+    deleteTopic: async (id: string) => {
+        try {
+            return await axios.delete(`${SERVER_URL}/topics/${id}`);
+        } catch (error) {
+            return error;
+        }
+    },
+    
 
     // user and courses methods
     getMyCoursesByUserId: async (id: string | string[]) => {

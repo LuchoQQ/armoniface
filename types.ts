@@ -13,3 +13,8 @@ export interface Course {
     url: string;
     topic: string
 }
+
+export interface Topic {
+    _id: string;
+    title: string;
+}

@@ -62,8 +62,9 @@ const TableCourses: React.FC<Props> = ({ courses, setCourses }) => {
                 <Table variant="simple">
                     <Thead>
                         <Tr>
-                            <Th>Title</Th>
-                            <Th>Description</Th>
+                            <Th>Titulo</Th>
+                            <Th>Tema</Th>
+                            <Th>Borrar</Th>
                         </Tr>
                     </Thead>
                     <Tbody>
@@ -84,16 +85,8 @@ const TableCourses: React.FC<Props> = ({ courses, setCourses }) => {
                                     }}
                                 >
                                     <>
-                                        <Td>{course.title}</Td>
-                                        <Td>{course.topic}</Td>
-                                        <Td>
-                                            <Icon
-                                                as={ImNewTab}
-                                                fontSize="2xl"
-                                                cursor="pointer"
-                                                _hover={{ color: "#cf962d" }}
-                                            />
-                                        </Td>
+                                        <Td>{course?.title}</Td>
+                                        <Td>{course?.topic}</Td>
                                         <Td>
                                             <Icon
                                                 as={BsTrash}
@@ -103,14 +96,6 @@ const TableCourses: React.FC<Props> = ({ courses, setCourses }) => {
                                                 onClick={() =>
                                                     onDelete(course._id)
                                                 }
-                                            />
-                                        </Td>
-                                        <Td>
-                                            <Icon
-                                                as={AiOutlineEdit}
-                                                fontSize="2xl"
-                                                cursor="pointer"
-                                                _hover={{ color: "#cf962d" }}
                                             />
                                         </Td>
                                     </>

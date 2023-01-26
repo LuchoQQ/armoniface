@@ -22,22 +22,20 @@ import { Field, Formik } from "formik";
 import React, { useEffect } from "react";
 import API from "../utils/API";
 import { Course, Topic } from "../../types";
-import { AxiosResponse } from "axios";
 
 type Props = {
     isOpen: boolean;
     onClose: () => void;
-    setCourses: React.Dispatch<React.SetStateAction<Course[]>>;
-    courses: Course[];
+    setTopics: React.Dispatch<React.SetStateAction<Topic[]>>;
+    topics: Topic[];
 };
 
-const ModalCourse: React.FC<Props> = ({
+const ModalTopic: React.FC<Props> = ({
     onClose,
     isOpen,
-    setCourses,
-    courses,
+    setTopics,
+    topics,
 }) => {
-    const [topics, setTopics] = React.useState<Topic[]>([]);
     useEffect(() => {
         API.getTopics()
             .then((res: any) => {
@@ -47,14 +45,13 @@ const ModalCourse: React.FC<Props> = ({
                 console.log(err);
             });
     }, []);
-    const [checkbox, setCheckbox] = React.useState(false);
     const toast = useToast()
     return (
         <>
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
                 <ModalContent>
-                    <ModalHeader>Crear curso</ModalHeader>
+                    <ModalHeader>Crear Tema</ModalHeader>
                     <ModalCloseButton />
                     <ModalBody>
                         <Flex
@@ -67,26 +64,24 @@ const ModalCourse: React.FC<Props> = ({
                                 <Formik
                                     initialValues={{
                                         title: "",
-                                        topic: "",
-                                        url: "",
                                     }}
                                     onSubmit={async (values) => {
-                                        API.createCourse(values)
+                                        API.createTopic(values)
                                             .then((res: any) => {
                                                 toast({
-                                                    title: "Course creado exitosamente",
+                                                    title: "Tema creado exitosamente",
                                                     status: "success",
                                                     duration: 3000,
                                                 });
-                                                setCourses([
-                                                    ...courses,
+                                                setTopics([
+                                                    ...topics,
                                                     res.data,
                                                 ]);
                                                 onClose();
                                             })
                                             .catch((err) => {
                                                 toast({
-                                                    title: "Error al crear Course",
+                                                    title: "Error al crear Tema",
                                                     description: err.message,
                                                 });
                                             });
@@ -111,48 +106,6 @@ const ModalCourse: React.FC<Props> = ({
                                                     />
                                                 </FormControl>
                                                 
-                                                <FormControl>
-                                                    <FormLabel htmlFor="topic">
-                                                        Tema
-                                                    </FormLabel>
-                                                    <Field
-                                                        as={Select}
-                                                        id="topic"
-                                                        name="topic"
-                                                        type="text"
-                                                        variant="filled"
-                                                        placeholder='Selecciona un tema'
-                                                    >
-                                                        {topics.map(
-                                                            (topic: Topic) => {
-                                                                return (
-                                                                    <option
-                                                                        value={
-                                                                            topic.title
-                                                                        }
-                                                                    >
-                                                                        {
-                                                                            topic.title
-                                                                        }
-                                                                    </option>
-                                                                );
-                                                            }
-                                                        )}
-                                                    </Field>
-                                                    </FormControl>
-                                                <FormControl>
-                                                    <FormLabel htmlFor="name">
-                                                        URL
-                                                    </FormLabel>
-                                                    <Field
-                                                        as={Input}
-                                                        id="url"
-                                                        name="url"
-                                                        type="text"
-                                                        variant="filled"
-                                                        required={true}
-                                                    />
-                                                </FormControl>
                                                 <Button
                                                     type="submit"
                                                     colorScheme="green"
@@ -173,4 +126,4 @@ const ModalCourse: React.FC<Props> = ({
     );
 };
 
-export default ModalCourse;
+export default ModalTopic;

@@ -1,3 +1,4 @@
+import React from "react";
 import {
     Icon,
     Table,
@@ -11,64 +12,66 @@ import {
     useToast,
 } from "@chakra-ui/react";
 import { useTheme } from "@emotion/react";
-import Image from "next/image";
-import Router from "next/router";
-import React from "react";
 import { AiOutlineEdit } from "react-icons/ai";
 import { BsTrash } from "react-icons/bs";
 import { ImNewTab } from "react-icons/im";
-import { User } from "../../types";
-import API from "../utils/API";
+import { Course, Topic } from "../../types";
+import ModalCourse from "./ModalCourse";
 import AddButton from "./AddButton";
-import ModalUser from "./ModalUser";
+import API from "../utils/API";
+import ModalTopic from "./ModalTopic";
+
 type Props = {
-    users: User[];
-    setUsers: React.Dispatch<React.SetStateAction<User[]>>;
+    topics: Topic[];
+    setTopics: React.Dispatch<React.SetStateAction<Topic[]>>;
 };
 
-const TableUser: React.FC<Props> = ({ users, setUsers }) => {
+const TableTopics: React.FC<Props> = ({ topics, setTopics }) => {
+    const { isOpen, onOpen, onClose } = useDisclosure();
     const theme: any = useTheme();
     const toast = useToast();
-    const { isOpen, onOpen, onClose } = useDisclosure();
-
     const onDelete = (id: string) =>
-        API.deleteUser(id)?.then((res) => {
-            // find the index of the user with the id that was deleted and remove it from the array
-            const index = users.findIndex((user) => user._id === id);
-            const newUsers = [...users];
-            newUsers.splice(index, 1);
-            setUsers(newUsers);
-            toast({
-                title: "Usuario eliminado",
-                status: "success",
+        API.deleteTopic(id)
+            ?.then((res) => {
+                toast({
+                    title: "Curso eliminado",
+                    status: "success",
+                });
+                const index = topics.findIndex((topic) => topic._id === id);
+                const newTopics = [...topics];
+                newTopics.splice(index, 1);
+                setTopics(newTopics);
+                // find the index of the user with the id that was deleted and remove it from the array
+            })
+            .catch((err) => {
+                toast({
+                    title: "Error al crear usuario",
+                    description: err.message,
+                });
             });
-        });
     return (
         <>
-            <ModalUser
+            <ModalTopic
                 isOpen={isOpen}
                 onClose={onClose}
-                users={users}
-                setUsers={setUsers}
+                setTopics={setTopics}
+                topics={topics}
             />
 
-            <AddButton onOpen={onOpen} title="Agregar Usuario" />
+            <AddButton onOpen={onOpen} title="Agregar Tema" />
             <TableContainer w="100%">
                 <Table variant="simple">
                     <Thead>
                         <Tr>
-                            <Th>Avatar</Th>
-                            <Th>Nombre</Th>
-                            <Th>Correo</Th>
-                            <Th>Editar</Th>
-                            <Th>Borrar</Th>
+                            <Th>Titulo</Th>
+                            <Th>Tema</Th>
                         </Tr>
                     </Thead>
                     <Tbody>
-                        {users?.map((user, index) => {
+                        {topics?.map((topic, key) => {
                             return (
                                 <Tr
-                                    key={index}
+                                    key={key}
                                     position="relative"
                                     _after={{
                                         content: '""',
@@ -82,40 +85,31 @@ const TableUser: React.FC<Props> = ({ users, setUsers }) => {
                                     }}
                                 >
                                     <>
-                                        <Td>
-                                            <Image
-                                                src={"/profile.svg"}
-                                                alt="user avatar"
-                                                width={50}
-                                                height={50}
-                                                style={{
-                                                    borderRadius: "50%",
-                                                }}
-                                            />
-                                        </Td>
-                                        <Td>{user.name}</Td>
-                                        <Td>{user.email}</Td>
+                                        <Td>{topic?.title}</Td>
                                         <Td>
                                             <Icon
                                                 as={ImNewTab}
-                                                cursor="pointer"
                                                 fontSize="2xl"
-                                                onClick={() => {
-                                                    Router.push(
-                                                        `/users/${user._id}`
-                                                    );
-                                                }}
+                                                cursor="pointer"
                                                 _hover={{ color: "#cf962d" }}
                                             />
                                         </Td>
                                         <Td>
                                             <Icon
                                                 as={BsTrash}
-                                                cursor="pointer"
                                                 fontSize="2xl"
+                                                cursor="pointer"
+                                                _hover={{ color: "#cf962d" }}
                                                 onClick={() =>
-                                                    onDelete(user._id)
+                                                    onDelete(topic._id)
                                                 }
+                                            />
+                                        </Td>
+                                        <Td>
+                                            <Icon
+                                                as={AiOutlineEdit}
+                                                fontSize="2xl"
+                                                cursor="pointer"
                                                 _hover={{ color: "#cf962d" }}
                                             />
                                         </Td>
@@ -130,4 +124,4 @@ const TableUser: React.FC<Props> = ({ users, setUsers }) => {
     );
 };
 
-export default TableUser;
+export default TableTopics;

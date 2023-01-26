@@ -15,6 +15,12 @@ type Selected = {
     title: string;
 };
 
+const filterCoursesByTopic = (courses: Course[], topic: string) => {
+    return courses.filter((course) => {
+        return course.topic === topic;
+    });
+};
+
 const Courses: React.FC = () => {
     const [open, setOpen] = useState(false);
     const router = useRouter();
@@ -33,31 +39,18 @@ const Courses: React.FC = () => {
     });
     useEffect(() => {
         if (status == "authenticated") {
-            const myCourses = API.getMyCoursesByUserId(session.user?.id).then(
-                (res: any) => {
-                    setMyCourses(res.data);
-                    const topics = new Set(
-                        res.data.map((course: Course) => course.topic)
-                    );
-                    setTopics(Array.from(topics));
-                }
-            );
+            API.getMyCoursesByUserId(session.user?.id).then((res: any) => {
+                setMyCourses(res.data);
+
+                // create a set of unique topics
+                const topicsSet = new Set();
+                res.data.forEach((course: Course) => {
+                    topicsSet.add(course.topic);
+                });
+                setTopics(Array.from(topicsSet));
+            });
         }
     }, [status]);
-    const filterCoursesByTopic = (courses: Course[], topic: string) => {
-        return courses.filter((course) => {
-            return course.topic === topic;
-        });
-    };
-    const toxina = filterCoursesByTopic(myCourses, "toxina botulinica");
-    const acidoInicial = filterCoursesByTopic(
-        myCourses,
-        "acido hialuronico inicial"
-    );
-    const acidoAvanzado = filterCoursesByTopic(
-        myCourses,
-        "acido hialuronico avanzado"
-    );
 
     return (
         <>
@@ -132,4 +125,4 @@ const Courses: React.FC = () => {
     );
 };
 
-export default Courses
+export default Courses;

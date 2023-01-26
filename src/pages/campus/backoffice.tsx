@@ -9,22 +9,28 @@ import TableUser from "../../components/TableUsers";
 import BackofficeItem from "../../components/BackofficeItem";
 import { FaChalkboardTeacher } from "react-icons/fa";
 import TableCourses from "../../components/TableCourses";
-import { User, Course } from "../../../types";
+import { User, Course, Topic } from "../../../types";
 import API from "../../utils/API";
 import { useRouter } from "next/router";
+import TableTopics from "../../components/TableTopics";
 const Backoffice: React.FC = () => {
     const [open, setOpen] = useState(false);
-    const [category, setCategory] = useState("Users");
+    const [category, setCategory] = useState("Usuarios");
     const [users, setUsers] = useState<User[]>([]);
     const [courses, setCourses] = useState<Course[]>([]);
+    const [topics, setTopics] = useState<Topic[]>([]);
     useEffect(() => {
-        const users = API.getUsers().then((res: any) => {
+        API.getUsers().then((res: any) => {
             setUsers(res.data);
         });
 
-        const courses = API.getCourses().then((res: any) => {
+        API.getCourses().then((res: any) => {
             setCourses(res.data);
         });
+
+        API.getTopics().then((res: any) => {
+            setTopics(res.data);
+        })
     }, []);
 
     const router = useRouter();
@@ -44,24 +50,36 @@ const Backoffice: React.FC = () => {
                         <Flex w="100%" py="2rem" gap="3rem" px="2rem">
                             <BackofficeItem
                                 icon={AiOutlineUsergroupAdd}
-                                text="Users"
+                                text="Usuarios"
                                 setCategory={setCategory}
                                 category={category}
                             />
                             <BackofficeItem
                                 icon={FaChalkboardTeacher}
-                                text="Courses"
+                                text="Cursos"
+                                setCategory={setCategory}
+                                category={category}
+                            />
+                            <BackofficeItem
+                                icon={FaChalkboardTeacher}
+                                text="Temas"
                                 setCategory={setCategory}
                                 category={category}
                             />
                         </Flex>
-                        {category === "Users" && (
+                        {category === "Usuarios" && (
                             <TableUser users={users} setUsers={setUsers} />
                         )}
-                        {category === "Courses" && (
+                        {category === "Cursos" && (
                             <TableCourses
                                 courses={courses}
                                 setCourses={setCourses}
+                            />
+                        )}
+                        {category === "Temas" && (
+                            <TableTopics
+                                topics={topics}
+                                setTopics={setTopics}
                             />
                         )}
                     </Flex>
