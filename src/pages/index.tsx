@@ -16,6 +16,7 @@ import AboutPage from "../views/AboutPage";
 import CoursesPage from "../views/CoursesPage";
 
 import { isValidMotionProp, motion } from "framer-motion";
+import ContactUsPage from "../views/ContactUsPage";
 const Home: NextPage = () => {
     const [width, setWidth] = useState(0);
     const [height, setHeight] = useState(0);
@@ -45,6 +46,7 @@ const Home: NextPage = () => {
                 <IndexPage />
                 <AboutPage />
                 <CoursesPage />
+                <ContactUsPage />
             </Grid>
         </>
     );
