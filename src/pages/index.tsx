@@ -17,26 +17,17 @@ import CoursesPage from "../views/CoursesPage";
 
 import { isValidMotionProp, motion } from "framer-motion";
 import ContactUsPage from "../views/ContactUsPage";
+import Router, { useRouter } from "next/router";
 const Home: NextPage = () => {
     const [width, setWidth] = useState(0);
     const [height, setHeight] = useState(0);
+    const router = useRouter();
+    
     useEffect(() => {
         setWidth(window.innerWidth);
         setHeight(window.innerHeight);
+        router.push('/login')
     }, []);
-    const theme: any = useTheme();
-    const animationKeyframes = keyframes`
-    0% { transform: scale(1) rotate(0); border-radius: 20%;  x: '500px'}
-    100% { transform: scale(1) rotate(360deg); border-radius: 20%; x: '0px' }
-  `;
-    const animation = `${animationKeyframes} 90s linear infinite`;
-    const ChakraBox = chakra(motion.div, {
-        /**
-         * Allow motion props and non-Chakra props to be forwarded.
-         */
-        shouldForwardProp: (prop) =>
-            isValidMotionProp(prop) || shouldForwardProp(prop),
-    });
 
 
     return (
