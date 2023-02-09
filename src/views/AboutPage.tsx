@@ -25,7 +25,7 @@ const AboutPage: React.FC = () => {
         minH={height}
         bg="background"
         px={["0rem", "0rem", "5rem", "5rem", "5rem"]}
-        py={["5rem", "5rem", "5rem", "5rem", "5rem"]}
+        py={["5rem", "5rem", "5rem", "0rem", "0rem"]}
         id="about"
         flexDir="column"
       >
@@ -70,7 +70,7 @@ const AboutPage: React.FC = () => {
               <Text mt="3rem" mb="1rem" fontWeight="bold" fontSize='3xl' textAlign='center'>
                 ¿Que es Armoniface?
               </Text>
-              <Text textAlign='center' textAlign='justify'>
+              <Text textAlign='justify'>
                 Es un espacio de trabajo dirigidos por ambas profesionales
                 Especializadas en Brasil en la rama de la Armonización
                 Orofacial, donde brindamos nuestros conocimientos y experiencias
