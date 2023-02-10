@@ -25,27 +25,33 @@ import { MdEmail } from "react-icons/md";
 
 const ContactUsPage: React.FC = () => {
   const { hasCopied, onCopy } = useClipboard("example@example.com");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
   const [button, setButton] = useState(false);
   const toast = useToast();
+  const templateParams = {
+    from_name: name,
+    email: email,
+    message: message,
+  };
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
     setButton(true);
     emailjs
-      .sendForm(
+      .send(
         `${process.env.NEXT_PUBLIC_SERVICE_KEY}`,
-        "template_i039ffz",
-        `#contact_form`,
+        "template_52sowpt",
+        templateParams,
         `${process.env.NEXT_PUBLIC_API_KEY}`
       )
       .then((res) => {
-        console.log(res);
         if (res.status === 200) {
-          console.log(res);
           toast({
             title: "Enviado exitosamente!",
             status: "success",
-            duration: 9000,
+            duration: 7000,
             isClosable: true,
             position: "bottom-right",
           });
@@ -55,22 +61,13 @@ const ContactUsPage: React.FC = () => {
   };
 
   return (
-    <Flex
-      align="center"
-      justify="center"
-      css={{
-        backgroundImage: `url("/assets/contact.jpg")`,
-        backgroundAttachment: "fixed",
-        backgroundSize: "cover",
-      }}
-      id="contact"
-    >
+    <Flex align="center" justify="center" bg="background" id="contact">
       <Box
         borderRadius="lg"
         p={{ base: 5, lg: 16 }}
         w="100%"
         h="100%"
-        backdropFilter="blur(10px)"
+        // backdropFilter="blur(10px)"
       >
         <Box>
           <VStack spacing={{ base: 4, md: 8, lg: 20 }}>
@@ -80,7 +77,7 @@ const ContactUsPage: React.FC = () => {
                 md: "5xl",
               }}
             >
-              Contáctanos
+              ¿Te gustaría formar parte?
             </Heading>
 
             <Stack
@@ -104,7 +101,7 @@ const ContactUsPage: React.FC = () => {
                     fontSize="3xl"
                     icon={<MdEmail />}
                     _hover={{
-                      bg: "blue.500",
+                      bg: "primary",
                       color: useColorModeValue("white", "gray.700"),
                     }}
                     onClick={onCopy}
@@ -119,7 +116,7 @@ const ContactUsPage: React.FC = () => {
                     size="lg"
                     icon={<BsInstagram size="28px" />}
                     _hover={{
-                      bg: "blue.500",
+                      bg: "primary",
                       color: useColorModeValue("white", "gray.700"),
                     }}
                     isRound
@@ -135,57 +132,70 @@ const ContactUsPage: React.FC = () => {
                 shadow="base"
                 minW="450px"
               >
-                <VStack spacing={5}>
-                  <FormControl isRequired>
-                    <FormLabel>Nombre</FormLabel>
+                <form onSubmit={handleSubmit} id="contact_form">
+                  <VStack spacing={5}>
+                    <FormControl isRequired>
+                      <FormLabel>Nombre</FormLabel>
+                      <InputGroup>
+                        <InputLeftElement>
+                          <BsPerson />
+                        </InputLeftElement>
+                        <Input
+                          type="text"
+                          name="name"
+                          placeholder="Tu Nombre"
+                          value={name}
+                          onChange={(e) => setName(e.target.value)}
+                        />
+                      </InputGroup>
+                    </FormControl>
 
-                    <InputGroup>
-                      <InputLeftElement>
-                        <BsPerson />
-                      </InputLeftElement>
-                      <Input type="text" name="name" placeholder="Tu Nombre" />
-                    </InputGroup>
-                  </FormControl>
+                    <FormControl isRequired>
+                      <FormLabel>Email</FormLabel>
 
-                  <FormControl isRequired>
-                    <FormLabel>Email</FormLabel>
+                      <InputGroup>
+                        <InputLeftElement>
+                          <BsEnvelope />
+                        </InputLeftElement>
+                        <Input
+                          type="email"
+                          name="email"
+                          placeholder="Tu Correo"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                        />
+                      </InputGroup>
+                    </FormControl>
 
-                    <InputGroup>
-                      <InputLeftElement>
-                        <BsEnvelope />
-                      </InputLeftElement>
-                      <Input
-                        type="email"
-                        name="email"
-                        placeholder="Tu Correo"
+                    <FormControl isRequired>
+                      <FormLabel>Message</FormLabel>
+
+                      <Textarea
+                        name="message"
+                        placeholder="Tu Mensaje..."
+                        rows={6}
+                        resize="none"
+                        value={message}
+                        onChange={(e) => setMessage(e.target.value)}
                       />
-                    </InputGroup>
-                  </FormControl>
+                    </FormControl>
 
-                  <FormControl isRequired>
-                    <FormLabel>Message</FormLabel>
-
-                    <Textarea
-                      name="message"
-                      placeholder="Tu Mensaje..."
-                      rows={6}
-                      resize="none"
-                    />
-                  </FormControl>
-
-                  <Button
-                    colorScheme="blue"
-                    bg="blue.400"
-                    color="white"
-                    _hover={{
-                      bg: "blue.500",
-                    }}
-                    w="100%"
-                    disabled={button}                
-                  >
-                    Enviar
-                  </Button>
-                </VStack>
+                    <Button
+                      colorScheme="blue"
+                      bg="primary"
+                      color="white"
+                      _hover={{
+                        bg: "#037d5a",
+                      }}
+                      _active={{ bg: "primary" }}
+                      w="100%"
+                      disabled={button}
+                      type="submit"
+                    >
+                      Enviar
+                    </Button>
+                  </VStack>
+                </form>
               </Box>
             </Stack>
           </VStack>
