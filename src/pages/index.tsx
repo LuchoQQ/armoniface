@@ -1,30 +1,15 @@
 import {
-  Box,
-  Button,
-  Flex,
   Grid,
-  chakra,
-  shouldForwardProp,
 } from "@chakra-ui/react";
 import type { NextPage } from "next";
-import { useEffect, useState } from "react";
 import { getSession } from "next-auth/react";
-import { keyframes, useTheme } from "@emotion/react";
 import NavbarIndex from "../components/NavbarIndex";
 import IndexPage from "../views/IndexPage";
 import AboutPage from "../views/AboutPage";
 import CoursesPage from "../views/CoursesPage";
 
-import { isValidMotionProp, motion } from "framer-motion";
 import ContactUsPage from "../views/ContactUsPage";
 const Home: NextPage = () => {
-  const [width, setWidth] = useState(0);
-  const [height, setHeight] = useState(0);
-
-  useEffect(() => {
-    setWidth(window.innerWidth);
-    setHeight(window.innerHeight);
-  }, []);
 
   return (
     <>
