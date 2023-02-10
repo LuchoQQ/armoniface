@@ -1,10 +1,10 @@
 import {
-    Box,
-    Button,
-    Flex,
-    Grid,
-    chakra,
-    shouldForwardProp,
+  Box,
+  Button,
+  Flex,
+  Grid,
+  chakra,
+  shouldForwardProp,
 } from "@chakra-ui/react";
 import type { NextPage } from "next";
 import { useEffect, useState } from "react";
@@ -17,39 +17,43 @@ import CoursesPage from "../views/CoursesPage";
 
 import { isValidMotionProp, motion } from "framer-motion";
 import ContactUsPage from "../views/ContactUsPage";
-import Router, { useRouter } from "next/router";
 const Home: NextPage = () => {
-    const [width, setWidth] = useState(0);
-    const [height, setHeight] = useState(0);
-    const router = useRouter();
-    
-    useEffect(() => {
-        setWidth(window.innerWidth);
-        setHeight(window.innerHeight);
-        router.push('/login')
-    }, []);
+  const [width, setWidth] = useState(0);
+  const [height, setHeight] = useState(0);
 
+  useEffect(() => {
+    setWidth(window.innerWidth);
+    setHeight(window.innerHeight);
+  }, []);
 
-    return (
-        <>
-            <Grid justifyContent="center" overflow="hidden">
-                <NavbarIndex />
-                <IndexPage />
-                <AboutPage />
-                <CoursesPage />
-                <ContactUsPage />
-            </Grid>
-        </>
-    );
+  return (
+    <>
+      <Grid justifyContent="center" overflow="hidden">
+        <NavbarIndex />
+        <IndexPage />
+        <AboutPage />
+        <CoursesPage />
+        <ContactUsPage />
+      </Grid>
+    </>
+  );
 };
 
 export async function getServerSideProps() {
-    const session = await getSession();
-    return {
-        props: {
-            session,
-        },
-    };
+  const session = await getSession();
+
+  return {
+    redirect: {
+      destination: "/login",
+      permanent: false,
+    },
+  };
+/* 
+  return {
+    props: {
+      session,
+    },
+  }; */
 }
 
 export default Home;
