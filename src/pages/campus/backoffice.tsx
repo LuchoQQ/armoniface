@@ -38,8 +38,16 @@ const Backoffice: React.FC = () => {
         required: true,
         onUnauthenticated() {
             router.push("/login");
+
         },
+
+        
     });
+
+
+    useEffect(() => {
+        console.log(session)
+    },[] )
     return (
         <>
             <Navbar />
@@ -92,7 +100,6 @@ const Backoffice: React.FC = () => {
 export async function getServerSideProps(context: any) {
     const session = await getSession(context);
     const role = "admin";
-
     if (role !== "admin") {
         return {
             redirect: {

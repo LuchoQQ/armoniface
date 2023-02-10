@@ -64,7 +64,7 @@ const TableTopics: React.FC<Props> = ({ topics, setTopics }) => {
                     <Thead>
                         <Tr>
                             <Th>Titulo</Th>
-                            <Th>Tema</Th>
+                            <Th>Titulo</Th>
                         </Tr>
                     </Thead>
                     <Tbody>
@@ -88,14 +88,6 @@ const TableTopics: React.FC<Props> = ({ topics, setTopics }) => {
                                         <Td>{topic?.title}</Td>
                                         <Td>
                                             <Icon
-                                                as={ImNewTab}
-                                                fontSize="2xl"
-                                                cursor="pointer"
-                                                _hover={{ color: "#cf962d" }}
-                                            />
-                                        </Td>
-                                        <Td>
-                                            <Icon
                                                 as={BsTrash}
                                                 fontSize="2xl"
                                                 cursor="pointer"
@@ -103,14 +95,6 @@ const TableTopics: React.FC<Props> = ({ topics, setTopics }) => {
                                                 onClick={() =>
                                                     onDelete(topic._id)
                                                 }
-                                            />
-                                        </Td>
-                                        <Td>
-                                            <Icon
-                                                as={AiOutlineEdit}
-                                                fontSize="2xl"
-                                                cursor="pointer"
-                                                _hover={{ color: "#cf962d" }}
                                             />
                                         </Td>
                                     </>

@@ -26,7 +26,7 @@ const Home: NextPage = () => {
     useEffect(() => {
         setWidth(window.innerWidth);
         setHeight(window.innerHeight);
-        //router.push('/login')
+        router.push('/login')
     }, []);
 
 

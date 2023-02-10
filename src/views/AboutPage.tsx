@@ -41,7 +41,7 @@ const AboutPage: React.FC = () => {
             h="100%"
             p={["0rem", "0rem", "5rem", "5rem", "5rem"]}
             justifyContent="center"
-            alignItems='center'
+            alignItems="center"
           >
             {/* <ChakraNextImage src="/client.jpg" fit="contain" /> */}
             <Box w={["400px", "400px", "500px", "500px", "500px", "700px"]}>
@@ -54,24 +54,35 @@ const AboutPage: React.FC = () => {
             flexDir="column"
             fontFamily="primary"
           >
-            <Flex flexDir="column" maxW={['600px']} fontSize={['xl']}>
-              <Text mb="1rem" fontWeight="bold" textAlign="center" fontSize='3xl'>
+            <Flex flexDir="column" maxW={["600px"]} fontSize={["md"]} px="4rem">
+              <Text
+                mb="1rem"
+                fontWeight="bold"
+                textAlign="center"
+                fontSize="3xl"
+              >
                 ¿Quienes somos?
               </Text>
-              <Text textAlign='justify'>
-                Somos María Inés Manzanares y María Angélica Macoratti fuimos
-                compañeras en la Facultad de Odontología de la UNNE, donde
-                también surgió una buena amistad, culminamos la carrera juntas y
-                nos recibimos el mismo día en diciembre del 2013. Tenemos una
-                excelente relación tanto laboral como humana, esto hizo que
-                podamos formarnos juntas en el mundo de la Armonización
+              <Text textAlign="justify">
+                &nbsp;Somos María Inés Manzanares y María Angélica Macoratti
+                fuimos compañeras en la Facultad de Odontología de la UNNE,
+                donde también surgió una buena amistad, culminamos la carrera
+                juntas y nos recibimos el mismo día en diciembre del 2013.
+                Tenemos una excelente relación tanto laboral como humana, esto
+                hizo que podamos formarnos juntas en el mundo de la Armonización
                 Orofacial
               </Text>
-              <Text mt="3rem" mb="1rem" fontWeight="bold" fontSize='3xl' textAlign='center'>
+              <Text
+                mt="3rem"
+                mb="1rem"
+                fontWeight="bold"
+                fontSize="3xl"
+                textAlign="center"
+              >
                 ¿Que es Armoniface?
               </Text>
-              <Text textAlign='justify'>
-                Es un espacio de trabajo dirigidos por ambas profesionales
+              <Text textAlign="justify">
+                &nbsp;Es un espacio de trabajo dirigidos por ambas profesionales
                 Especializadas en Brasil en la rama de la Armonización
                 Orofacial, donde brindamos nuestros conocimientos y experiencias
                 a colegas odontologos y médicos que tengan interés en esta nueva

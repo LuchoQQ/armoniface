@@ -1,5 +1,6 @@
 import {
     Box,
+    Divider,
     Flex,
     Icon,
     Image,
@@ -171,9 +172,9 @@ const UserProfile: React.FC = () => {
                             fontFamily={theme.fonts.secondary}
                             mb="1rem"
                         >
-                            My Courses
+                            Mis cursos
                         </Text>
-                        <TableContainer py="2rem">
+                        <TableContainer py="1rem">
                             <Table variant="simple">
                                 <TableCaption></TableCaption>
                                 <Thead>
@@ -234,9 +235,9 @@ const UserProfile: React.FC = () => {
                             </Table>
                         </TableContainer>
                         <Text px="1rem" fontFamily={theme.fonts.secondary}>
-                            Add Courses
+                            Agregar cursos
                         </Text>
-                        <TableContainer>
+                        <TableContainer py='2rem'>
                             <Table variant="simple">
                                 <TableCaption></TableCaption>
                                 <Thead>
