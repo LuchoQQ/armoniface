@@ -42,7 +42,7 @@ const SidebarLink: React.FC<Props> = ({
                         as={icon}
                         alignSelf="center"
                         fontSize="2xl"
-                        fill='#38a868'
+                        fill='tertiary'
 
                     />
                     <Text
