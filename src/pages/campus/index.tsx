@@ -35,7 +35,7 @@ const Home: NextPage = () => {
         <Container open={open} setOpen={setOpen}>
           <Flex flexDirection="column" align="center">
             <Flex
-              bgColor="secondary"
+              bgColor="tertiary"
               w="100%"
               h="120px"
               align="center"
@@ -65,6 +65,18 @@ const Home: NextPage = () => {
                 Bienvenido/a {session?.user?.name}!
               </Heading>
             </Flex>
+            <Button
+              mt="20"
+              bg="primary"
+              color="white"
+              _hover={{
+                bg: "#037d5a",
+              }}
+              _active={{ bg: "primary" }}
+              onClick={() => router.push("/campus/courses")}
+            >
+              Ir a cursos
+            </Button>
             {/* <SimpleCarousel /> */}
           </Flex>
         </Container>
