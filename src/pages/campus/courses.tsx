@@ -103,7 +103,7 @@ const Courses: React.FC = () => {
                                     xl: "800px",
                                     "2xl": "1300px",
                                 }}
-                                minH={{
+                                h={{
                                     md: "350px",
                                     lg: "450px",
                                     xl: "500px",
