@@ -1,30 +1,22 @@
 import React from "react";
 import {
     Flex,
-    Image,
     Box,
-    VStack,
     FormControl,
     FormLabel,
     Input,
     FormErrorMessage,
-    Checkbox,
     Button,
-    theme,
-    Text,
     useToast,
-    Theme,
+    Icon,
 } from "@chakra-ui/react";
 import type { NextPage } from "next";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Formik, Field } from "formik";
-import { useTheme } from "@emotion/react";
-import axios from "axios";
 import { useRouter } from "next/router";
-import { signIn, signOut, useSession } from "next-auth/react";
-import Router from "next/router";
+import { signIn, useSession } from "next-auth/react";
 import ChakraNextImage from "../components/ChakraNextImage";
-import Link from "next/link";
+import { AiOutlineArrowLeft } from "react-icons/ai";
 
 const Login: NextPage = (props) => {
     const toast = useToast();
@@ -61,16 +53,43 @@ const Login: NextPage = (props) => {
 
     return (
         <>
+        <Flex h="100vh" w="100vw" m="0" flexDir="column">
+            <Flex
+                w="100vw"
+                h="15vh"
+                display={{ base: "none", md: "flex" }}
+                bg="#f1f2f3"
+                
+                alignItems="center"
+                px="5rem"
+                gap="2rem"
+                boxShadow="lg"
+                
+                zIndex={100}
+                fontSize="xl"
+            >
+                <ChakraNextImage
+                    src="/assets/logo.webp"
+                    h="50px"
+                    w="100px"
+                    alt="logo"
+                    mr="10"
+                    />
+                <Icon as={AiOutlineArrowLeft} ml="auto" fontSize="4xl" onClick={() => {
+                    router.push('/')
+                }}/>
+            </Flex>
             <Flex
                 justifyContent="center"
                 bg="linear-gradient(143deg, rgba(40,110,84,1) 16%, rgba(31,59,49,1) 100%)"
-            >
+                w="100%"
+                h="100%"
+                >
                 <Flex
                     w={{ base: "", sm: "50%" }}
-                    h="100vh"
                     justifyContent="center"
                     alignItems="center"
-                >
+                    >
                     <Flex>
                         <Box
                             bg="white"
@@ -85,7 +104,7 @@ const Login: NextPage = (props) => {
                                     password: "",
                                 }}
                                 onSubmit={onSubmit}
-                            >
+                                >
                                 {({ handleSubmit, errors, touched }) => (
                                     <form onSubmit={handleSubmit}>
                                         <Flex
@@ -105,7 +124,7 @@ const Login: NextPage = (props) => {
                                                     type="email"
                                                     variant="filled"
                                                     fontFamily='primary'
-                                                />
+                                                    />
                                             </FormControl>
                                             <FormControl
                                                 isInvalid={
@@ -129,7 +148,7 @@ const Login: NextPage = (props) => {
                                                         if (value.length <= 5) {
                                                             error =
                                                                 "Password must contain at least 6 characters";
-                                                        }
+                                                            }
                                                         return error;
                                                     }}
                                                 />
@@ -149,7 +168,7 @@ const Login: NextPage = (props) => {
                                                 color="white"
                                                 width="full"
                                                 fontFamily='primary'
-                                            >
+                                                >
                                                 Ingresar
                                             </Button>
                                         </Flex>
@@ -162,13 +181,12 @@ const Login: NextPage = (props) => {
                 <Flex
                     display={{ base: "none", lg: "block" }}
                     w="50%"
-                    h="100vh"
+                    h="90vh"
                     justifyContent="center"
                     alignContent="center"
                     position="relative"
                     backgroundImage={`url("/assets/armonilogin.jpg")`}
-                    backgroundSize="cover"
-                    backgroundPosition="center"
+                    backgroundSize="cover"                    
                 >
                     <ChakraNextImage
                         src="/assets/logo.webp"
@@ -180,9 +198,10 @@ const Login: NextPage = (props) => {
                         transform="translate(-50%, -50%)"
                         w="250px"
                         h="200px"
-                    />
+                        />
                 </Flex>
             </Flex>
+                        </Flex>
         </>
     );
 };
