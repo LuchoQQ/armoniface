@@ -71,10 +71,11 @@ const Login: NextPage = (props) => {
             >
                 <ChakraNextImage
                     src="/assets/logo.webp"
-                    h="50px"
+                    h="63px"
                     w="100px"
                     alt="logo"
                     mr="10"
+                    fit='contain'
                     />
                 <Icon as={AiOutlineArrowLeft} ml="auto" fontSize="4xl" onClick={() => {
                     router.push('/')
@@ -182,7 +183,7 @@ const Login: NextPage = (props) => {
                 <Flex
                     display={{ base: "none", lg: "block" }}
                     w="50%"
-                    h="90vh"
+                    h="100%"
                     justifyContent="center"
                     alignContent="center"
                     position="relative"

@@ -29,7 +29,7 @@ const Navbar: React.FC = () => {
                 <ChakraNextImage
                     src="/assets/logo.webp"
                     alt="logo"
-                    h="50px"
+                    h="63px"
                     w="100px"
                     alignSelf="center"
                     onClick={() => {
