@@ -32,19 +32,20 @@ const Login: NextPage = (props) => {
         }).then((res) => {
             if (res?.error) {
                 toast({
-                    title: "An error occurred.",
-                    description: res.error,
+                    title: "Usuario o contraseña incorrectos",
+                    description: "Verifica tus datos",
                     status: "error",
-                    duration: 9000,
+                    duration: 5000,
+                    isClosable: true,
+                });
+            } else {
+                toast({
+                    title: "Login exitoso",
+                    status: "success",
+                    duration: 5000,
                     isClosable: true,
                 });
             }
-            toast({
-                title: "Login sucessfull",
-                status: "success",
-                duration: 9000,
-                isClosable: true,
-            });
             setLoading(false);
         });
     };
