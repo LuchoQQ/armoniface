@@ -57,15 +57,13 @@ const Login: NextPage = (props) => {
         <Flex h="100vh" w="100vw" m="0" flexDir="column">
             <Flex
                 w="100vw"
-                h="15vh"
+                h="80px"
                 display={{ base: "none", md: "flex" }}
-                bg="#f1f2f3"
-                
+                bg="#f1f2f3"                
                 alignItems="center"
                 px="5rem"
                 gap="2rem"
-                boxShadow="lg"
-                
+                boxShadow="lg"                
                 zIndex={100}
                 fontSize="xl"
             >
