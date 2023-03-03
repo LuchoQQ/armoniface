@@ -31,7 +31,7 @@ const NavbarIndex: React.FC = () => {
             <Flex
                 w="100vw"
                 h="80px"
-                display={{ base: "none", md: "flex" }}
+                display={['none', 'none', 'none', 'flex', 'flex']}
                 bg="#f1f2f3"
                 // justifyContent="flex-end"
                 alignItems="center"
@@ -75,7 +75,7 @@ const NavbarIndex: React.FC = () => {
 
             {/* Mobile navbar */}
             <Flex
-                display={["flex", "flex", "none", "none"]}
+                display={["flex", "flex", "flex", "none", "none"]}
                 position="fixed"
                 top="-4px"
                 zIndex="100"
