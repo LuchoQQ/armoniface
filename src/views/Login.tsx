@@ -185,11 +185,11 @@ const Login: NextPage = (props) => {
                     justifyContent="center"
                     alignContent="center"
                     position="relative"
-                    backgroundImage={`url("/assets/armonilogin.jpg")`}
+                    //backgroundImage={`url("/assets/armonilogin.jpg")`}
                     backgroundSize="cover"
                     
                 >
-                    <ChakraNextImage
+                    {/* <ChakraNextImage
                         src="/assets/logo.webp"
                         alt="logo"
                         fit="contain"
@@ -200,7 +200,7 @@ const Login: NextPage = (props) => {
                         w="250px"
                         h="200px"
                         
-                        />
+                        /> */}
                 </Flex>
             </Flex>
         </Flex>

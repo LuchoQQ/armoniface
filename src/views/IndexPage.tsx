@@ -38,28 +38,32 @@ const IndexPage: React.FC = () => {
     });
     return (
         <>
-            <Flex
-                w={width}
-                minH={height}
-                position="relative"
-                id="inicio"
-            >
-                <ChakraNextImage
-                    src="/assets/bg.jpeg"
-                    position="absolute"
-                />
+            <Flex w={width} minH={height} position="relative" id="inicio">
+                <ChakraNextImage src="/assets/bg.jpeg" position="absolute" />
 
-                <Flex position="relative" w="100%" h="100%" flexDir={['column','column','row','row','row']} gap={['5rem','5rem','0rem','0rem','0rem']}>
+                <Flex
+                    position="relative"
+                    w="100%"
+                    h="100%"
+                    flexDir={["column", "column", "row", "row", "row"]}
+                    gap={["0rem", "3rem", "0rem", "0rem", "0rem"]}
+                >
                     <Flex
-                        w={["100%","100%","50%","50%","50%"]}
+                        w={["100%", "100%", "50%", "50%", "50%"]}
                         flexDir="column"
                         justifyContent="center"
-                        alignItems={["center","center","flex-end","flex-end","flex-end"]}
-                        pt={['5rem','5rem','5rem','0rem','0rem']}
+                        alignItems={[
+                            "center",
+                            "center",
+                            "flex-end",
+                            "flex-end",
+                            "flex-end",
+                        ]}
+                        pt={["5rem", "5rem", "5rem", "0rem", "0rem"]}
                     >
                         <Text
                             fontFamily="primary"
-                            fontSize={["2xl","3xl","5xl","5xl","5xl"]}
+                            fontSize={["2xl", "3xl", "2xl", "4xl", "5xl"]}
                             color="#f1f2f3"
                         >
                             <span style={{ fontWeight: "bold" }}>
@@ -83,31 +87,47 @@ const IndexPage: React.FC = () => {
                             <br />
                             <Button
                                 fontSize="sm"
-                                bg='#fff'
+                                bg="#fff"
                                 color="fontSecondary"
-                                fontFamily='secondary'
-                                fontWeight='regular'
+                                fontFamily="secondary"
+                                fontWeight="regular"
                             >
                                 Ver más
-                                <Icon ml='1rem'as={AiOutlineArrowRight} fontSize='lg'/>
+                                <Icon
+                                    ml="1rem"
+                                    as={AiOutlineArrowRight}
+                                    fontSize="lg"
+                                />
                             </Button>
                         </Text>
                     </Flex>
                     <Flex
-                        w={["100%","100%","50%","50%","50%"]}
+                        w={["100%", "100%", "50%", "50%", "50%"]}
                         h="100%"
                         flexDir="column"
-                        justifyContent="flex-end"
+                        justifyContent="center"
                     >
-                        <Box w="1rem" h="1rem" />
                         <ChakraNextImage
-                            src="/assets/imac2.png"
-                            h="500px"
+                            src="/assets/logo.webp"
+                            h={[
+                                "200px",
+                                "200px",
+                                "200px",
+                                "200px",
+                                "200px",
+                                "300px",
+                                "300px",
+                            ]}
                             fit="contain"
                         />
                     </Flex>
                 </Flex>
-                <Flex w="100%" bg="transparent" position="absolute" alignSelf='flex-end'>
+                <Flex
+                    w="100%"
+                    bg="transparent"
+                    position="absolute"
+                    alignSelf="flex-end"
+                >
                     <ChakraBox
                         animate={{
                             x: [0, -width],
@@ -132,6 +152,9 @@ const IndexPage: React.FC = () => {
                             whiteSpace="nowrap"
                             w="100%"
                         >
+                            <Text>ARMONIFACE</Text>
+                            <Text>ARMONIFACE</Text>
+                            <Text>ARMONIFACE</Text>
                             <Text>ARMONIFACE</Text>
                             <Text>ARMONIFACE</Text>
                             <Text>ARMONIFACE</Text>
