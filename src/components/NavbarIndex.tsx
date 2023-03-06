@@ -155,6 +155,9 @@ const NavbarIndex: React.FC = () => {
                                 _hover={{
                                     bg: "#023b3b",
                                 }}
+                                onClick={() => {
+                                    router.push("/login");
+                                }}
                             >
                                 Acceder
                             </Button>
