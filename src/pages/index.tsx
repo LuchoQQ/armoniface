@@ -10,6 +10,7 @@ import ContactUsPage from "../views/ContactUsPage";
 import ChakraNextImage from "../components/ChakraNextImage";
 import { AiOutlineInstagram, AiOutlinePhone } from "react-icons/ai";
 import { HiOutlineMail } from "react-icons/hi";
+import Link from "next/link";
 const Home: NextPage = () => {
     return (
         <>
@@ -29,14 +30,15 @@ const Home: NextPage = () => {
                     justifyContent="space-between"
                     flexDir={["column", "column", "row", "row", "row"]}
                 >
-                    <Flex gap="2rem">
+                    <Flex gap="1rem" flexDir={{base: "column", md: "row"}} align="center">
                         <ChakraNextImage
                             src="/assets/logo.webp"
                             h="90px"
                             w="150px"
                             fit="cover"
+                            alt="logo"
                         />
-                        <Flex flexDir="column" justifyContent="center">
+                        <Flex flexDir="column" justifyContent="center" align={{base: "center", md: "start"}}>
                             <Text
                                 fontFamily="secondary"
                                 fontSize={["xl", "xl", "xl", "3xl", "3xl"]}
@@ -46,25 +48,32 @@ const Home: NextPage = () => {
                             <Text
                                 fontFamily="primary"
                                 fontSize={["md", "md", "md", "md", "md"]}
+                                textAlign="center"
                             >
-                                ©2023 Armoniface. All rights reserved
+                                © 2023 Armoniface. All rights reserved
                             </Text>
                         </Flex>
                     </Flex>
 
                     <Flex gap="1rem">
+                        <Link href="https://www.instagram.com/armonifacectes/" target="_blank">
                         <Icon
                             as={AiOutlineInstagram}
                             fontSize={["xl", "xl", "2xl", "2xl", "4xl"]}
-                        />
+                            />
+                            </Link>
+                            <Link href="">
                         <Icon
                             as={HiOutlineMail}
                             fontSize={["xl", "xl", "2xl", "2xl", "4xl"]}
-                        />
+                            />
+                            </Link>
+                            <Link href="F">
                         <Icon
                             as={AiOutlinePhone}
                             fontSize={["xl", "xl", "2xl", "2xl", "4xl"]}
-                        />
+                            />
+                            </Link>
                     </Flex>
                 </Flex>
             </Grid>

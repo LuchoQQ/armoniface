@@ -23,6 +23,7 @@ const IndexLayout: React.FC = () => {
                             src="/profile.svg"
                             h="60%"
                             rounded="50%"
+                            alt="profile pic"
                         />
                         <Text
                             fontFamily={theme.fonts.tertiary}

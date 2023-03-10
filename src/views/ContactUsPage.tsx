@@ -12,19 +12,17 @@ const ContactUsPage: React.FC = () => {
     return (
         <>
             <Flex
-                w={width}
-                minH={height}
+                w="100vw"
                 flexWrap="wrap"
                 justifyContent="center"
-                alignContent="center"
+                // align="center"
                 flexDir="column"
                 id="contact"
-                p={["2rem", "2rem"]}
-                mb="1rem"
+                p="2rem"
                 bg='#fff'
             >
                 <Text
-                    mt="2rem"
+                    my={{base: "2rem", md: "0"}}
                     fontSize={["2xl", "3xl", "4xl", "4xl", "4xl", "4xl"]}
                     fontFamily="secondary"
                     textAlign="center"
@@ -33,13 +31,15 @@ const ContactUsPage: React.FC = () => {
                     _after={{
                         content: '""',
                         position: "absolute",
-                        display: "flex",
-                        justifyContent: "center",
+                        display: 'flex',
+                        justifyContent: 'center',
+                        left: "20%",
                         top: "100%",
-                        width: "100%",
+                        width: "60%",
                         h: "1px",
                         bg: "#202020",
                     }}
+                    // mt="2rem"
                 >
                     CONTÁCTANOS
                 </Text>
@@ -53,6 +53,8 @@ const ContactUsPage: React.FC = () => {
                     rounded="20px"
                     p="2rem"
                     maxW="500px"
+                    mb="2rem"
+                    alignSelf="center"
                 >
                     <Text
                         fontSize={["md", "md", "lg", "lg", "lg", "xl"]}

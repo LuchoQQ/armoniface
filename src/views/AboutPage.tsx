@@ -12,19 +12,13 @@ import { AiFillMedicineBox } from "react-icons/ai";
 import ChakraCarousel from "../components/ChakraCarousel";
 
 const AboutPage: React.FC = () => {
-    const [width, setWidth] = useState<number>();
-    const [height, setHeight] = useState<number>();
-    useEffect(() => {
-        setWidth(window.innerWidth);
-        setHeight(window.innerHeight);
-    }, []);
+    
     return (
         <>
             <Flex
-                w={width}
+                w="100vw"
                 bg="#fff"
-                px={["0rem", "0rem", "5rem", "5rem", "5rem"]}
-                py={["2rem", "5rem", "5rem", "0rem", "0rem"]}
+                p="2rem"
                 id="about"
                 flexDir="column"
                 justifyContent='center'
@@ -46,33 +40,31 @@ const AboutPage: React.FC = () => {
                         h: "1px",
                         bg: "#202020",
                     }}
-                    mt={['0rem', '5rem', '5rem','5rem', '5rem']}
-                    mb='3rem'
+                    my={{base: "2rem", lg: "0"}}
+                    // mb='3rem'
                 >
-                    SOBRE NOSOTRAS
+                    SOBRE NOSOTROS
                 </Text>
                 <Flex
                     w="100%"
                     alignItems="center"
-                    flexDir={["column", "column", "column", "row", "row"]}
-                    gap={["5rem", "5rem", "4rem", "4rem", "4rem"]}
+                    flexDir={["column", "column", "column", "row", "row"]}                    
                 >
                     <Flex
                         w={["100%", "100%", "100%", "50%", "50%"]}
                         h="100%"
-                        p={["0rem", "0rem", "5rem", "5rem", "5rem"]}
+                        p={{lg: "5rem"}}
+                        px={{base: "8"}}
+                        pr={{md: "", "2xl": "0"}}
                         justifyContent="center"
                         alignItems="center"
-                    >
-                        {/* <ChakraNextImage src="/client.jpg" fit="contain" /> */}
+                        mt={{base: "6", md: "0"}}
+                    >                        
                         <Box
                             w={[
                                 "400px",
                                 "400px",
-                                "500px",
-                                "500px",
-                                "500px",
-                                "700px",
+                                "500px",                                
                             ]}
                         >
                             <ChakraCarousel />
@@ -80,15 +72,19 @@ const AboutPage: React.FC = () => {
                     </Flex>
                     <Flex
                         w={["100%", "100%", "100%", "50%", "50%"]}
-                        px={["3rem", "3rem", "0rem", "0rem", "0rem"]}
+                        p={{lg: "5rem"}}
+                        pl={{md: "", "2xl": "0"}}
                         flexDir="column"
                         fontFamily="primary"
+                        justifyContent="center"
+                        alignItems="center"
+                        mt={{base: "6", lg: "0"}}
                     >
                         <Flex
                             flexDir="column"
                             maxW={["600px"]}
                             fontSize={["md"]}
-                            px={["0rem", "0rem", "0rem", "0rem", "4rem"]}
+                            px={["0rem", "0rem", "0rem", "0rem", "0rem"]}
                         >
                             <Text
                                 mb="1rem"
@@ -98,16 +94,16 @@ const AboutPage: React.FC = () => {
                             >
                                 ¿Quienes somos?
                             </Text>
-                            <Text textAlign="justify">
+                            <Text textAlign="center">
                                 &nbsp;Somos María Inés Manzanares y María
-                                Angélica Macoratti fuimos compañeras en la
+                                Angélica Macoratti, fuimos compañeras en la
                                 Facultad de Odontología de la UNNE, donde
                                 también surgió una buena amistad, culminamos la
                                 carrera juntas y nos recibimos el mismo día en
                                 diciembre del 2013. Tenemos una excelente
                                 relación tanto laboral como humana, esto hizo
                                 que podamos formarnos juntas en el mundo de la
-                                Armonización Orofacial
+                                Armonización Orofacial.
                             </Text>
                             <Text
                                 mt="3rem"
@@ -116,16 +112,16 @@ const AboutPage: React.FC = () => {
                                 fontSize="3xl"
                                 textAlign="center"
                             >
-                                ¿Que es Armoniface?
+                                ¿Qué es Armoniface?
                             </Text>
-                            <Text textAlign="justify">
+                            <Text textAlign="center">
                                 &nbsp;Es un espacio de trabajo dirigidos por
-                                ambas profesionales Especializadas en Brasil en
+                                ambas profesionales especializadas en Brasil en
                                 la rama de la Armonización Orofacial, donde
                                 brindamos nuestros conocimientos y experiencias
-                                a colegas odontologos y médicos que tengan
+                                a colegas odontólogos y médicos que tengan
                                 interés en esta nueva rama que crece
-                                exponencialmente
+                                exponencialmente.
                             </Text>
                         </Flex>
                     </Flex>
