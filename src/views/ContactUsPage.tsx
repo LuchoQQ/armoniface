@@ -110,7 +110,10 @@ const ContactUsPage: React.FC = () => {
             Para saber más información acerca de los cursos, consultanos por
             nuestro email o redes sociales!
           </Text>
-          <form onSubmit={handleSubmit} style={{display: "flex", flexDirection: "column", gap: "2rem"}}>
+          <form
+            onSubmit={handleSubmit}
+            style={{ display: "flex", flexDirection: "column", gap: "2rem" }}
+          >
             <Input
               type="text"
               name="name"
@@ -137,7 +140,9 @@ const ContactUsPage: React.FC = () => {
               variant="flushed"
               onChange={(e) => setMessage(e.target.value)}
             />
-            <Button type="submit" disabled={alreadySubmitted}>Enviar</Button>
+            <Button type="submit" disabled={alreadySubmitted}>
+              Enviar
+            </Button>
           </form>
         </Flex>
       </Flex>
