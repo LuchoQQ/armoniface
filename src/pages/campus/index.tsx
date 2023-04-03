@@ -10,14 +10,10 @@ import { useTheme } from "@emotion/react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import Register from "../../views/Register";
+import ChakraNextImage from "../../components/ChakraNextImage";
 
 const Home: NextPage = () => {
-  const [width, setWidth] = useState(0);
-  /*     useEffect(() => {
-        setWidth(window.innerWidth);
-    }, []); */
   const [open, setOpen] = useState(false);
-  const theme: any = useTheme();
 
   const router = useRouter();
   const { data: session, status }: any = useSession({
@@ -42,9 +38,7 @@ const Home: NextPage = () => {
               justify="center"
               zIndex="0"
               boxShadow="lg"
-            >
-              {/* <Heading as="h1" size="md" fontWeight="extrabold" color="white" mb="6">Inicio</Heading>  */}
-            </Flex>
+            ></Flex>
             <Flex
               mt="-12"
               w="90%"
@@ -65,19 +59,40 @@ const Home: NextPage = () => {
                 Bienvenido/a {session?.user?.name}!
               </Heading>
             </Flex>
-            <Button
-              mt="20"
-              bg="primary"
-              color="white"
-              _hover={{
-                bg: "#037d5a",
-              }}
-              _active={{ bg: "primary" }}
-              onClick={() => router.push("/campus/courses")}
-            >
-              Ir a cursos
-            </Button>
-            {/* <SimpleCarousel /> */}
+            <Flex my={{base: "10", md: "20"}} gap="8" w="100%" align="center" justify="space-evenly" flexDir={{base: "column", md: "row"}}>
+              <Button                
+                bg="bg"
+                color="white"
+                _hover={{
+                  bg: "bg",
+                }}
+                _active={{ bg: "bg" }}
+                onClick={() => router.push("/campus/courses")}
+                w={{base: "48", xl: "96"}}
+                h={{base: "48", xl: "96"}}
+                p="0"
+                position="relative"              
+              >
+                <ChakraNextImage src="/client.jpg" alt="Ir a cursos" h="100%" w="100%" filter='auto' blur='6px' transition="ease 0.3s" _hover={{blur: "8px", transition: "ease 0.2s"}} />
+                <Text  position="absolute" fontSize={{base: "4xl", xl: "7xl"}} color="#fff">Cursos</Text>
+              </Button>
+              <Button                
+                bg="bg"
+                color="white"
+                _hover={{
+                  bg: "bg",
+                }}
+                _active={{ bg: "bg" }}
+                onClick={() => router.push("/campus/reading")}
+                w={{base: "48", xl: "96"}}
+                h={{base: "48", xl: "96"}}
+                p="0"
+                position="relative"              
+              >
+                <ChakraNextImage src="/client3.jpg" alt="Ir a cursos" h="100%" w="100%" filter='auto' blur='6px' transition="ease 0.3s" _hover={{blur: "8px", transition: "ease 0.2s"}} />
+                <Text  position="absolute" fontSize={{base: "4xl", xl: "7xl"}} color="#fff">Lectura</Text>
+              </Button>              
+            </Flex>
           </Flex>
         </Container>
       </Flex>
@@ -87,23 +102,21 @@ const Home: NextPage = () => {
 
 export async function getServerSideProps(context: any) {
   const session = await getSession(context);
-  
-  console.log(session)
+
+  console.log(session);
   if (session !== null) {
     return {
       props: {
-        session
-      }
-    }
-    
+        session,
+      },
+    };
   } else {
     return {
       redirect: {
-        destination: '/login',
+        destination: "/login",
         permanent: false,
-
-      }
-    }
+      },
+    };
   }
 }
 

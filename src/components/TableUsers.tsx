@@ -72,14 +72,13 @@ const TableUser: React.FC<Props> = ({ users, setUsers }) => {
                                     position="relative"
                                     _after={{
                                         content: '""',
-
                                         position: "absolute",
                                         h: "1px",
-                                        w: "80%",
-                                        left: "10%",
+                                        w: "100%",
+                                        left: "0%",
                                         top: "100%",
                                         bg: "#cccccc",
-                                    }}
+                                      }}
                                 >
                                     <>
                                         <Td>

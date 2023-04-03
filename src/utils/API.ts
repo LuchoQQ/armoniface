@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosRequestConfig } from "axios";
 import { User } from "../../types";
 
 const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_BASE_URL;
@@ -62,6 +62,20 @@ const API = {
     deleteCourse: async (id: string) => {
         try {
             return await axios.delete(`${SERVER_URL}/courses/${id}`);
+        } catch (error) {
+            return error;
+        }
+    },
+    addPdfToCourse: async (courseId: string | undefined, values: {pdfTitle: string, pdfUrl: string, courseName: string}) => {
+        try {
+            return await axios.post(`${SERVER_URL}/courses/${courseId}`, values);
+        } catch (error) {
+            return error;
+        }
+    },
+    deletePdfFromCourse: async (courseId: string | undefined, pdfId: string | undefined) => {
+        try {
+            return await axios.delete(`${SERVER_URL}/pdfs/${courseId}/${pdfId}`);
         } catch (error) {
             return error;
         }

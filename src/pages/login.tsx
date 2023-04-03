@@ -1,11 +1,7 @@
-import React, { useEffect } from "react";
-import NavbarIndex from "../components/NavbarIndex";
+import React from "react";
 import Login from "../views/Login";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
-import { Flex, Icon } from "@chakra-ui/react";
-import ChakraNextImage from "../components/ChakraNextImage";
-import { AiOutlineArrowLeft } from "react-icons/ai";
 
 const LoginPage: React.FC = () => {
     const { data: session, status }: any = useSession();

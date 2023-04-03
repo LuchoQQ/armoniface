@@ -17,6 +17,11 @@ const courseSchema = new mongoose.Schema(
             required: true,
             trim: true,
         },
+        coursePdf: {
+            type: [{ pdfTitle: String, pdfUrl: String }],
+            required: false,
+            trim: true,
+        },
     },
     {
         timestamps: true,

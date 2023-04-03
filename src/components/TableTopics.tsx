@@ -75,14 +75,13 @@ const TableTopics: React.FC<Props> = ({ topics, setTopics }) => {
                                     position="relative"
                                     _after={{
                                         content: '""',
-
                                         position: "absolute",
                                         h: "1px",
-                                        w: "80%",
-                                        left: "10%",
+                                        w: "100%",
+                                        left: "0%",
                                         top: "100%",
                                         bg: "#cccccc",
-                                    }}
+                                      }}
                                 >
                                     <>
                                         <Td>{topic?.title}</Td>

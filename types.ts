@@ -12,9 +12,16 @@ export interface Course {
     title: string;
     url: string;
     topic: string
+    coursePdf?: {pdfTitle: string, pdfUrl: string}[];
 }
 
 export interface Topic {
     _id: string;
     title: string;
+}
+
+export interface Pdf {
+    _id?: string;
+    pdfTitle: string;
+    pdfUrl: string;
 }
