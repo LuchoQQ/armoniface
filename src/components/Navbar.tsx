@@ -19,7 +19,7 @@ const Navbar: React.FC = () => {
                 w="100%"
                 h="80px"
                 justifyContent="center"
-                px="5rem"
+                px={{base: "1.5rem", md: "5rem"}}
                 alignContent="center"
                 position="fixed"
                 bg="#f1f2f3"

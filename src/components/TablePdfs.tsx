@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Icon,
   Table,
@@ -15,60 +14,77 @@ import { useTheme } from "@emotion/react";
 import { AiOutlineEdit } from "react-icons/ai";
 import { BsTrash } from "react-icons/bs";
 import { ImNewTab } from "react-icons/im";
-import { Course } from "../../types";
-import ModalCourse from "./ModalCourse";
+import { Course, Pdf } from "../../types";
 import AddButton from "./AddButton";
 import API from "../utils/API";
+import ModalPdfs from "./ModalPdfs";
 
 type Props = {
   courses: Course[];
   setCourses: React.Dispatch<React.SetStateAction<Course[]>>;
+  pdfs: Pdf[];
+  setPdfs: React.Dispatch<React.SetStateAction<Pdf[]>>;
 };
 
-const TableCourses: React.FC<Props> = ({ courses, setCourses }) => {
+const TableCourses: React.FC<Props> = ({
+  courses,
+  setCourses,
+  pdfs,
+  setPdfs,
+}) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const theme: any = useTheme();
   const toast = useToast();
-  const onDelete = (id: string) =>
-    API.deleteCourse(id)
-      ?.then((res) => {
+
+  const onDelete = (
+    courseId: string | undefined,
+    pdfId: string | undefined
+  ) => {
+    API.deletePdfFromCourse(courseId, pdfId)
+      .then((res: any) => {
+        setPdfs(pdfs.filter((pdf) => pdf._id !== pdfId));
         toast({
-          title: "Curso eliminado",
+          title: res.data.message,
           status: "success",
+          duration: 3000,
         });
-        const index = courses.findIndex((course) => course._id === id);
-        const newCourses = [...courses];
-        newCourses.splice(index, 1);
-        setCourses(newCourses);
-        // find the index of the user with the id that was deleted and remove it from the array
       })
       .catch((err) => {
         toast({
-          title: "Error al crear usuario",
-          description: err.message,
+          title: "Error al eliminar el PDF",
+          status: "error",
+          duration: 3000,
         });
       });
+  };
+
   return (
     <>
-      <ModalCourse
+      <ModalPdfs
         isOpen={isOpen}
         onClose={onClose}
         setCourses={setCourses}
         courses={courses}
+        setPdfs={setPdfs}
+        pdfs={pdfs}
       />
-
-      <AddButton onOpen={onOpen} title="Agregar Curso" />
+      <AddButton onOpen={onOpen} title="Agregar PDF" />
       <TableContainer w="100%">
         <Table variant="simple">
           <Thead>
             <Tr>
               <Th>Titulo</Th>
-              <Th>Tema</Th>
+              <Th>Del curso</Th>
               <Th>Borrar</Th>
             </Tr>
           </Thead>
           <Tbody>
-            {courses?.map((course, key) => {
+            {pdfs?.map((pdf, key) => {
+              const courseOfPdf = courses.find((course) =>
+                course.coursePdf?.find((p) => p.pdfTitle === pdf.pdfTitle)
+              );
+              const courseOfPdfTitle = courseOfPdf?.title;
+              const courseOfPdfId = courseOfPdf?._id;
+
               return (
                 <Tr
                   key={key}
@@ -84,15 +100,15 @@ const TableCourses: React.FC<Props> = ({ courses, setCourses }) => {
                   }}
                 >
                   <>
-                    <Td>{course?.title}</Td>
-                    <Td>{course?.topic}</Td>
+                    <Td>{pdf?.pdfTitle}</Td>
+                    <Td>{courseOfPdfTitle}</Td>
                     <Td>
                       <Icon
                         as={BsTrash}
                         fontSize="2xl"
                         cursor="pointer"
                         _hover={{ color: "#cf962d" }}
-                        onClick={() => onDelete(course._id)}
+                        onClick={() => onDelete(courseOfPdfId, pdf?._id)}
                       />
                     </Td>
                   </>

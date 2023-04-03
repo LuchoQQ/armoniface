@@ -1,6 +1,6 @@
 import { Flex, Icon, Text } from "@chakra-ui/react";
 import React from "react";
-import { AiOutlineHome } from "react-icons/ai";
+import { AiOutlineHome, AiOutlineFilePdf } from "react-icons/ai";
 import SidebarLink from "./SidebarLink";
 import { BsBook } from "react-icons/bs";
 import { RiAdminLine, RiLogoutBoxLine } from "react-icons/ri";
@@ -56,6 +56,12 @@ const Sidebar: React.FC<Props> = ({ open, setOpen }) => {
                     icon={BsBook}
                     path="/campus/courses"
                     text="Cursos"
+                    display={open}
+                />
+                <SidebarLink
+                    icon={AiOutlineFilePdf}
+                    path="/campus/reading"
+                    text="Lectura"
                     display={open}
                 />
                 {session?.user?.email === "admin@admin.com" && (
