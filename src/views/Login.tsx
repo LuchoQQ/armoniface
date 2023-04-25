@@ -58,7 +58,7 @@ const Login: NextPage = (props) => {
           h="80px"
           bg="#f1f2f3"
           alignItems="center"
-          px={{base: "1.5rem", md: "5rem"}}
+          px={{ base: "1.5rem", md: "5rem" }}
           gap="2rem"
           boxShadow="lg"
           zIndex={100}
@@ -71,6 +71,10 @@ const Login: NextPage = (props) => {
             alt="logo"
             mr="10"
             fit="contain"
+            cursor="pointer"
+            onClick={() => {
+              router.push("/");
+            }}
           />
           <Icon
             as={AiOutlineArrowLeft}
@@ -79,6 +83,7 @@ const Login: NextPage = (props) => {
             onClick={() => {
               router.push("/");
             }}
+            cursor="pointer"
           />
         </Flex>
         <Flex

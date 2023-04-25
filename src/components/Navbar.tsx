@@ -35,6 +35,7 @@ const Navbar: React.FC = () => {
                     onClick={() => {
                         router.push("/campus");
                     }}
+                    cursor="pointer"
                 />
                 <Flex ml="auto" gap="2rem" alignSelf="center">
                     <Flex gap="1rem">
