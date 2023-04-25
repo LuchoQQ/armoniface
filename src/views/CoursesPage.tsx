@@ -1,8 +1,5 @@
-import { Flex, Icon, Text } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
-import ChakraNextImage from "../components/ChakraNextImage";
-import { AiOutlineClockCircle } from "react-icons/ai";
-import { FaPhotoVideo } from "react-icons/fa";
+import { Flex, Text } from "@chakra-ui/react";
+import React from "react";
 import CourseCard from "../components/CourseCard";
 
 const CoursesPage: React.FC = () => {
@@ -16,7 +13,6 @@ const CoursesPage: React.FC = () => {
                 flexWrap="wrap"
                 justifyContent="center"
                 p="2rem"
-                // align="center"
                 flexDir="column"
             >
                 <Text
@@ -49,13 +45,13 @@ const CoursesPage: React.FC = () => {
                         hours={2}
                     />
                     <CourseCard
-                        src="/assets/acido-inicial.jpg"
+                        src="/assets/acido-inicial.jpeg"
                         alt="Acido"
                         title="Acido Hialuronico Inicial"
                         hours={2.5}
                     />
                     <CourseCard
-                        src="/assets/acido-avanzado.jpg"
+                        src="/assets/acido-avanzado.jpeg"
                         alt="toxina"
                         title="Acido Hialuronico Avanzado"
                         hours={2.5}

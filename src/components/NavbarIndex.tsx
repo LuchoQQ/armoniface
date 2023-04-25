@@ -44,11 +44,15 @@ const NavbarIndex: React.FC = () => {
             >
                 <ChakraNextImage
                     src="/assets/logo.webp"
-                    h="50px"
+                    h="63px"
                     w="100px"
                     alt="logo"
                     mr="10"
-                    fit='cover'
+                    fit='contain'
+                    cursor="pointer"
+                    onClick={() => {
+                        router.push("/");
+                    }}                    
                 />
                 <Divider orientation="vertical" />
                 <NavbarLinkScroll text="Inicio" path="inicio" />

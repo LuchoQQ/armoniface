@@ -24,7 +24,6 @@ const API = {
         name: string;
         email: string;
         password: string;
-        registerCode?: string;
     }) => {
         try {
             return await axios.post(`${SERVER_URL}/users`, values);

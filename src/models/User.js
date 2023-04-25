@@ -17,11 +17,6 @@ const userSchema = new mongoose.Schema(
             required: true,
             trim: true,
         },
-        registerCode: {
-            type: String,
-            required: false,
-            trim: true,
-        },
         courses: [
             {
                 type: mongoose.Schema.Types.ObjectId,
