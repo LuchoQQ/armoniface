@@ -40,21 +40,24 @@ const CoursesPage: React.FC = () => {
                 <Flex gap="5rem" my="3rem" flexWrap='wrap' justifyContent='center'>
                     <CourseCard
                         src="/assets/toxina-botulinica.jpg"
-                        alt="toxina"
-                        title="Toxina Botulinica"
+                        alt="Toxina Botulínica"
+                        title="Toxina Botulínica"
                         hours={2}
+                        description="Aprendé todo sobre la toxina botulínica"
                     />
                     <CourseCard
                         src="/assets/acido-inicial.jpeg"
-                        alt="Acido"
-                        title="Acido Hialuronico Inicial"
-                        hours={2.5}
+                        alt="Ácido Hialurónico Inicial"
+                        title="Ácido Hialurónico Inicial"
+                        hours={3}
+                        description="Aprendé todo sobre el ácido hialurónico"
                     />
                     <CourseCard
                         src="/assets/acido-avanzado.jpeg"
-                        alt="toxina"
-                        title="Acido Hialuronico Avanzado"
-                        hours={2.5}
+                        alt="Ácido Hialurónico Avanzado"
+                        title="Ácido Hialurónico Avanzado"
+                        hours={3.5}
+                        description="Aprendé todo sobre el ácido hialurónico"
                     />
                 </Flex>
             </Flex>

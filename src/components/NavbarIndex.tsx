@@ -70,7 +70,8 @@ const NavbarIndex: React.FC = () => {
                         router.push("/login");
                     }}
                     border={`1px solid ${theme.colors.primary}`}
-                    color="fontSecondary"
+                    color="secondary"
+                    bg="none"
                     _active={{ bg: "" }}
                 >
                     Acceder

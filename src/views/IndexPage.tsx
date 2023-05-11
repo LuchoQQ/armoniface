@@ -1,8 +1,6 @@
 import {
-  Box,
   Button,
   Flex,
-  Grid,
   Icon,
   Text,
   chakra,
@@ -14,6 +12,7 @@ import React, { useEffect, useState } from "react";
 import ChakraNextImage from "../components/ChakraNextImage";
 import { isValidMotionProp, motion } from "framer-motion";
 import { AiOutlineArrowRight } from "react-icons/ai";
+import Link from "next/link";
 
 const IndexPage: React.FC = () => {
   const [width, setWidth] = useState(0);
@@ -49,7 +48,6 @@ const IndexPage: React.FC = () => {
           position="relative"
           w="100%"
           flexDir={["column", "column", "row", "row", "row"]}
-        //   gap={["0rem", "3rem", "0rem", "6rem", "0rem"]}
         >
           <Flex
             w={["100%", "100%", "50%", "50%", "50%"]}
@@ -59,12 +57,12 @@ const IndexPage: React.FC = () => {
             alignItems={[
               "center",
               "center",
+              "center",
+              "center",
               "flex-end",
-              "flex-end",
-              "flex-end",
+              "center",
             ]}
             pt={["5rem", "5rem", "5rem", "0rem", "0rem"]}
-            
           >
             <Text
               fontFamily="primary"
@@ -84,17 +82,19 @@ const IndexPage: React.FC = () => {
               con <span style={{ fontWeight: "bold" }}>especialistas</span> del
               área
               <br />
+              <Link href="#courses">
               <Button
                 fontSize="sm"
                 bg="#fff"
-                color="fontSecondary"
+                color="secondary"
                 fontFamily="secondary"
                 fontWeight="regular"
-                mt="4"
+                mt="4"               
               >
                 Ver más
                 <Icon ml="1rem" as={AiOutlineArrowRight} fontSize="lg" />
               </Button>
+              </Link>
             </Text>
           </Flex>
           <Flex
@@ -102,22 +102,13 @@ const IndexPage: React.FC = () => {
             h={{ base: "50%", md: "100%" }}
             flexDir="column"
             justifyContent="end"
-            
+            zIndex={2}
           >
             <ChakraNextImage
               src="/assets/indexpic.png"
-              //   h={[
-              //     "200px",
-              //     "200px",
-              //     "200px",
-              //     "200px",
-              //     "200px",
-              //     "300px",
-              //     "300px",
-              //   ]}
-              h={{ base: "370px", md: "400px", lg: "500px", "2xl": "650px" }}
+              h={{ base: "500px", md: "520px", lg: "650px", "2xl": "950px" }}
               fit="contain"
-              alt="logo pic"
+              alt="logo pic"                          
             />
           </Flex>
         </Flex>

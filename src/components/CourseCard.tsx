@@ -3,7 +3,15 @@ import { AiOutlineClockCircle } from "react-icons/ai";
 import { FaPhotoVideo } from "react-icons/fa";
 import ChakraNextImage from "./ChakraNextImage";
 
-const CourseCard: React.FC<any> = ({ src, alt, title, hours }) => {
+type Props = {
+    src: string;
+    alt: string;
+    title: string;
+    description: string;
+    hours: number;
+}
+
+const CourseCard: React.FC<Props> = ({ src, alt, title, hours, description }) => {
     return (
         <>
             <Flex
@@ -33,10 +41,9 @@ const CourseCard: React.FC<any> = ({ src, alt, title, hours }) => {
                         fontSize="sm"
                         fontWeight="bold"
                         w="100%"
-                        mb="3rem"
+                        mb="1rem"
                     >
-                        Excepteur ut ad consequat labore.Et voluptate amet
-                        dolore veniam irure mollit.
+                        {description}
                     </Text>
                     <Flex justifyContent="space-between">
                         <Flex gap=".5rem">
